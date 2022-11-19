@@ -16,13 +16,13 @@ public class PatientMgr extends Manager implements DataEngineInterface {
 		return mgr;
 	}
 
-	private String[] headers = { "이름", "성별", "생년월일", "주민번호", "개월", "전화번호", "주소" };
+	private String[] headers = { "환자코드", "이름", "생년월일", "연락처", "주소" };
 
-	//	이름, 성별, 생년월일, 주민번호 뒷자리, 나이(개월수) , 전화번호, 주소
+	//환자코드 / 이름/ 성별/ 생년월일/ 전화번호/ 주소(동만)
 	@Override
 	public int getColumnCount() {
 		// TODO Auto-generated method stub
-		return 7;
+		return 5;
 	}
 
 	@Override
