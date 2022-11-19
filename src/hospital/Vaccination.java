@@ -65,11 +65,14 @@ public class Vaccination implements Manageable, UIData {
 
 	@Override
 	public String[] getUiTexts() {
-		String[] texts = new String[4];
+		String[] texts = new String[100];
         texts[0] = vaccine;
-        texts[1] = infections;
-        texts[2] = "" + number;
-        texts[3] = times;
+        int size = 1;
+        for (String temp : infections)
+        	texts[size++] = temp;
+        texts[size++] = "" + number;
+        for (String temp : times)
+        	texts[size++] = temp;
         return texts;
 	}
 }
