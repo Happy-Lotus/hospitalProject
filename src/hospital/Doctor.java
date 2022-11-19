@@ -15,7 +15,7 @@ public class Doctor implements Manageable
 	String gender;
 	String phone;
 	ArrayList<Patient> patientList = new ArrayList<Patient>();
-	
+
 	@Override
 	public void read(Scanner scan) {
 		code = scan.next();
@@ -31,8 +31,10 @@ public class Doctor implements Manageable
 	@Override
 	public void print() {
 		System.out.format("[%s] %s : %s\n", code, name, phone);
+		System.out.print("[진료환자] ");
 		for(Patient p : patientList)
-			p.print();
+			p.printD();
+		System.out.println();
 	}
 	//진료 클래스에서 등록할 때 이름 입력 받아서 patient find하여 저장하고,
 	//객체를 전송하여 addPatient (10주차 개인과제 Order 클래스 참고)
@@ -42,13 +44,15 @@ public class Doctor implements Manageable
 	}
 	@Override
 	public boolean matches(String kwd) {
+		if(code.equals(kwd))
+			return true;
 		if(name.equals(kwd))
 			return true;
-		for(Patient p : patientList)
+		/*for(Patient p : patientList)
 		{
 			if(p.matches(kwd))
 				return true;
-		}
+		}*/
 		return false;
 	}
 }

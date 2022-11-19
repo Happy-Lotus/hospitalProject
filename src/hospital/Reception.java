@@ -4,11 +4,10 @@ import mgr.Manageable;
 import java.util.Scanner;
 
 public class Reception implements Manageable, UIData {
-
     String date;
     Patient patient;
     String name;
-    int age;
+    String birth;
     String gender;
     String symptom="";
     Doctor doctor = null;
@@ -17,13 +16,13 @@ public class Reception implements Manageable, UIData {
     public void read(Scanner scan) {
         date = scan.next();
         String patientCode = scan.next();
-        patient = (Patient) Main.patientMgr.find(patientCode);
+        patient = (Patient)Main.patientMgr.find(patientCode);
         if (patient == null) {
-            //patient 클래스에서 등록 진행
+            System.out.println("환자 비어있음");
         }
         name = scan.next();
-        age = scan.nextInt();
-        gender = scan.next();
+        gender = patient.gender;
+        birth = patient.birth;
         String temp;
         while(true){
             temp = scan.next();
@@ -39,7 +38,7 @@ public class Reception implements Manageable, UIData {
             System.exit(0);
         }
 
-        if(patient.matches(name)) {//신규환자일 경우 의사가 담당하는 patientList에 저장함. 아닐 경우 pass.
+        if(patient.matches(patientCode)) {//신규환자일 경우 의사가 담당하는 patientList에 저장함. 아닐 경우 pass.
             doctor.addPatient(patient);
         }
         if(patient.matches(patientCode)) {//신규환자일 경우 의사가 담당하는 patientList에 저장함. 아닐 경우 pass.
@@ -57,8 +56,8 @@ public class Reception implements Manageable, UIData {
         String[] texts = new String[6];
         texts[0] = date;
         texts[1] = name;
-        texts[2] = "" + age;
-        texts[3] = gender;
+        texts[2] = gender;
+        texts[3] = ""+patient.age;
         texts[4] = symptom;
         texts[5] = doctor.name;
         return texts;
@@ -66,15 +65,24 @@ public class Reception implements Manageable, UIData {
 
     @Override
     public void print() {
-        System.out.printf("[%s] %s(%d %s) %s 담당 의사:%s \n",
-                date, name, age, gender, symptom, doctor.name);
+        if(patient.age <=3)
+        {
+            System.out.format("[%s] %s(%s, 만 %d세(%d개월)) : %s 담당의사 %s\n",
+                    date, name, patient.gender, patient.age, patient.month, symptom, doctor.name);
+        }
+        else {
+            System.out.format("[%s] %s(%s, 만 %d세) : %s 담당의사 %s\n",
+                    date, name, patient.gender, patient.age, symptom, doctor.name);
+        }
     }
-
+    public void printR() {
+        System.out.printf("(%s) %s : 담당의사 %s\n\t", date, symptom, doctor.name);
+    }
     @Override
     public boolean matches(String kwd) {
         if (kwd.equals(name))
             return true;
-        if (kwd.equals(""+age))
+        if (kwd.equals(""+patient.age))
             return true;
         if (kwd.equals(gender) && kwd.length() == 1)
             return true;

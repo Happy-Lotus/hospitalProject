@@ -26,19 +26,18 @@ public class Main {
 				return new Doctor();
 			}
 		});
-		System.out.println("\n================= 전체 의사 리스트 =================");
-		doctorMgr.printAll();
 		patientMgr.readAll("patient.txt",new Factory(){
 			public Manageable create(){
 				return new Patient();
 			}
 		});
-
 		receptionMgr.readAll("reception.txt",new Factory(){
 			public Manageable create(){
 				return new Reception();
 			}
 		});
+		System.out.println("\n================= 전체 의사 리스트 =================");
+		doctorMgr.printAll();
 		System.out.println("\n================= 전체 환자 리스트 =================");
 		patientMgr.printAll();
 		System.out.println("\n=============== 전체 접수 리스트 =================");
