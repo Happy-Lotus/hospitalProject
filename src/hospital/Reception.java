@@ -4,6 +4,7 @@ import mgr.Manageable;
 import java.util.Scanner;
 
 public class Reception implements Manageable, UIData {
+
     String date;
     Patient patient;
     String name;
@@ -16,12 +17,12 @@ public class Reception implements Manageable, UIData {
     public void read(Scanner scan) {
         date = scan.next();
         String patientCode = scan.next();
-        patient = (Patient)Main.patientMgr.find(patientCode);
+        patient = (Patient) Main.patientMgr.find(patientCode);
         if (patient == null) {
-            System.out.println("환자 비어있음");
+            //patient 클래스에서 등록 진행
         }
         name = scan.next();
-        gender = patient.gender;
+        gender = scan.next();
         birth = patient.birth;
         String temp;
         while(true){
@@ -30,6 +31,18 @@ public class Reception implements Manageable, UIData {
                 break;
             }
             symptom+=temp+" ";
+        }
+
+        if(temp.substring(0,2).equals("백신")){
+            String[]words = symptom.split(" ");
+
+            for(int i =1; i<words.length;i+=2){
+                String vName = words[i];
+                int vNum = Integer.parseInt(words[i+1]);
+                if((Vaccination)Main.VaccinationMgr.find(vName)!=null){
+                    patient.vaccinationList.add(vNum-1,date);
+                }
+            }
         }
         doctor = (Doctor)Main.doctorMgr.find(scan.next());
 
@@ -49,6 +62,10 @@ public class Reception implements Manageable, UIData {
     @Override
     public void set(Object[] uitexts) {
 
+    }
+
+    public void addReception(Reservation v){
+        Main.receptionMgr.mList.add(v);
     }
 
     @Override
@@ -75,9 +92,11 @@ public class Reception implements Manageable, UIData {
                     date, name, patient.gender, patient.age, symptom, doctor.name);
         }
     }
+
     public void printR() {
         System.out.printf("(%s) %s : 담당의사 %s\n\t", date, symptom, doctor.name);
     }
+
     @Override
     public boolean matches(String kwd) {
         if (kwd.equals(name))
@@ -91,26 +110,3 @@ public class Reception implements Manageable, UIData {
         return false;
     }
 }
-
-/*
-    if (symptom.contains(kwd))
-            return true;
-    - 증상 키워드에 따라 출력하는 기능 필요시 추가
-    if kwd="예방접종" kwd 따라 증상에 예방접종 저장되어있는 patient 출력
-    */
-
-
-/*
-        name = patient.name;
-        age = patient.age;
-        gender = patient.gender;
-        symptom = scan.nextLine();
-        String kwd2 = scan.next();
-        for(Doctor doctor :hospitalMain.doctorMgr.mList){
-            if(doctor.matches(kwd2))
-                if(doctor.patientList.contains(patient)){
-                    this.doctor = doctor;
-                    break;
-                }
-        }
- */

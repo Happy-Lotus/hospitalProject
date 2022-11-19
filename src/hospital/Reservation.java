@@ -3,17 +3,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import facade.UIData;
 import mgr.Manageable;
 
-public class Reservation extends Reception{
-		ArrayList <Vaccination> typeList = new ArrayList<>();
-		public void setType(Vaccination v) {  //예방접종 종류 리스트 복사
-			typeList = v.typeList;
-		}
-		Scanner scanner = new Scanner(System.in);
-		
-		
-		List<String> getStringList(Scanner scan) { // 날짜랑 정보 같이 입력받음, 예약리스트에 저장
+public class Reservation extends Reception implements UIData, Manageable {
+	Scanner scan = new Scanner(System.in);
+
+	public void read() {
+		super.read(scan);
+		super.addReception(this);
+
+	}
+
+	/*List<String> getStringList(Scanner scan) { // 날짜랑 정보 같이 입력받음, 예약리스트에 저장
+		Reception.add
 			List<String> reserveList = new ArrayList<>();
 			String tmp;
 			while (true) {
@@ -25,10 +28,13 @@ public class Reservation extends Reception{
 			}
 			return reserveList;
 		}
-		
-		public Reservation search(int kwd) { //날짜 선택해서 해당 날짜 현황 보여줌
-			if (date==kwd) {
-				for( String s : reserveList ) 
+		*/
+
+/*		public Reservation search(String kwd) { //날짜 선택해서 해당 날짜 현황 보여줌
+			while(true){
+				Main.receptionMgr.find(kwd)
+			}){
+				for(  )
 					if((""+kwd).contentEquals(s))
 						return reserveList;
 			}
@@ -50,4 +56,6 @@ public class Reservation extends Reception{
 			}
 			return false;
 	    }
+}
+*/
 }
