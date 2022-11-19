@@ -7,7 +7,6 @@ import facade.UIData;
 import mgr.Manageable;
 
 public class Patient implements Manageable, UIData {
-
 	@Override
 	public void set(Object[] uitexts) {
 		// TODO Auto-generated method stub
@@ -25,6 +24,7 @@ public class Patient implements Manageable, UIData {
 		return null;
 	}
 
+	// 환자코드 / 이름/ 성별/ 생년월일/ 전화번호/ 주소(동만)
 	String patientCode;
 	String name;
 	String birth;
@@ -50,12 +50,21 @@ public class Patient implements Manageable, UIData {
 
 		phone = scan.next();
 		address = scan.next();
-
+		/*while(true){
+			 	String temp = scan.next();
+	            if(temp.equals("0")){
+	                break;
+	            }
+	            address+=temp+" ";
+		}*/
 	}
-
+	void addReception(Reception r)
+	{
+		receptionList.add(r);
+	}
 	@Override
-	public void print() {
-
+	public void print()
+	{
 		if(age <=3)
 		{
 			System.out.format("[%s] %s(%s, 만 %d세(%d개월)) : (연락처) %s (주소) %s\n",
@@ -72,18 +81,10 @@ public class Patient implements Manageable, UIData {
 		}
 		System.out.println();
 	}
-
 	public void printD()
 	{
 		System.out.format("[%s] %s(%s, 만 %2s)\n\t", patientCode, name, gender, age);
 	}
-	// 이름, 생년월일, 주민번호 뒷자리로 환자를 검색할 수 있음
-
-	void addReception(Reception r)
-	{
-		receptionList.add(r);
-	}
-
 	@Override
 	public boolean matches(String kwd)
 	{
