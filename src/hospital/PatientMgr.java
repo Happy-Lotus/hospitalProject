@@ -1,4 +1,4 @@
-package patient;
+package hospital;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class PatientMgr extends Manager implements DataEngineInterface {
 
 	private String[] headers = { "이름", "성별", "생년월일", "주민번호", "개월", "전화번호", "주소" };
 
-//	이름, 성별, 생년월일, 주민번호 뒷자리, 나이(개월수) , 전화번호, 주소
+	//	이름, 성별, 생년월일, 주민번호 뒷자리, 나이(개월수) , 전화번호, 주소
 	@Override
 	public int getColumnCount() {
 		// TODO Auto-generated method stub
@@ -40,7 +40,7 @@ public class PatientMgr extends Manager implements DataEngineInterface {
 	@Override
 	public List<Manageable> search(String kwd) {
 		// TODO Auto-generated method stub
-		return Main.PatientMgr.findAll(kwd);
+		return Main.patientMgr.findAll(kwd);
 	}
 
 	@Override

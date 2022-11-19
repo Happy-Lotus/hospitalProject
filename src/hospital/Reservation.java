@@ -1,4 +1,4 @@
-package Hospital;
+package hospital;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -13,20 +13,20 @@ public class Reservation extends Reception{
 		Scanner scanner = new Scanner(System.in);
 		
 		
-		static List<String> getStringList(Scanner scan) { // 날짜랑 정보 같이 입력받음, 예약리스트에 저장
+		List<String> getStringList(Scanner scan) { // 날짜랑 정보 같이 입력받음, 예약리스트에 저장
 			List<String> reserveList = new ArrayList<>();
 			String tmp;
 			while (true) {
 				tmp = scan.next();
 				if (tmp.contentEquals("-1"))
 					break;
-				super.read(scan); 
+				super.read(scan);
 				reserveList.add(tmp);
 			}
 			return reserveList;
 		}
 		
-		public search(int kwd) { //날짜 선택해서 해당 날짜 현황 보여줌
+		public Reservation search(int kwd) { //날짜 선택해서 해당 날짜 현황 보여줌
 			if (date==kwd) {
 				for( String s : reserveList ) 
 					if((""+kwd).contentEquals(s))
