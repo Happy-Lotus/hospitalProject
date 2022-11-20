@@ -1,7 +1,9 @@
 package hospital;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
+import java.util.Set;
 import java.time.LocalDateTime;
 import facade.UIData;
 import mgr.Manageable;
@@ -34,7 +36,7 @@ public class Patient implements Manageable, UIData {
 	String phone;
 	String address="";
 	ArrayList<Reception> receptionList = new ArrayList<Reception>();
-	ArrayList<String> vaccinationList = new ArrayList<>(5);
+	LinkedHashMap<String,String> vaccinationList = new LinkedHashMap<String,String>();
 
 	@Override
 	public void read(Scanner scan) {
@@ -57,11 +59,48 @@ public class Patient implements Manageable, UIData {
 	            }
 	            address+=temp+" ";
 		}*/
+		for(int i = 0;i<Main.VaccinationMgr.mList.size();i++) {
+			Vaccination vac = (Vaccination)Main.VaccinationMgr.getMlist().get(i);
+			for(int j = 1;j<=vac.getNumber();j++)
+			{
+				vaccinationList.put(vac.getVaccine()+" "+j+"차","X");
+			}
+		}
 	}
+
 	void addReception(Reception r)
 	{
 		receptionList.add(r);
 	}
+
+	protected String getBirth() {
+		return birth;
+	}
+
+	protected LinkedHashMap<String, String> getVaccinationList() {
+		return vaccinationList;
+	}
+
+	protected int getAge(){
+		return age;
+	}
+
+	protected String getGender() {
+		return gender;
+	}
+
+	protected int getMonth() {
+		return month;
+	}
+
+	void vaccinationPrint() {
+		Set<String> keyset = vaccinationList.keySet();
+		for(String key : keyset) {
+			System.out.println(key + ":" + vaccinationList.get(key));
+
+		}
+	}
+
 	@Override
 	public void print()
 	{
@@ -83,7 +122,7 @@ public class Patient implements Manageable, UIData {
 	}
 	public void printD()
 	{
-		System.out.format("[%s] %s(%s, 만 %2s)\n\t", patientCode, name, gender, age);
+		System.out.format("[%s] %s(%s, 만 %2s세)\n\t", patientCode, name, gender, age);
 	}
 	@Override
 	public boolean matches(String kwd)

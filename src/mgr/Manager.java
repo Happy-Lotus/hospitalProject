@@ -24,10 +24,10 @@ public class Manager {
 		}
 	}
 	public Manageable find(String kwd) {
-	    for (Manageable m: mList)
-	    	if (m.matches(kwd))
-	    		return m;
-	    return null;
+		for (Manageable m: mList)
+			if (m.matches(kwd))
+				return m;
+		return null;
 	}
 	public List<Manageable> findAll(String kwd) {
 		List<Manageable> results = new ArrayList<>();
@@ -48,6 +48,10 @@ public class Manager {
 					m.print();
 			}
 		}
+	}
+
+	public List<Manageable> getMlist() {
+		return mList;
 	}
 	public Scanner openFile(String filename) {
 		Scanner filein = null;

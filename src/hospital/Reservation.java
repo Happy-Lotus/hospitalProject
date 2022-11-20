@@ -11,8 +11,6 @@ public class Reservation extends Reception implements UIData, Manageable {
 
 	public void read() {
 		super.read(scan);
-		super.addReception(this);
-
 	}
 
 	/*List<String> getStringList(Scanner scan) { // 날짜랑 정보 같이 입력받음, 예약리스트에 저장

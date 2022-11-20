@@ -7,7 +7,7 @@ import mgr.Manageable;
 
 public class VaccinationMgr implements DataEngineInterface {
 	private static VaccinationMgr mgr = null;
-	
+
 	private VaccinationMgr() {
 	}
 
@@ -17,7 +17,9 @@ public class VaccinationMgr implements DataEngineInterface {
 		return mgr;
 	}
 
-	private String[] headers = { "vaccine name", "infections", "number of time", "times" };
+	private String[] headers = { "vaccine name", "infections",
+			"number of time", "times" };
+
 
 	@Override
 	public int getColumnCount() {
@@ -34,7 +36,7 @@ public class VaccinationMgr implements DataEngineInterface {
 	@Override
 	public void readAll(String filename) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -46,18 +48,18 @@ public class VaccinationMgr implements DataEngineInterface {
 	@Override
 	public void addNewItem(String[] uiTexts) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void update(String[] uiTexts) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void remove(String kwd) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

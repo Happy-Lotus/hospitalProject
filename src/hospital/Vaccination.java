@@ -1,15 +1,18 @@
 package hospital;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 import facade.UIData;
 import mgr.Manageable;
 public class Vaccination implements Manageable, UIData{
+
     String vaccine;
     String infection="";
     int number;
     VaccinationDetail detail;
     ArrayList<VaccinationDetail> details = new ArrayList<>();
+
     public void read(Scanner scan) {
 
         vaccine = scan.next();
@@ -28,6 +31,26 @@ public class Vaccination implements Manageable, UIData{
             detail.read(scan);
             details.add(detail);
         }
+    }
+
+    public String getVaccine() {
+        return vaccine;
+    }
+
+    public String getInfection() {
+        return infection;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public VaccinationDetail getDetail() {
+        return detail;
+    }
+
+    public ArrayList<VaccinationDetail> getDetails() {
+        return details;
     }
 
     public void print() {
@@ -69,8 +92,8 @@ public class Vaccination implements Manageable, UIData{
         int i = 1;
 
         String[] texts = new String[8];
-        texts[0] = infection;
-        texts[1] = vaccine;
+        texts[0] = vaccine;
+        texts[1] = infection;
         texts[2] = Integer.toString(number);
 
         for (VaccinationDetail v : details){

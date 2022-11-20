@@ -28,7 +28,11 @@ public class Doctor implements Manageable
 	 [의사코드] 의사이름 : 의사연락처
 	 [진료 환자] 환자이름 : 접수내역 - 시간대
 	 */
-	@Override
+
+	public String getName() {
+		return name;
+	}
+
 	public void print() {
 		System.out.format("[%s] %s : %s\n", code, name, phone);
 		System.out.print("[진료환자] ");
