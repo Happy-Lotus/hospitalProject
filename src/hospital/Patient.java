@@ -1,18 +1,18 @@
 package hospital;
 
-import mgr.Manageable;
-
-import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
-
+import java.util.Set;
+import java.time.LocalDateTime;
 import facade.UIData;
+import mgr.Manageable;
 
 public class Patient implements Manageable, UIData {
 	@Override
 	public void set(Object[] uitexts) {
 		// TODO Auto-generated method stub
-		
+
 	}
 	@Override
 	public String[] getUiTexts() {
@@ -25,7 +25,7 @@ public class Patient implements Manageable, UIData {
 		texts[5] = address;
 		return null;
 	}
-	
+
 	// 환자코드 / 이름/ 성별/ 생년월일/ 전화번호/ 주소(동만)
 	String patientCode;
 	String name;
@@ -36,20 +36,20 @@ public class Patient implements Manageable, UIData {
 	String phone;
 	String address="";
 	ArrayList<Reception> receptionList = new ArrayList<Reception>();
-	ArrayList<Vaccination> vaccinationList = new ArrayList<Vaccination>();
-	
+	LinkedHashMap<String,String> vaccinationList = new LinkedHashMap<String,String>();
+
 	@Override
 	public void read(Scanner scan) {
 		patientCode = scan.next();
 		name = scan.next();
 		gender = scan.next();
 		birth = scan.next();
-		
+
 		LocalDateTime now = LocalDateTime.now();
-	    age = now.getYear()-Integer.parseInt("20"+birth.substring(0,2));
-	      
-	    month = 12*age + now.getMonthValue()-Integer.parseInt(birth.substring(2,4));
-	      
+		age = now.getYear()-Integer.parseInt("20"+birth.substring(0,2));
+
+		month = 12*age + now.getMonthValue()-Integer.parseInt(birth.substring(2,4));
+
 		phone = scan.next();
 		address = scan.next();
 		/*while(true){
@@ -59,14 +59,38 @@ public class Patient implements Manageable, UIData {
 	            }
 	            address+=temp+" ";
 		}*/
+		for(int i = 0;i<Main.VaccinationMgr.getMlist().size();i++) {
+			Vaccination vac = (Vaccination)Main.VaccinationMgr.getMlist().get(i);
+			for(int j = 1;j<=vac.getNumber();j++)
+			{
+				vaccinationList.put(vac.getVaccine()+" "+j+"차","X");
+			}
+		}
 	}
+
 	void addReception(Reception r)
 	{
 		receptionList.add(r);
 	}
-	void addVaccination(Vaccination v)
-	{
-		vaccinationList.add(v);
+
+	protected String getBirth() {
+		return birth;
+	}
+
+	protected LinkedHashMap<String, String> getVaccinationList() {
+		return vaccinationList;
+	}
+
+	protected int getAge(){
+		return age;
+	}
+
+	protected String getGender() {
+		return gender;
+	}
+
+	protected int getMonth() {
+		return month;
 	}
 	@Override
 	public void print()
@@ -80,7 +104,7 @@ public class Patient implements Manageable, UIData {
 			System.out.format("[%s] %s(%s, 만 %d세) : (연락처) %s (주소) %s\n",
 					patientCode, name, gender, age, phone, address);
 		}
-		
+
 		System.out.print("[진료기록] ");
 		for(Reception r : receptionList) {
 			r.printR();
@@ -89,7 +113,7 @@ public class Patient implements Manageable, UIData {
 	}
 	public void printD()
 	{
-		System.out.format("[%s] %s(%s, 만 %2s)\n\t", patientCode, name, gender, age);
+		System.out.format("[%s] %s(%s, 만 %2s세)\n\t", patientCode, name, gender, age);
 	}
 	@Override
 	public boolean matches(String kwd)
@@ -102,7 +126,7 @@ public class Patient implements Manageable, UIData {
 			return true;
 		if(address.equals(kwd))
 			return true;
-		
+
 		return false;
-	}	
+	}
 }
