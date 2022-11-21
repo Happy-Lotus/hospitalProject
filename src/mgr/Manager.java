@@ -49,6 +49,11 @@ public class Manager {
 			}
 		}
 	}
+		
+	public List<Manageable> getMlist() {
+		return mList;
+	}
+	
 	public Scanner openFile(String filename) {
 		Scanner filein = null;
 		try {
