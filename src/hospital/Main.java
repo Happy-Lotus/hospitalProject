@@ -1,7 +1,6 @@
 package hospital;
 
 import java.util.Scanner;
-
 import mgr.Factory;
 import mgr.Manageable;
 import mgr.Manager;

@@ -21,6 +21,7 @@ public class PatientMgr extends Manager implements DataEngineInterface {
 	}
 
 	public void addPatient(Patient p){
+
 		patients.add(p);
 	}
 
