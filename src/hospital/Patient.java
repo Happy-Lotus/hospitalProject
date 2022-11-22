@@ -1,11 +1,12 @@
 package hospital;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Scanner;
-import java.time.LocalDateTime;
-import facade.UIData;
 import mgr.Manageable;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import facade.UIData;
 
 public class Patient implements Manageable, UIData {
 	@Override
@@ -25,6 +26,16 @@ public class Patient implements Manageable, UIData {
 		return null;
 	}
 
+	Patient() {
+	}
+	public Patient(Object[] row) {
+		patientCode = (String)row[0];
+		name = (String)row[1];
+		gender = (String)row[2];
+		birth = (String)row[3];
+		phone = (String)row[4];
+		address = (String)row[5];
+	}
 	// 환자코드 / 이름/ 성별/ 생년월일/ 전화번호/ 주소(동만)
 	String patientCode;
 	String name;
@@ -35,7 +46,8 @@ public class Patient implements Manageable, UIData {
 	String phone;
 	String address="";
 	ArrayList<Reception> receptionList = new ArrayList<Reception>();
-	LinkedHashMap<String,String> vaccinationList = new LinkedHashMap<String,String>();
+	ArrayList<Vaccination> vaccinationList = new ArrayList<Vaccination>();
+
 	@Override
 	public void read(Scanner scan) {
 		patientCode = scan.next();
@@ -57,42 +69,14 @@ public class Patient implements Manageable, UIData {
 	            }
 	            address+=temp+" ";
 		}*/
-		for(int i = 0;i<Main.VaccinationMgr.mList.size();i++) {
-			Vaccination vac = (Vaccination)Main.VaccinationMgr.getMlist().get(i);
-			for(int j = 1;j<=vac.getNumber();j++)
-			{
-				vaccinationList.put(vac.getVaccine()+" "+j+"차","X");
-			}
-		}
 	}
-	void addReception(Reception r) {
+	void addReception(Reception r)
+	{
 		receptionList.add(r);
 	}
-
-	/*void addVaccination(Vaccination v){
-		String vName = v.getVaccine();
-		int vNum =
-		vaccinationList.put(vac.getVaccine()+" "+j+"차","X")
-	}*/
-
-	protected String getBirth() {
-		return birth;
-	}
-
-	protected LinkedHashMap<String, String> getVaccinationList() {
-		return vaccinationList;
-	}
-
-	protected int getAge(){
-		return age;
-	}
-
-	protected String getGender() {
-		return gender;
-	}
-
-	protected int getMonth() {
-		return month;
+	void addVaccination(Vaccination v)
+	{
+		vaccinationList.add(v);
 	}
 	@Override
 	public void print()
@@ -113,7 +97,8 @@ public class Patient implements Manageable, UIData {
 		}
 		System.out.println();
 	}
-	public void printD() {
+	public void printD()
+	{
 		System.out.format("[%s] %s(%s, 만 %2s)\n\t", patientCode, name, gender, age);
 	}
 	@Override
@@ -130,4 +115,6 @@ public class Patient implements Manageable, UIData {
 
 		return false;
 	}
+
+
 }

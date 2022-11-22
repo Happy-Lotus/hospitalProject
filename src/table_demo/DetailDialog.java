@@ -2,7 +2,6 @@ package table_demo;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -19,22 +18,22 @@ public class DetailDialog extends javax.swing.JDialog {
 		itemDetails = texts;
 	}
 	void setup() {
-		setTitle("»óÇ°»ó¼¼º¸±â");
+		setTitle("ìƒí’ˆìƒì„¸ë³´ê¸°");
 		JPanel pane = new JPanel(new BorderLayout());
 		JPanel lpane = new JPanel(new GridLayout(3, 1));
 		JLabel photo = new JLabel("   Photo   ");
-		photo.setOpaque(true);  // JLabelÀº ±âº»ÀÌ ¹è°æ Åõ¸í
+		photo.setOpaque(true);  // JLabelì€ ê¸°ë³¸ì´ ë°°ê²½ íˆ¬ëª…
 		photo.setPreferredSize(new Dimension(150, 150));
 		photo.setBackground(Color.YELLOW);
-		details[0] = new JLabel("»óÇ°ÄÚµå: " + itemDetails[0]);
-		details[1] = new JLabel("»óÇ°¸í: " + itemDetails[1]);
-		details[2] = new JLabel("°¡°İ: " + itemDetails[2]);
+		details[0] = new JLabel("ìƒí’ˆì½”ë“œ: " + itemDetails[0]);
+		details[1] = new JLabel("ìƒí’ˆëª…: " + itemDetails[1]);
+		details[2] = new JLabel("ê°€ê²©: " + itemDetails[2]);
 		lpane.add(details[0]);
 		lpane.add(details[1]);
 		lpane.add(details[2]);
 		pane.add(lpane, BorderLayout.CENTER);
 		pane.add(photo, BorderLayout.LINE_END);
-		this.setMinimumSize(new Dimension(400, 150));  // ´ëÈ­»óÀÚ Å©±â ¼³Á¤
+		this.setMinimumSize(new Dimension(400, 150));  // ëŒ€í™”ìƒì í¬ê¸° ì„¤ì •
 		setContentPane(pane);
 	}
 }

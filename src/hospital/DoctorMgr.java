@@ -10,7 +10,6 @@ public class DoctorMgr extends Manager implements DataEngineInterface {
 	private static DoctorMgr mgr = null;
 	private DoctorMgr() {}
 	public static DoctorMgr getInstance() {
-
 		return mgr;
 	}
 	private String[] headers = {"의사코드", "이름", "연락처"};
@@ -30,7 +29,7 @@ public class DoctorMgr extends Manager implements DataEngineInterface {
 	@Override
 	public void readAll(String filename) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
@@ -42,19 +41,19 @@ public class DoctorMgr extends Manager implements DataEngineInterface {
 	@Override
 	public void addNewItem(String[] uiTexts) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void update(String[] uiTexts) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void remove(String kwd) {
 		// TODO Auto-generated method stub
-
+		
 	}
-
+	
 }
