@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Reception implements Manageable, UIData {
     String date;
+    String patientCode;
     Patient patient;
     String name;
     String birth;
@@ -12,10 +13,20 @@ public class Reception implements Manageable, UIData {
     String symptom="";
     Doctor doctor = null;
 
+
+    Reception(){	}
+    public Reception(Object[] row) {
+        date = (String)row[0];
+        patientCode = (String)row[1];
+        name = (String)row[2];
+        symptom = (String)row[3];
+        doctor.name = (String)row[4];
+    }
+
     @Override
     public void read(Scanner scan) {
         date = scan.next();
-        String patientCode = scan.next();
+        patientCode = scan.next();
         patient = (Patient)Main.patientMgr.find(patientCode);
         if (patient == null) {
             System.out.println("환자 비어있음");
@@ -50,16 +61,14 @@ public class Reception implements Manageable, UIData {
     public void set(Object[] uitexts) {
 
     }
-
     @Override
     public String[] getUiTexts() {
-        String[] texts = new String[6];
+        String[] texts = new String[5];
         texts[0] = date;
-        texts[1] = name;
-        texts[2] = gender;
-        texts[3] = ""+patient.age;
-        texts[4] = symptom;
-        texts[5] = doctor.name;
+        texts[1] = patientCode;
+        texts[2] = name;
+        texts[3] = symptom;
+        texts[4] = doctor.name;
         return texts;
     }
 
