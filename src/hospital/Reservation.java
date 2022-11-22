@@ -2,7 +2,6 @@ package hospital;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import facade.UIData;
 import mgr.Manageable;
 
@@ -11,8 +10,6 @@ public class Reservation extends Reception implements UIData, Manageable {
 
 	public void read() {
 		super.read(scan);
-		super.addReception(this);
-
 	}
 
 	/*List<String> getStringList(Scanner scan) { // 날짜랑 정보 같이 입력받음, 예약리스트에 저장

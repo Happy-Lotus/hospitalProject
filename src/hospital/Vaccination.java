@@ -1,7 +1,6 @@
 package hospital;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import facade.UIData;
 import mgr.Manageable;
 public class Vaccination implements Manageable, UIData{
@@ -16,7 +15,6 @@ public class Vaccination implements Manageable, UIData{
         vaccine = scan.next();
 
         while(true){
-
             String temp = scan.next();
             if(temp.equals("0")){
                 break;
@@ -26,20 +24,35 @@ public class Vaccination implements Manageable, UIData{
         number = scan.nextInt();
         for(int i=0;i<number;i++){
             detail = new VaccinationDetail();
-
             detail.read(scan);
-
             details.add(detail);
         }
-        print();
-        System.out.println();
+    }
+
+    public String getVaccine(){
+        return vaccine;
+    }
+    public String getInfection(){
+        return infection;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public VaccinationDetail getDetail() {
+        return detail;
+    }
+
+    public ArrayList<VaccinationDetail> getDetails() {
+        return details;
     }
 
     public void print() {
         int i = 1;
         System.out.printf("%s - %s %d번\n", infection, vaccine,number);
         for(VaccinationDetail v : details){
-            System.out.printf("%d차",++i);
+            System.out.printf("%d차",i++);
             v.print();
         }
         System.out.println();

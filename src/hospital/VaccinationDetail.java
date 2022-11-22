@@ -2,7 +2,6 @@ package hospital;
 
 import facade.UIData;
 import mgr.Manageable;
-
 import java.util.Scanner;
 
 public class VaccinationDetail implements Manageable, UIData {

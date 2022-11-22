@@ -15,6 +15,7 @@ public class Reception implements Manageable, UIData {
     String symptom="";
     Doctor doctor = null;
 
+    Reception(){}
     public Reception(Object[]row){
         date=(String)row[0];
         patientCode=(String)row[1];
