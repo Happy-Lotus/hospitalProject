@@ -1,7 +1,6 @@
 package hospital;
 import facade.UIData;
 import mgr.Manageable;
-
 import java.util.*;
 
 public class Reception implements Manageable, UIData {

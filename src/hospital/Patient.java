@@ -59,7 +59,7 @@ public class Patient implements Manageable, UIData {
 	            }
 	            address+=temp+" ";
 		}*/
-		for(int i = 0;i<Main.VaccinationMgr.mList.size();i++) {
+		for(int i = 0;i<Main.VaccinationMgr.getMlist().size();i++) {
 			Vaccination vac = (Vaccination)Main.VaccinationMgr.getMlist().get(i);
 			for(int j = 1;j<=vac.getNumber();j++)
 			{
@@ -75,7 +75,6 @@ public class Patient implements Manageable, UIData {
 
 	protected String getBirth() {
 		return birth;
-	}
 
 	protected LinkedHashMap<String, String> getVaccinationList() {
 		return vaccinationList;

@@ -44,6 +44,7 @@ public class Doctor implements Manageable
 	//객체를 전송하여 addPatient (10주차 개인과제 Order 클래스 참고)
 	void addPatient(Patient pati)
 	{
+
 		patientList.add(pati);
 	}
 	@Override
@@ -60,3 +61,4 @@ public class Doctor implements Manageable
 		return false;
 	}
 }
+
