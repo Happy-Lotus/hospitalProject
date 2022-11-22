@@ -36,6 +36,10 @@ public class Manager {
 				results.add(m);
 		return results;
 	}
+
+	public List<Manageable> getMlist(){
+		return mList;
+	}
 	public void search(Scanner keyScanner) {
 		String kwd = null;
 		while (true) {
