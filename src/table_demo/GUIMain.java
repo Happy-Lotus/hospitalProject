@@ -1,6 +1,7 @@
 package table_demo;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -8,27 +9,30 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 
-import hospital.DoctorMgr;
 import hospital.Main;
+import hospital.PatientMgr;
+import hospital.ReceptionMgr;
+import hospital.ReservationMgr;
+import store.OrderedItemMgr;
 
 public class GUIMain {
-	// ½Ì±ÛÅæ ÆĞÅÏ Àû¿ë ºÎºĞ
-	private static GUIMain main = null;
-	private GUIMain() {}
-	public static GUIMain getInstance() {
-		if (main == null)
-			main = new GUIMain();
-		return main;
-	}
-	// ¿£ÁøÀÇ ÀÎ½ºÅÏ½º¸¦ Æí¸®¸¦ À§ÇØ º¯¼ö¿¡ ÀúÀåÇÑ´Ù
+    // ì‹±ê¸€í†¤ íŒ¨í„´ ì ìš© ë¶€ë¶„
+    private static GUIMain main = null;
+    private GUIMain() {}
+    public static GUIMain getInstance() {
+        if (main == null)
+            main = new GUIMain();
+        return main;
+    }
+    // ì—”ì§„ì˜ ì¸ìŠ¤í„´ìŠ¤ë¥¼ í¸ë¦¬ë¥¼ ìœ„í•´ ë³€ìˆ˜ì— ì €ì¥í•œë‹¤
     static Main hospitalMain = Main.getInstance();
     public static void main(String args[]) {
-    	hospitalMain.run();
-    	startGUI();
+        hospitalMain.run();
+        startGUI();
     }
     public static void startGUI() {
-        // ÀÌº¥Æ® Ã³¸® ½º·¹µå¸¦ ¸¸µé°í 
-        // °Å±â¼­ GUI¸¦ »ı¼ºÇÏ°í º¸¿©ÁØ´Ù.
+        // ì´ë²¤íŠ¸ ì²˜ë¦¬ ìŠ¤ë ˆë“œë¥¼ ë§Œë“¤ê³ 
+        // ê±°ê¸°ì„œ GUIë¥¼ ìƒì„±í•˜ê³  ë³´ì—¬ì¤€ë‹¤.
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 GUIMain.getInstance().createAndShowGUI();
@@ -36,55 +40,105 @@ public class GUIMain {
         });
     }
     /**
-     * GUI¸¦ »ı¼ºÇÏ¿© º¸¿©ÁØ´Ù. ½º·¹µå ¾ÈÀüÀ» À§ÇÏ¿©
-     * ÀÌ ¸Ş¼Òµå´Â ÀÌº¥Æ® Ã³¸® ½º·¹µå¿¡¼­ ºÒ·ÁÁ®¾ß ÇÑ´Ù.
+     * GUIë¥¼ ìƒì„±í•˜ì—¬ ë³´ì—¬ì¤€ë‹¤. ìŠ¤ë ˆë“œ ì•ˆì „ì„ ìœ„í•˜ì—¬
+     * ì´ ë©”ì†Œë“œëŠ” ì´ë²¤íŠ¸ ì²˜ë¦¬ ìŠ¤ë ˆë“œì—ì„œ ë¶ˆë ¤ì ¸ì•¼ í•œë‹¤.
      */
-	static JFrame mainFrame = new JFrame("TableSelectionDemo");
+    static JFrame mainFrame = new JFrame("TableSelectionDemo");
     private void createAndShowGUI() {
-        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // ÅÇÀ» »ı¼ºÇÏ°í µÎ°³ ÆĞ³ÎÀ» Ãß°¡ÇÑ´Ù.
-        JTabbedPane jtab = new JTabbedPane();
+    	//mainFrame.setLocationRelativeTo(null); 
+    	mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        setupItemPane();
-        setupOrderPane();
-        // ¾ÆÀÌÅÛ ¸®½ºÆ® ÅÇ°ú ÁÖ¹® ÅÇ µÎ °³ÀÇ ÆĞ³ÎÀ» °¡Áö´Â ÅÇ ÆĞ³Î
-        jtab.add("Á¢¼ö", itemPane);
-        jtab.add("È¯ÀÚ", orderPane);
+        // íƒ­ì„ ìƒì„±í•˜ê³  ë‘ê°œ íŒ¨ë„ì„ ì¶”ê°€í•œë‹¤.
+        JTabbedPane jtab = new JTabbedPane();
+
+        setupReceptionPane();
+        setupPatientPane();
+        setupVaccinationPane();
+        // ì•„ì´í…œ ë¦¬ìŠ¤íŠ¸ íƒ­ê³¼ ì£¼ë¬¸ íƒ­ ë‘ ê°œì˜ íŒ¨ë„ì„ ê°€ì§€ëŠ” íƒ­ íŒ¨ë„
+        jtab.add("ì ‘ìˆ˜", receptionPane);
+        jtab.add("í™˜ì", patientPane);
+        jtab.add("ì˜ˆë°©ì ‘ì¢…í˜„í™©", vaccinationPane);
+        jtab.add("ì˜ˆë°©ì ‘ì¢… ì˜ˆì•½", resevationPane);
         mainFrame.getContentPane().add(jtab);
         //Display the window.
         mainFrame.pack();
         mainFrame.setVisible(true);
     }
-    // »óÇ°À» º¸¿©ÁÖ´Â ÆĞ³Î ºÎºĞ - Å¾°ú JTable Æ÷ÇÔ
-    private JPanel itemPane;
-    TableSelectionDemo itemTable = new TableSelectionDemo();
-    ItemTopPanel itemTop = new ItemTopPanel();  // °Ë»ö°ú »ó¼¼º¸±â ¹öÆ°À» °¡Áø ÆĞ³Î
-    private void setupItemPane() {
-    	itemPane = new JPanel(new BorderLayout());
+    
+    private JPanel vaccinationPane;
+    //TableSelectionDemo VaccinStatusTable = new TableSelectionDemo();
+    TableSelectionDemo v_patientTable = new TableSelectionDemo();
+    TableSelectionDemo v_rListTable = new TableSelectionDemo();
+    TopPanel v_patientTop = new TopPanel();
+    private void setupVaccinationPane() {
+		//ê²€ìƒ‰
+		vaccinationPane = new JPanel(new BorderLayout());
+		v_patientTable.tableTitle ="VaccinationStatus";
+		v_patientTop.setupTopPane(v_patientTable);
+		vaccinationPane.add(v_patientTop, BorderLayout.NORTH);
+		
+		v_patientTable.tableTitle = "patient";
+		v_patientTable.addComponentsToPane(PatientMgr.getInstance());
+        vaccinationPane.add(v_patientTable, BorderLayout.CENTER);
+        
+        JPanel bottom = new JPanel();
+        v_rListTable.tableTitle = "reservationList";
+        v_rListTable.addComponentsToPane(ReservationMgr.getInstance());
+        bottom.add(v_rListTable, BorderLayout.CENTER);
+        vaccinationPane.add(bottom, BorderLayout.SOUTH);
+	}
+	// ì ‘ìˆ˜ì„ ë³´ì—¬ì£¼ëŠ” íŒ¨ë„ ë¶€ë¶„ - íƒ‘ê³¼ JTable í¬í•¨
+    private JPanel receptionPane;
+    TableSelectionDemo receptionTable = new TableSelectionDemo();
+    TopPanel receptionTop = new TopPanel();  // ê²€ìƒ‰ê³¼ ìƒì„¸ë³´ê¸° ë²„íŠ¼ì„ ê°€ì§„ íŒ¨ë„
+    ReceptionDownPanel receptionDown = new ReceptionDownPanel();
+    private void setupReceptionPane() {
+        receptionPane = new JPanel(new BorderLayout());
         //Create and set up the content pane.
-        itemTable.tableTitle = "item";
-        itemTable.addComponentsToPane(ItemMgr.getInstance());  // ½Ì±ÛÅæ
-        itemTop.setupTopPane(itemTable);
-        itemPane.add(itemTop, BorderLayout.NORTH);
-        itemPane.add(itemTable, BorderLayout.CENTER);
-    }
-    // »óÇ°À» º¸¿©ÁÖ´Â ÆĞ³Î ºÎºĞ - À§¿¡´Â ÁÖ¹® JTable, ¾Æ·¡ ÆĞ³ÎÀº Àå¹Ù±¸´Ï¿Í ¹öÆ°
-    private JPanel orderPane;
-    TableSelectionDemo orderTable = new TableSelectionDemo();
-    BasketTableDemo basketTable = new BasketTableDemo();
-    private void setupOrderPane() {
-    	orderPane = new JPanel(new BorderLayout());
-        orderTable.tableTitle = "order";
-        orderTable.addComponentsToPane(OrderMgr.getInstance());
-        orderPane.add(orderTable, BorderLayout.CENTER);
-        // ¾Æ·¡ÂÊÀº Àå¹Ù±¸´Ï Å×ÀÌºí°ú ¶óº§·Î ³ª´©±â À§ÇØ ÆĞ³Î Ãß°¡
-        JPanel bottom = new JPanel();  // µğÆúÆ® ÇÃ·Î¿ì·¹ÀÌ¾Æ¿ô
-        basketTable.tableTitle = "basket";
-        basketTable.addComponentsToPane(OrderedItemMgr.getInstance());
+        receptionTable.tableTitle = "reception";
+        receptionTable.addComponentsToPane(ReceptionMgr.getInstance());  // ì‹±ê¸€í†¤
+        receptionTop.setupTopPane(receptionTable);
+        receptionPane.add(receptionTop, BorderLayout.NORTH);
+        receptionPane.add(receptionTable, BorderLayout.CENTER);
 
-        bottom.add(basketTable, BorderLayout.CENTER);
-        // ¿©±â¿¡ ¿©·¯ °¡Áö ¹öÆ°À» ³ÖÀ» ¼ö ÀÖÀ½ - °áÀç, Ãë¼Ò, Ãß°¡, º¯°æ µî
-        bottom.add(new JLabel("Àå¹Ù±¸´Ï Å×½ºÆ®"), BorderLayout.LINE_END);
-        orderPane.add(bottom, BorderLayout.SOUTH);
+        receptionDown.setupDownPane(receptionTable);
+        receptionPane.add(receptionDown, BorderLayout.SOUTH);
     }
+
+    
+    
+    // í™˜ìì„ ë³´ì—¬ì£¼ëŠ” íŒ¨ë„ ë¶€ë¶„ - ìœ„ì—ëŠ” ê²€ìƒ‰ê³¼ JTable, ì•„ë˜ íŒ¨ë„ì€ ì¥ë°”êµ¬ë‹ˆì™€ ë²„íŠ¼
+    private JPanel patientPane;
+    TableSelectionDemo patientTable = new TableSelectionDemo();
+    ReceptionTableDemo rListTable = new ReceptionTableDemo();
+    TopPanel patientTop = new TopPanel();
+    PatientDownPanel patientDown = new PatientDownPanel();
+    private void setupPatientPane() {
+        patientPane = new JPanel(new BorderLayout());
+        patientPane.setPreferredSize(new Dimension(720,600));
+
+        patientTable.tableTitle = "patient";
+        patientTable.addComponentsToPane(PatientMgr.getInstance());
+        //ë§¨ ìœ„ì—ëŠ” ê²€ìƒ‰ ì°½
+        patientTop.setupTopPane(patientTable);
+        patientPane.add(patientTop, BorderLayout.NORTH);
+
+        //ë§¨ ì•„ë˜ëŠ” í™˜ì ë“±ë¡ ì°½
+        patientDown.setupDownPane(patientTable);
+        patientPane.add(patientDown, BorderLayout.SOUTH);
+
+        //ê°€ìš´ë° í™˜ì ë¦¬ìŠ¤íŠ¸ì™€ ì§„ë£Œ ê¸°ë¡ í…Œì´ë¸” ì¶”ê°€
+        JPanel center = new JPanel();
+        center.add(patientTable, BorderLayout.CENTER);
+        rListTable.tableTitle = "receptionList";
+        rListTable.addComponentsToPane(ReceptionMgr.getInstance());
+        center.add(rListTable, BorderLayout.SOUTH);
+        patientPane.add(center, BorderLayout.CENTER);
+
+
+        // ì—¬ê¸°ì— ì—¬ëŸ¬ ê°€ì§€ ë²„íŠ¼ì„ ë„£ì„ ìˆ˜ ìˆìŒ - ê²°ì¬, ì·¨ì†Œ, ì¶”ê°€, ë³€ê²½ ë“±
+        //bottom.add(new JLabel("í™˜ì ë³„ ì§„ë£Œê¸°ë¡"), BorderLayout.LINE_END);
+    }
+    private JPanel resevationPane;
+    
 }
