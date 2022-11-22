@@ -2,7 +2,6 @@ package hospital;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import mgr.Manageable;
 import mgr.Manager;
 

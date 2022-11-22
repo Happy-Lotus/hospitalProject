@@ -10,6 +10,7 @@ public class DoctorMgr extends Manager implements DataEngineInterface {
 	private static DoctorMgr mgr = null;
 	private DoctorMgr() {}
 	public static DoctorMgr getInstance() {
+
 		return mgr;
 	}
 	private String[] headers = {"의사코드", "이름", "연락처"};
