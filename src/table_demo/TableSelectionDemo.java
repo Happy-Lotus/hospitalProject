@@ -14,7 +14,6 @@ import javax.swing.table.DefaultTableModel;
 
 import facade.DataEngineInterface;
 import facade.UIData;
-
 /*
  * 테이블을 포함한 패널로 테이블과 테이블모델을 생성하여 초기화하고(init)
  * 매니저에서 데이터를 받아와 테이블 행을 추가하는 기능(loadData)과

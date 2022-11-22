@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 @SuppressWarnings("serial")
 public class TopPanel extends JPanel {
     // Item 검색 탭의 상단 패널 구성하기
