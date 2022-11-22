@@ -9,6 +9,7 @@ public class Vaccination implements Manageable, UIData{
     String infection="";
     int number;
     VaccinationDetail detail;
+    //ArrayList<String> infections = new ArrayList<>();
     ArrayList<VaccinationDetail> details = new ArrayList<>();
     public void read(Scanner scan) {
 
@@ -25,16 +26,20 @@ public class Vaccination implements Manageable, UIData{
         number = scan.nextInt();
         for(int i=0;i<number;i++){
             detail = new VaccinationDetail();
+
             detail.read(scan);
+
             details.add(detail);
         }
+        print();
+        System.out.println();
     }
 
     public void print() {
         int i = 1;
         System.out.printf("%s - %s %d번\n", infection, vaccine,number);
         for(VaccinationDetail v : details){
-            System.out.printf("%d차",i++);
+            System.out.printf("%d차",++i);
             v.print();
         }
         System.out.println();
