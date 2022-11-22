@@ -75,7 +75,6 @@ public class Patient implements Manageable, UIData {
 
 	protected String getBirth() {
 		return birth;
-	}
 
 	protected LinkedHashMap<String, String> getVaccinationList() {
 		return vaccinationList;
@@ -92,6 +91,15 @@ public class Patient implements Manageable, UIData {
 	protected int getMonth() {
 		return month;
 	}
+
+	void vaccinationPrint() {
+		Set<String> keyset = vaccinationList.keySet();
+		for(String key : keyset) {
+			System.out.println(key + ":" + vaccinationList.get(key));
+
+		}
+	}
+
 	@Override
 	public void print()
 	{
