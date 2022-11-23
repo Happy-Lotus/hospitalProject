@@ -7,9 +7,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
 @SuppressWarnings("serial")
 public class TopPanel extends JPanel {
-    // Item 검색 탭의 상단 패널 구성하기
+    //검색 탭의 상단 패널 구성하기
     JTextField kwdTextField = new JTextField("", 20);
     void setupTopPane(TableSelectionDemo tableDemo) {
         JPanel topPane = new JPanel();

@@ -6,15 +6,15 @@ import facade.DataEngineInterface;
 import mgr.Manageable;
 
 public class VaccinationMgr implements DataEngineInterface {
-	private static VaccinationMgr mgr = null;
-	
+	private static VaccinationMgr vMgr = null;
+
 	private VaccinationMgr() {
 	}
 
 	public static VaccinationMgr getInstance() {
-		if (mgr == null)
-			mgr = new VaccinationMgr();
-		return mgr;
+		if (vMgr == null)
+			vMgr = new VaccinationMgr();
+		return vMgr;
 	}
 
 	private String[] headers = { "vaccine name", "infections", "number of time", "times" };
@@ -34,7 +34,7 @@ public class VaccinationMgr implements DataEngineInterface {
 	@Override
 	public void readAll(String filename) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -46,18 +46,18 @@ public class VaccinationMgr implements DataEngineInterface {
 	@Override
 	public void addNewItem(String[] uiTexts) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void update(String[] uiTexts) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void remove(String kwd) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

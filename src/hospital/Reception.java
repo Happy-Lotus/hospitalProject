@@ -17,6 +17,7 @@ public class Reception implements Manageable, UIData {
 
 
     Reception(){	}
+
     public Reception(Object[] row) {
         date = (String)row[0];
         patientCode = (String)row[1];
@@ -80,6 +81,7 @@ public class Reception implements Manageable, UIData {
         }
     }
 
+
     @Override
     public void set(Object[] uitexts) {
 
@@ -114,35 +116,16 @@ public class Reception implements Manageable, UIData {
     public boolean matches(String kwd) {
         if (kwd.equals(name))
             return true;
-        if (kwd.equals(""+patient.age))
+        if (kwd.equals(patientCode))
+            return true;
+        if (kwd.equals("" + patient.getAge()))
             return true;
         if (kwd.equals(gender) && kwd.length() == 1)
             return true;
-        if (kwd.equals(doctor.name))
+        if (kwd.equals(doctor.getName()))
+            return true;
+        if (symptom.contains(kwd))
             return true;
         return false;
     }
 }
-
-/*
-    if (symptom.contains(kwd))
-            return true;
-    - 증상 키워드에 따라 출력하는 기능 필요시 추가
-    if kwd="예방접종" kwd 따라 증상에 예방접종 저장되어있는 patient 출력
-    */
-
-
-/*
-        name = patient.name;
-        age = patient.age;
-        gender = patient.gender;
-        symptom = scan.nextLine();
-        String kwd2 = scan.next();
-        for(Doctor doctor :hospitalMain.doctorMgr.mList){
-            if(doctor.matches(kwd2))
-                if(doctor.patientList.contains(patient)){
-                    this.doctor = doctor;
-                    break;
-                }
-        }
- */

@@ -6,15 +6,15 @@ import mgr.Manageable;
 import mgr.Manager;
 
 public class PatientMgr extends Manager implements DataEngineInterface {
-	private static PatientMgr mgr = null;
+	public static PatientMgr pMgr = null;
 	static ArrayList<Patient> patients = new ArrayList<>();
 	private PatientMgr() {
 	}
 
 	public static PatientMgr getInstance() {
-		if(mgr == null)
-			mgr = new PatientMgr();
-		return mgr;
+		if(pMgr == null)
+			pMgr = new PatientMgr();
+		return pMgr;
 	}
 	public Patient getPatient(int index){
 		return (Patient)Main.patientMgr.getMlist().get(index);

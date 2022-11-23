@@ -1,8 +1,5 @@
 package table_demo;
 
-import hospital.Reception;
-import hospital.ReceptionMgr;
-
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -12,7 +9,12 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import mgr.*;
+
+import hospital.Patient;
+import hospital.PatientMgr;
+import hospital.Reception;
+import hospital.ReceptionMgr;
+
 public class ReceptionDownPanel extends JPanel {
     JTextField receptionEdits[] = new JTextField[5];
     void setupDownPane(TableSelectionDemo tableDemo) {
@@ -40,7 +42,7 @@ public class ReceptionDownPanel extends JPanel {
                     }
                     data.addRow(texts); //테이블에 행을 추가
                     Reception r = new Reception(texts);
-                    ReceptionMgr.mgr.addReception(r);
+                    ReceptionMgr.recepMgr.addReception(r);
                 }
             }
         });

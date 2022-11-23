@@ -1,6 +1,5 @@
 package hospital;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 
 import facade.UIData;
@@ -14,9 +13,7 @@ public class Vaccination implements Manageable, UIData{
 	ArrayList<VaccinationDetail> details = new ArrayList<>();
 
 	public void read(Scanner scan) {
-
 		vaccine = scan.next();
-
 		while(true){
 
 			String temp = scan.next();
