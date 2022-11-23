@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReceptionMgr extends Manager implements DataEngineInterface {
-    public static ReceptionMgr mgr = null;
+    public static ReceptionMgr recepMgr = null;
     static ArrayList<Reception> receptions = new ArrayList<>();
     private ReceptionMgr() {}
     public static ReceptionMgr getInstance() {
-        if(mgr == null)
-            mgr = new ReceptionMgr();
-        return mgr;
+        if(recepMgr == null)
+            recepMgr = new ReceptionMgr();
+        return recepMgr;
     }
 
     List<Reception> rList;
@@ -24,7 +24,7 @@ public class ReceptionMgr extends Manager implements DataEngineInterface {
     public void addReception(Reception r) {
         receptions.add(r);
     }
-    private String[] headers = {"진료순서", "환자코드", "이름", "증상","담당의사"};
+    private String[] headers = {"진료날짜", "환자코드", "이름", "증상","담당의사"};
     @Override
     public String[] getColumnNames() {
         // TODO Auto-generated method stub

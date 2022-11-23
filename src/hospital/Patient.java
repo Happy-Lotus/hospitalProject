@@ -14,16 +14,26 @@ public class Patient implements Manageable, UIData {
 		// TODO Auto-generated method stub
 
 	}
-	@Override
 	public String[] getUiTexts() {
 		String[] texts = new String[6];
 		texts[0] = patientCode;
 		texts[1] = name;
-		texts[2] = birth;
-		texts[3] = ""+age;
+		texts[2] = gender;
+		texts[3] = birth;
 		texts[4] = phone;
 		texts[5] = address;
 		return null;
+	}
+
+	Patient() {
+	}
+	public Patient(Object[] row) {
+		patientCode = (String)row[0];
+		name = (String)row[1];
+		gender = (String)row[2];
+		birth = (String)row[3];
+		phone = (String)row[4];
+		address = (String)row[5];
 	}
 
 	// 환자코드 / 이름/ 성별/ 생년월일/ 전화번호/ 주소(동만)
@@ -52,13 +62,7 @@ public class Patient implements Manageable, UIData {
 
 		phone = scan.next();
 		address = scan.next();
-		/*while(true){
-			 	String temp = scan.next();
-	            if(temp.equals("0")){
-	                break;
-	            }
-	            address+=temp+" ";
-		}*/
+
 		for(int i = 0;i<Main.VaccinationMgr.mList.size();i++) {
 			Vaccination vac = (Vaccination)Main.VaccinationMgr.getMlist().get(i);
 			for(int j = 1;j<=vac.getNumber();j++)
@@ -72,10 +76,6 @@ public class Patient implements Manageable, UIData {
 	{
 		receptionList.add(r);
 	}
-	/*
-	void addVaccination(Vaccination v){
-		vaccinationList.add();
-	}*/
 
 	protected String getBirth() {
 		return birth;
@@ -133,14 +133,17 @@ public class Patient implements Manageable, UIData {
 	{
 		if(kwd.equals(patientCode))
 			return true;
-		if(name.equals(kwd))
+		if(kwd.equals(name))
 			return true;
-		if(phone.equals(kwd))
+		if(kwd.equals(birth))
 			return true;
-		if(address.equals(kwd))
+		if(kwd.equals(gender))
+			return true;
+		if(kwd.equals(phone))
+			return true;
+		if(kwd.equals(address))
 			return true;
 
 		return false;
 	}
 }
-
