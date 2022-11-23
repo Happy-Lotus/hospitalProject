@@ -47,6 +47,8 @@ public class Reception implements Manageable, UIData {
             }
             symptom+=temp+" ";
         }
+        symptom = symptom.strip();
+
         doctor = (Doctor)Main.doctorMgr.find(scan.next());
 
         if (doctor == null) {
@@ -62,24 +64,25 @@ public class Reception implements Manageable, UIData {
         if(patient.matches(patientCode)) {//신규환자일 경우 의사가 담당하는 patientList에 저장함. 아닐 경우 pass.
             patient.addReception(this);
         }
-        if(symptom.substring(0,2).equals("백신")){
-            String[]words = symptom.split(" ");
 
-            for(int i =1; i<words.length-1;i+=2){
+        if(symptom.startsWith("백신")) {
+            String[] words = symptom.split(" ");
+
+            for (int i = 1; i < words.length - 1; i += 2) {
                 String vName = words[i];
-                int vNum = Integer.parseInt(words[i+1].substring(0,1));
-                if(Main.VaccinationMgr.find(vName)!=null){
-                    patient.getVaccinationList().put(vName+" "+vNum+"차",date);
-                    System.out.println("====이름 : "+patient.name+"====");
+                int vNum = Integer.parseInt(words[i + 1].substring(0, 1));
+                System.out.println(vName + vNum);
+                if (Main.VaccinationMgr.find(vName) != null) {
+                    patient.getVaccinationList().put(vName + " " + vNum + "차", date);
+                    System.out.println("====이름 : " + patient.name + "====");
                     patient.vaccinationPrint();
+                } else {
+                    System.out.println(vName+"해당되는 백신은 없습니다.");
                 }
-                else {
-                    System.out.println("해당되는 백신은 없습니다.");
-                }
-            }
-            Main.receptionMgr.getMlist().add(this);
+            }            Main.receptionMgr.getMlist().add(this);
         }
     }
+
 
 
     @Override
@@ -123,6 +126,8 @@ public class Reception implements Manageable, UIData {
         if (kwd.equals(gender) && kwd.length() == 1)
             return true;
         if (kwd.equals(doctor.getName()))
+            return true;
+        if (symptom.contains(kwd))
             return true;
         if (symptom.contains(kwd))
             return true;
