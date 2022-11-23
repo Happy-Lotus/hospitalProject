@@ -39,7 +39,7 @@ public class PatientDownPanel extends JPanel {
                     }
                     data.addRow(texts); //테이블에 행을 추가
                     Patient s = new Patient(texts);
-                    PatientMgr.mgr.addPatient(s);
+                    PatientMgr.getInstance().addPatient(s);
                 }
             }
         });

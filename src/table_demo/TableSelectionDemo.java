@@ -1,4 +1,4 @@
-﻿package table_demo;
+package table_demo;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;

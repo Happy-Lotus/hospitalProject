@@ -9,10 +9,20 @@ import facade.UIData;
 import mgr.Manageable;
 
 public class Patient implements Manageable, UIData {
+
 	@Override
 	public void set(Object[] uitexts) {
 		// TODO Auto-generated method stub
 
+	}
+	public Patient(){}
+	public Patient(Object[] row) {
+		patientCode = (String)row[0];
+		name = (String)row[1];
+		gender = (String)row[2];
+		birth = (String)row[3];
+		phone = (String)row[4];
+		address = (String)row[5];
 	}
 	@Override
 	public String[] getUiTexts() {
