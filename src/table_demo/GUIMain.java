@@ -22,7 +22,15 @@ public class GUIMain {
     }
     // 엔진의 인스턴스를 편리를 위해 변수에 저장한다
     static Main hospitalMain = Main.getInstance();
+    Login login;
     public static void main(String args[]) {
+        GUIMain main = new GUIMain();
+        main.login = new Login(); // 로그인창 보이기
+        main.login.setMain(main); // 로그인창에게 메인 클래스보내기
+
+    }
+    public void showFrameTest(){
+        login.dispose(); // 로그인창닫기
         hospitalMain.run();
         startGUI();
     }
