@@ -9,11 +9,22 @@ import facade.UIData;
 import mgr.Manageable;
 
 public class Patient implements Manageable, UIData {
+
 	@Override
 	public void set(Object[] uitexts) {
 		// TODO Auto-generated method stub
 
 	}
+	public Patient(){}
+	public Patient(Object[] row) {
+		patientCode = (String)row[0];
+		name = (String)row[1];
+		gender = (String)row[2];
+		birth = (String)row[3];
+		phone = (String)row[4];
+		address = (String)row[5];
+	}
+	@Override
 	public String[] getUiTexts() {
 		String[] texts = new String[6];
 		texts[0] = patientCode;
@@ -26,14 +37,6 @@ public class Patient implements Manageable, UIData {
 	}
 
 	Patient() {
-	}
-	public Patient(Object[] row) {
-		patientCode = (String)row[0];
-		name = (String)row[1];
-		gender = (String)row[2];
-		birth = (String)row[3];
-		phone = (String)row[4];
-		address = (String)row[5];
 	}
 
 	// 환자코드 / 이름/ 성별/ 생년월일/ 전화번호/ 주소(동만)
