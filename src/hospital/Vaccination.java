@@ -63,7 +63,7 @@ public class Vaccination implements Manageable, UIData{
 	public boolean matches(String kwd) {
 		if (infection.contains(kwd)) // ""일 때 true
 			return true;
-		if (vaccine.contains(kwd))
+		if (vaccine.equals(kwd))
 			return true;
 		if((""+number).equals(kwd))
 			return true;
@@ -95,6 +95,7 @@ public class Vaccination implements Manageable, UIData{
 
 		for (VaccinationDetail v : details){
 			texts[2 + i] = v.startTime + "~" + v.endTime;
+			i++;
 		}
 		return texts;
 	}

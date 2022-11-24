@@ -68,18 +68,19 @@ public class Reception implements Manageable, UIData {
         if(symptom.startsWith("백신")) {
             String[] words = symptom.split(" ");
 
-            for (int i = 1; i < words.length - 1; i += 2) {
+            for (int i = 1; i < words.length; i += 2) {
                 String vName = words[i];
                 int vNum = Integer.parseInt(words[i + 1].substring(0, 1));
                 System.out.println(vName + vNum);
-                if (Main.VaccinationMgr.find(vName) != null) {
+                if (Main.VaccinationMgr.find(vName)!=null) {
                     patient.getVaccinationList().put(vName + " " + vNum + "차", date);
                     System.out.println("====이름 : " + patient.name + "====");
                     patient.vaccinationPrint();
                 } else {
-                    System.out.println(vName+"해당되는 백신은 없습니다.");
+                    System.out.println(vName+" 백신은 없습니다.");
                 }
-            }            Main.receptionMgr.getMlist().add(this);
+            }
+            Main.receptionMgr.getMlist().add(this);
         }
     }
 
@@ -95,7 +96,12 @@ public class Reception implements Manageable, UIData {
         texts[0] = date;
         texts[1] = patientCode;
         texts[2] = name;
-        texts[3] = symptom;
+        if(symptom.contains("백신")){
+            texts[3] = "백신";
+        }
+        else{
+            texts[3] = symptom;
+        }
         texts[4] = doctor.getName();
         return texts;
     }

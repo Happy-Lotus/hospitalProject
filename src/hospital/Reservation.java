@@ -18,6 +18,7 @@ public class Reservation extends Reception implements UIData, Manageable {
         super.read(scan);
 
 
+
         //super.addReception(this);
         //Main.receptionMgr.printAll();
     }
