@@ -2,38 +2,53 @@ package table_demo;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 
 public class DetailDialog extends javax.swing.JDialog {
 	String[] itemDetails;
+	DefaultTableModel model;
+	JTable table;
+	JScrollPane scroll;
+
+	String title[] = { "백신종류", "1차", "2차", "3차", "추4차", "추5차", "추6차" };
+	String data[][] = { { "BCG" }, { "HepB" }, { "DTaP" }, { "Tdap" }, { "IPV" }, { "Hib" }, { "PCV" }, { "MMR" },
+			{ "VAR" }, { "HepA" }, { "IJEV" }, { "LJEV" }, { "RV1" }, { "RV5" } };
+	
 	JLabel details[] = new JLabel[5];
 	DetailDialog(String[] texts) {
 		super(GUIMain.mainFrame);
 		itemDetails = texts;
 	}
+	
 	void setup() {
-		setTitle("상품상세보기");
-		JPanel pane = new JPanel(new BorderLayout());
-		JPanel lpane = new JPanel(new GridLayout(3, 1));
-		JLabel photo = new JLabel("   Photo   ");
-		photo.setOpaque(true);  // JLabel은 기본이 배경 투명
-		photo.setPreferredSize(new Dimension(150, 150));
-		photo.setBackground(Color.YELLOW);
-		details[0] = new JLabel("상품코드: " + itemDetails[0]);
-		details[1] = new JLabel("상품명: " + itemDetails[1]);
-		details[2] = new JLabel("가격: " + itemDetails[2]);
-		lpane.add(details[0]);
-		lpane.add(details[1]);
-		lpane.add(details[2]);
-		pane.add(lpane, BorderLayout.CENTER);
-		pane.add(photo, BorderLayout.LINE_END);
-		this.setMinimumSize(new Dimension(400, 150));  // 대화상자 크기 설정
-		setContentPane(pane);
+			setTitle("예방접종현황");
+			
+			JPanel pane = new JPanel(new BorderLayout());
+			model = new DefaultTableModel(title, 14);
+			table = new JTable(model);
+			
+			scroll = new JScrollPane(table);
+			add(scroll);
+
+			for (int i = 0; i < data.length; i++) {
+				for (int j = 0; j < data[0].length; j++) {
+					table.setValueAt(data[i][j], i, j); // data값을 i번 행, j번 열에 넣어라
+				}
+			}
+			
+			pack();
+			setVisible(true);
 	}
 }
