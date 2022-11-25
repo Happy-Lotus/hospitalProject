@@ -128,8 +128,8 @@ public class GUIMain {
     private JPanel vaccinationPane;
     //TableSelectionDemo VaccinStatusTable = new TableSelectionDemo();
     TableSelectionDemo v_patientTable = new TableSelectionDemo();
+    ReservationTopPanel v_patientTop = new ReservationTopPanel();
     ReceptionOfPatientTableDemo v_rListTable = new ReceptionOfPatientTableDemo();
-    TopPanel v_patientTop = new TopPanel();
     private void setupVaccinationPane() {
         //검색
         vaccinationPane = new JPanel(new BorderLayout());
@@ -150,7 +150,7 @@ public class GUIMain {
     //예방접종 예약 탭
     private JPanel reservationPane;
     TableSelectionDemo reservationTable = new TableSelectionDemo();
-    ReservationTopPanel reservationTop = new ReservationTopPanel();  // 검색과 상세보기 버튼을 가진 패널
+    TopPanel reservationTop = new TopPanel();  // 검색과 상세보기 버튼을 가진 패널
     ReservationDownPanel reservationDown = new ReservationDownPanel();
     private void setupResevationPane() {
         reservationPane = new JPanel(new BorderLayout());
