@@ -15,7 +15,7 @@ public class Patient implements Manageable, UIData {
 		// TODO Auto-generated method stub
 
 	}
-	public Patient(){}
+	//public Patient(){}
 	public Patient(Object[] row) {
 		patientCode = (String)row[0];
 		name = (String)row[1];
@@ -33,7 +33,7 @@ public class Patient implements Manageable, UIData {
 		texts[3] = birth;
 		texts[4] = phone;
 		texts[5] = address;
-		return null;
+		return texts;
 	}
 
 	Patient() {
@@ -134,17 +134,17 @@ public class Patient implements Manageable, UIData {
 	@Override
 	public boolean matches(String kwd)
 	{
-		if(kwd.equals(patientCode))
+		if(patientCode.contains(kwd))
 			return true;
-		if(kwd.equals(name))
+		if(name.contains(kwd))
 			return true;
-		if(kwd.equals(birth))
+		if(birth.contains(kwd))
 			return true;
-		if(kwd.equals(gender))
+		if(gender.contains(kwd))
 			return true;
-		if(kwd.equals(phone))
+		if(phone.contains(kwd))
 			return true;
-		if(kwd.equals(address))
+		if(address.contains(kwd))
 			return true;
 
 		return false;
