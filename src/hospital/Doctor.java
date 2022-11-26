@@ -3,11 +3,36 @@ package hospital;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import facade.UIData;
 import mgr.Manageable;
 import mgr.Manager;
 
-public class Doctor implements Manageable
+public class Doctor implements Manageable, UIData
 {
+	@Override
+	public void set(Object[] uitexts) {
+		// TODO Auto-generated method stub
+	}
+	Doctor() { }
+	//public Patient(){}
+	public Doctor(Object[] row) {
+		code = (String)row[0];
+		name = (String)row[1];
+		age = (Integer)row[2];
+		gender = (String)row[3];
+		phone = (String)row[4];
+	}
+	@Override
+	public String[] getUiTexts() {
+		String[] texts = new String[6];
+		texts[0] = code;
+		texts[1] = name;
+		texts[2] = age+"";
+		texts[3] = gender;
+		texts[4] = phone;
+
+		return texts;
+	}
 	//의사코드 의사이름 나이 연락처 성별
 	String code;
 	String name;
@@ -24,10 +49,6 @@ public class Doctor implements Manageable
 		phone = scan.next();
 		gender = scan.next();
 	}
-	/*
-	 [의사코드] 의사이름 : 의사연락처
-	 [진료 환자] 환자이름 : 접수내역 - 시간대
-	 */
 
 	public String getName() {
 		return name;
