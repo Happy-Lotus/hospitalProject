@@ -78,7 +78,7 @@ public class GUIMain {
     private JPanel vaccinationPane;
     //TableSelectionDemo VaccinStatusTable = new TableSelectionDemo();
     TableSelectionDemo v_patientTable = new TableSelectionDemo();
-    ReceptionTableDemo v_rListTable = new ReceptionTableDemo();
+    ReceptionOfPatientTableDemo v_rListTable = new ReceptionOfPatientTableDemo();
     TopPanel v_patientTop = new TopPanel();
     private void setupVaccinationPane() {
 		//검색
@@ -120,7 +120,7 @@ public class GUIMain {
     // 환자을 보여주는 패널 부분 - 위에는 검색과 JTable, 아래 패널은 장바구니와 버튼
     private JPanel patientPane;
     TableSelectionDemo patientTable = new TableSelectionDemo();
-    ReceptionTableDemo rListTable = new ReceptionTableDemo();
+    ReceptionOfPatientTableDemo rListTable = new ReceptionOfPatientTableDemo();
     TopPanel patientTop = new TopPanel();
     PatientDownPanel patientDown = new PatientDownPanel();
     private void setupPatientPane() {
