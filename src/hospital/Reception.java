@@ -37,7 +37,6 @@ public class Reception implements Manageable, UIData {
             }
             symptom+=temp+" ";
         }
-        symptom = symptom.strip();
 
         doctorName = scan.next();
         doctor = (Doctor)Main.doctorMgr.find(doctorName);
@@ -54,24 +53,6 @@ public class Reception implements Manageable, UIData {
         }
         if(patient.matches(patientCode)) {//신규환자일 경우 의사가 담당하는 patientList에 저장함. 아닐 경우 pass.
             patient.addReception(this);
-        }
-
-        if(symptom.startsWith("백신")) {
-            String[] words = symptom.split(" ");
-
-            for (int i = 1; i < words.length; i += 2) {
-                String vName = words[i];
-                int vNum = Integer.parseInt(words[i + 1].substring(0, 1));
-                System.out.println(vName + vNum);
-                if (Main.VaccinationMgr.find(vName)!=null) {
-                    patient.getVaccinationList().put(vName + " " + vNum + "차", date);
-                    System.out.println("====이름 : " + patient.name + "====");
-                    patient.vaccinationPrint();
-                } else {
-                    System.out.println(vName+" 백신은 없습니다.");
-                }
-            }
-            Main.receptionMgr.getMlist().add(this);
         }
     }
 
@@ -132,7 +113,7 @@ public class Reception implements Manageable, UIData {
             return true;
         if (symptom.contains(kwd))
             return true;
-        if (symptom.contains(kwd))
+        if(date.equals(kwd))
             return true;
         return false;
     }
