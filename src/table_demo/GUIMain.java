@@ -75,29 +75,6 @@ public class GUIMain {
         mainFrame.setVisible(true);
     }
 
-    private JPanel vaccinationPane;
-    //TableSelectionDemo VaccinStatusTable = new TableSelectionDemo();
-    TableSelectionDemo v_patientTable = new TableSelectionDemo();
-    ReceptionOfPatientTableDemo v_rListTable = new ReceptionOfPatientTableDemo();
-    TopPanel v_patientTop = new TopPanel();
-    private void setupVaccinationPane() {
-		//검색
-		vaccinationPane = new JPanel(new BorderLayout());
-		v_patientTable.tableTitle ="VaccinationStatus";
-		v_patientTop.setupTopPane(v_patientTable);
-		vaccinationPane.add(v_patientTop, BorderLayout.NORTH);
-		
-		v_patientTable.tableTitle = "patient";
-		v_patientTable.addComponentsToPane(PatientMgr.getInstance());
-        vaccinationPane.add(v_patientTable, BorderLayout.CENTER);
-        
-        JPanel bottom = new JPanel();
-        v_rListTable.tableTitle = "receptionList";
-        v_rListTable.addComponentsToPane(ReceptionMgr.getInstance());
-        bottom.add(v_rListTable, BorderLayout.CENTER);
-        vaccinationPane.add(bottom, BorderLayout.SOUTH);
-	}
-
     private JPanel receptionPane;
     TableSelectionDemo receptionTable = new TableSelectionDemo();
     SearchTopPanel receptionTop = new SearchTopPanel();  // 검색과 상세보기 버튼을 가진 패널
@@ -147,11 +124,12 @@ public class GUIMain {
     }
 
     //예방접종 현황 탭
+    //TableSelectionDemo VaccinStatusTable = new TableSelectionDemo();
     private JPanel vaccinationPane;
     //TableSelectionDemo VaccinStatusTable = new TableSelectionDemo();
     TableSelectionDemo v_patientTable = new TableSelectionDemo();
     VaccinationOfPatientTableDemo v_rListTable = new VaccinationOfPatientTableDemo();
-    VaccinationTopPanel v_patientTop = new VaccinationTopPanel();
+    SearchTopPanel v_patientTop = new SearchTopPanel();
     private void setupVaccinationPane() {
         //검색
         vaccinationPane = new JPanel(new BorderLayout());
