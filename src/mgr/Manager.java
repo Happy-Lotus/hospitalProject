@@ -36,6 +36,10 @@ public class Manager {
 				results.add(m);
 		return results;
 	}
+
+	public List<Manageable> getMlist(){
+		return mList;
+	}
 	public void search(Scanner keyScanner) {
 		String kwd = null;
 		while (true) {
@@ -49,11 +53,6 @@ public class Manager {
 			}
 		}
 	}
-		
-	public List<Manageable> getMlist() {
-		return mList;
-	}
-	
 	public Scanner openFile(String filename) {
 		Scanner filein = null;
 		try {

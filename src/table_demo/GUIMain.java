@@ -26,7 +26,15 @@ public class GUIMain {
     }
     // 엔진의 인스턴스를 편리를 위해 변수에 저장한다
     static Main hospitalMain = Main.getInstance();
+    Login login;
     public static void main(String args[]) {
+        GUIMain main = new GUIMain();
+        main.login = new Login(); // 로그인창 보이기
+        main.login.setMain(main); // 로그인창에게 메인 클래스보내기
+
+    }
+    public void showFrameTest(){
+        login.dispose(); // 로그인창닫기
         hospitalMain.run();
         startGUI();
     }
@@ -43,10 +51,11 @@ public class GUIMain {
      * GUI를 생성하여 보여준다. 스레드 안전을 위하여
      * 이 메소드는 이벤트 처리 스레드에서 불려져야 한다.
      */
-    static JFrame mainFrame = new JFrame("TableSelectionDemo");
+
+    static JFrame mainFrame = new JFrame("병원 환자 관리 프로그램");
     private void createAndShowGUI() {
-    	//mainFrame.setLocationRelativeTo(null); 
-    	mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //mainFrame.setLocationRelativeTo(null);
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         // 탭을 생성하고 두개 패널을 추가한다.
         JTabbedPane jtab = new JTabbedPane();
@@ -65,7 +74,7 @@ public class GUIMain {
         mainFrame.pack();
         mainFrame.setVisible(true);
     }
-    
+
     private JPanel vaccinationPane;
     //TableSelectionDemo VaccinStatusTable = new TableSelectionDemo();
     TableSelectionDemo v_patientTable = new TableSelectionDemo();
@@ -88,7 +97,7 @@ public class GUIMain {
         bottom.add(v_rListTable, BorderLayout.CENTER);
         vaccinationPane.add(bottom, BorderLayout.SOUTH);
 	}
-	// 접수을 보여주는 패널 부분 - 탑과 JTable 포함
+
     private JPanel receptionPane;
     TableSelectionDemo receptionTable = new TableSelectionDemo();
     TopPanel receptionTop = new TopPanel();  // 검색과 상세보기 버튼을 가진 패널
@@ -104,10 +113,10 @@ public class GUIMain {
 
         receptionDown.setupDownPane(receptionTable);
         receptionPane.add(receptionDown, BorderLayout.SOUTH);
+
     }
 
-    
-    
+       
     // 환자을 보여주는 패널 부분 - 위에는 검색과 JTable, 아래 패널은 장바구니와 버튼
     private JPanel patientPane;
     TableSelectionDemo patientTable = new TableSelectionDemo();
@@ -157,3 +166,4 @@ public class GUIMain {
     }
     
 }
+

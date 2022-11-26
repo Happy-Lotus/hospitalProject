@@ -3,26 +3,38 @@ package hospital;
 import facade.DataEngineInterface;
 import mgr.Manageable;
 import mgr.Manager;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class ReceptionMgr extends Manager implements DataEngineInterface {
-    private static ReceptionMgr mgr = null;
+    public static ReceptionMgr recepMgr = null;
+    static ArrayList<Reception> receptions = new ArrayList<>();
     private ReceptionMgr() {}
     public static ReceptionMgr getInstance() {
-        return mgr;
-    }
-    private String[] headers = {"진료순서", "이름(나이,성별)", "증상","담당의사"};
-
-    @Override
-    public int getColumnCount() {
-        // TODO Auto-generated method stub
-        return 4;
+        if(recepMgr == null)
+            recepMgr = new ReceptionMgr();
+        return recepMgr;
     }
 
+    List<Reception> rList;
+    public void setPatient(Patient pati) {
+        rList = pati.receptionList;
+    }
+    public void addReception(Reception r) {
+        receptions.add(r);
+    }
+    private String[] headers = {"진료날짜", "환자코드", "이름", "증상","담당의사"};
     @Override
     public String[] getColumnNames() {
         // TODO Auto-generated method stub
         return headers;
+    }
+
+    @Override
+    public int getColumnCount() {
+        // TODO Auto-generated method stub
+        return 5;
     }
 
     @Override
@@ -33,8 +45,7 @@ public class ReceptionMgr extends Manager implements DataEngineInterface {
 
     @Override
     public List<Manageable> search(String kwd) {
-        // TODO Auto-generated method stub
-        return Main.doctorMgr.findAll(kwd);
+        return Main.receptionMgr.findAll(kwd);
     }
 
     @Override
