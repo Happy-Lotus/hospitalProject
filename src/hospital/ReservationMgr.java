@@ -17,7 +17,7 @@ public class ReservationMgr implements DataEngineInterface {
     public void addReservation(Reservation reser) {
         reservations.add(reser);
     }
-    private String[] headers = {"날짜", "이름", "나이", "성별", "증상", "의사"};
+    private String[] headers = {"날짜", "이름", "나이", "증상", "의사"};
     @Override
     public String[] getColumnNames() {
         return headers;
@@ -25,7 +25,7 @@ public class ReservationMgr implements DataEngineInterface {
     @Override
     public int getColumnCount() {
         // TODO Auto-generated method stub
-        return 6;
+        return 5;
     }
     @Override
     public void readAll(String filename) {
