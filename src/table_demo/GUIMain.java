@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
@@ -12,6 +11,7 @@ import javax.swing.JTabbedPane;
 import hospital.Main;
 import hospital.PatientMgr;
 import hospital.ReceptionMgr;
+import hospital.ReceptionOfPatientMgr;
 import hospital.ReservationMgr;
 
 
@@ -68,7 +68,7 @@ public class GUIMain {
         jtab.add("접수", receptionPane);
         jtab.add("환자", patientPane);
         jtab.add("예방접종현황", vaccinationPane);
-        jtab.add("예방접종 예약", reservationPane);
+        jtab.add("예방접종예약", reservationPane);
         mainFrame.getContentPane().add(jtab);
         //Display the window.
         mainFrame.pack();
@@ -100,7 +100,7 @@ public class GUIMain {
 
     private JPanel receptionPane;
     TableSelectionDemo receptionTable = new TableSelectionDemo();
-    TopPanel receptionTop = new TopPanel();  // 검색과 상세보기 버튼을 가진 패널
+    SearchTopPanel receptionTop = new SearchTopPanel();  // 검색과 상세보기 버튼을 가진 패널
     ReceptionDownPanel receptionDown = new ReceptionDownPanel();
     private void setupReceptionPane() {
         receptionPane = new JPanel(new BorderLayout());
@@ -115,13 +115,13 @@ public class GUIMain {
         receptionPane.add(receptionDown, BorderLayout.SOUTH);
 
     }
+    
+    // 환자을 보여주는 패널 부분 - 위에는 검색과 JTable, 아래는 환자 등록
 
-       
-    // 환자을 보여주는 패널 부분 - 위에는 검색과 JTable, 아래 패널은 장바구니와 버튼
     private JPanel patientPane;
     TableSelectionDemo patientTable = new TableSelectionDemo();
-    ReceptionOfPatientTableDemo rListTable = new ReceptionOfPatientTableDemo();
-    TopPanel patientTop = new TopPanel();
+    ReceptionOfPatientTableDemo rpListTable = new ReceptionOfPatientTableDemo();
+    SearchTopPanel patientTop = new SearchTopPanel();
     PatientDownPanel patientDown = new PatientDownPanel();
     private void setupPatientPane() {
         patientPane = new JPanel(new BorderLayout());
@@ -140,19 +140,41 @@ public class GUIMain {
         //가운데 환자 리스트와 진료 기록 테이블 추가
         JPanel center = new JPanel();
         center.add(patientTable, BorderLayout.CENTER);
-        rListTable.tableTitle = "receptionList";
-        rListTable.addComponentsToPane(ReceptionMgr.getInstance());
-        center.add(rListTable, BorderLayout.SOUTH);
+        rpListTable.tableTitle = "ReceptionOfPatientList";
+        rpListTable.addComponentsToPane(ReceptionOfPatientMgr.getInstance());
+        center.add(rpListTable, BorderLayout.SOUTH);
         patientPane.add(center, BorderLayout.CENTER);
-
-
-        // 여기에 여러 가지 버튼을 넣을 수 있음 - 결재, 취소, 추가, 변경 등
-        //bottom.add(new JLabel("환자 별 진료기록"), BorderLayout.LINE_END);
     }
-    
+
+    //예방접종 현황 탭
+    private JPanel vaccinationPane;
+    //TableSelectionDemo VaccinStatusTable = new TableSelectionDemo();
+    TableSelectionDemo v_patientTable = new TableSelectionDemo();
+    VaccinationOfPatientTableDemo v_rListTable = new VaccinationOfPatientTableDemo();
+    VaccinationTopPanel v_patientTop = new VaccinationTopPanel();
+    private void setupVaccinationPane() {
+        //검색
+        vaccinationPane = new JPanel(new BorderLayout());
+        v_patientTable.tableTitle ="VaccinationStatus";
+        v_patientTop.setupTopPane(v_patientTable);
+        vaccinationPane.add(v_patientTop, BorderLayout.NORTH);
+
+        v_patientTable.tableTitle = "patient";
+        v_patientTable.addComponentsToPane(PatientMgr.getInstance());
+        vaccinationPane.add(v_patientTable, BorderLayout.CENTER);
+
+        //JPanel bottom = new JPanel();
+        v_rListTable.tableTitle = "receptionList";
+        v_rListTable.addComponentsToPane(ReceptionMgr.getInstance());
+        //bottom.add(v_rListTable, BorderLayout.CENTER);
+        vaccinationPane.add(v_rListTable, BorderLayout.SOUTH);
+    }
+    //예방접종 예약 탭
     private JPanel reservationPane;
     TableSelectionDemo reservationTable = new TableSelectionDemo();
-    TopPanel reservationTop = new TopPanel();  // 검색과 상세보기 버튼을 가진 패널
+    SearchTopPanel reservationTop = new SearchTopPanel();  // 검색과 상세보기 버튼을 가진 패널
+    ReservationDownPanel reservationDown = new ReservationDownPanel();
+
     private void setupResevationPane() {
     	reservationPane = new JPanel(new BorderLayout());
         //Create and set up the content pane.

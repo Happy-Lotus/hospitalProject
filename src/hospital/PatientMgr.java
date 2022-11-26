@@ -16,16 +16,16 @@ public class PatientMgr extends Manager implements DataEngineInterface {
 			pMgr = new PatientMgr();
 		return pMgr;
 	}
+
 	public Patient getPatient(int index){
-		return (Patient)Main.patientMgr.getMlist().get(index);
+		return (Patient)Main.patientMgr.mList.get(index);
 	}
 
 	public void addPatient(Patient p){
-
 		patients.add(p);
 	}
 
-	private String[] headers = { "환자코드", "이름", "성별","생년월일", "연락처", "주소" };
+	private String[] headers = {"환자코드", "이름", "성별","생년월일", "연락처", "주소" };
 
 	//환자코드 / 이름/ 성별/ 생년월일/ 전화번호/ 주소(동만)
 	@Override

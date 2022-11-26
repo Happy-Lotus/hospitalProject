@@ -43,7 +43,7 @@ public class Main {
 		});
 
 
-		reservationMgr.readAll("Reservation.txt",new Factory(){
+		reservationMgr.readAll("reservation.txt",new Factory(){
 			public Manageable create(){
 				return new Reservation();
 			}

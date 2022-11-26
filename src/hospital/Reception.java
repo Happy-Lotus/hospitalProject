@@ -14,17 +14,7 @@ public class Reception implements Manageable, UIData {
     String gender;
     String symptom="";
     Doctor doctor = null;
-
-
-    Reception(){	}
-
-    public Reception(Object[] row) {
-        date = (String)row[0];
-        patientCode = (String)row[1];
-        name = (String)row[2];
-        symptom = (String)row[3];
-        doctor.name = (String)row[4];
-    }
+    String doctorName;
 
     @Override
     public void read(Scanner scan) {
@@ -49,7 +39,8 @@ public class Reception implements Manageable, UIData {
         }
         symptom = symptom.strip();
 
-        doctor = (Doctor)Main.doctorMgr.find(scan.next());
+        doctorName = scan.next();
+        doctor = (Doctor)Main.doctorMgr.find(doctorName);
 
         if (doctor == null) {
             Random random = new Random();
@@ -84,7 +75,15 @@ public class Reception implements Manageable, UIData {
         }
     }
 
+    Reception(){	}
 
+    public Reception(Object[] row) {
+        date = (String)row[0];
+        patientCode = (String)row[1];
+        name = (String)row[2];
+        symptom = (String)row[3];
+        doctorName = (String)row[4];
+    }
 
     @Override
     public void set(Object[] uitexts) {
@@ -102,7 +101,7 @@ public class Reception implements Manageable, UIData {
         else{
             texts[3] = symptom;
         }
-        texts[4] = doctor.getName();
+        texts[4] = doctor.name;
         return texts;
     }
 
@@ -118,9 +117,7 @@ public class Reception implements Manageable, UIData {
                     date, name, patient.gender, patient.age, symptom, doctor.name);
         }
     }
-    public void printR() {
-        System.out.printf("(%s) %s : 담당의사 %s\n\t", date, symptom, doctor.name);
-    }
+
     @Override
     public boolean matches(String kwd) {
         if (kwd.equals(name))
