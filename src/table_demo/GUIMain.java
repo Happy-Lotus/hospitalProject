@@ -128,8 +128,11 @@ public class GUIMain {
     private JPanel vaccinationPane;
     //TableSelectionDemo VaccinStatusTable = new TableSelectionDemo();
     TableSelectionDemo v_patientTable = new TableSelectionDemo();
+
     ReservationTopPanel v_patientTop = new ReservationTopPanel();
     ReceptionOfPatientTableDemo v_rListTable = new ReceptionOfPatientTableDemo();
+    TopPanel v_patientTop = new TopPanel();
+    
     private void setupVaccinationPane() {
         //검색
         vaccinationPane = new JPanel(new BorderLayout());
@@ -165,3 +168,4 @@ public class GUIMain {
         reservationPane.add(reservationDown, BorderLayout.SOUTH);
     }
 }
+

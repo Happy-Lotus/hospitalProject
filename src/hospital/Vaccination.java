@@ -1,6 +1,5 @@
 package hospital;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 
 import facade.UIData;
@@ -14,9 +13,7 @@ public class Vaccination implements Manageable, UIData{
 	ArrayList<VaccinationDetail> details = new ArrayList<>();
 
 	public void read(Scanner scan) {
-
 		vaccine = scan.next();
-
 		while(true){
 
 			String temp = scan.next();
@@ -66,7 +63,7 @@ public class Vaccination implements Manageable, UIData{
 	public boolean matches(String kwd) {
 		if (infection.contains(kwd)) // ""일 때 true
 			return true;
-		if (vaccine.contains(kwd))
+		if (vaccine.equals(kwd))
 			return true;
 		if((""+number).equals(kwd))
 			return true;
@@ -98,6 +95,7 @@ public class Vaccination implements Manageable, UIData{
 
 		for (VaccinationDetail v : details){
 			texts[2 + i] = v.startTime + "~" + v.endTime;
+			i++;
 		}
 		return texts;
 	}

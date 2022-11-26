@@ -12,38 +12,39 @@ import javax.swing.table.DefaultTableModel;
 
 import hospital.Patient;
 import hospital.PatientMgr;
+import hospital.Reservation;
+import hospital.ReservationMgr;
 
-public class PatientDownPanel extends JPanel {
-    JTextField patientEdits[] = new JTextField[6];
+public class ReservationDownPanel extends JPanel{
+    JTextField reservationEdits[] = new JTextField[6];
     void setupDownPane(TableSelectionDemo tableDemo) {
         JPanel downPane = new JPanel();
         downPane.setLayout(new FlowLayout());
         for (int i = 0; i < 6; i++) {
-            patientEdits[i] = new JTextField("", 10);
-            downPane.add(patientEdits[i]);
+            reservationEdits[i] = new JTextField("", 10);
+            downPane.add(reservationEdits[i]);
         }
 
-        JButton addPatient = new JButton("등록");
-        downPane.add(addPatient, BorderLayout.LINE_END);
+        JButton addReservation = new JButton("예약");
+        downPane.add(addReservation, BorderLayout.LINE_END);
         add(downPane, BorderLayout.PAGE_END);
 
         DefaultTableModel data = (DefaultTableModel) (TableSelectionDemo.table.getModel());
-        addPatient.addActionListener(new ActionListener() {
+        addReservation.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(e.getActionCommand().equals("등록")) {
+                if(e.getActionCommand().equals("예약")) {
                     String[] texts = new String[6]; //편집창의 입력값 배열
                     for(int i=0; i<6; i++)
                     {
-                        texts[i] = patientEdits[i].getText();
+                        texts[i] = reservationEdits[i].getText();
                     }
                     data.addRow(texts); //테이블에 행을 추가
-                    Patient s = new Patient(texts);
-                    PatientMgr.pMgr.addPatient(s);
+                    Reservation s = new Reservation(texts);
+                    ReservationMgr.reserMgr.addReservation(s);
                 }
             }
         });
     }
-
 }
