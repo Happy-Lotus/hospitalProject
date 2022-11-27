@@ -5,8 +5,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import hospital.Main;
 import table_demo.GUIMain;
 import table_demo.Login;
+import table_demo.ReceptionPane;
 
 import java.awt.BorderLayout;
 
@@ -16,44 +18,61 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Color;
 
 public class MenuPage {
 
-	Login login;
-	private JFrame frame;
-	GUIMain main = new GUIMain();
+	static Login login;
+	private static JFrame frame;
+	static GUIMain main = GUIMain.getInstance();
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
+		/*EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MenuPage window = new MenuPage();
-					window.frame.setVisible(true);
+					MenuPage.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
-		});
+		});*/
+		
+		//showMenu();
 	}
 
+	public static void startGUI() {
+        // 이벤트 처리 스레드를 만들고
+        // 거기서 GUI를 생성하고 보여준다.
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+            	frame.setVisible(true);
+            	initialize();
+            }
+        });
+    }
+	
 	/**
 	 * Create the application.
 	 */
 	public MenuPage() {
+		login.dispose();
+	//	startGUI();
+		frame.setVisible(true);
 		initialize();
 	}
-
+/*
 	public void showMenu(){
+		
         login.dispose(); // 로그인창닫기
+        frame.setVisible(true);
         initialize();
         
     }
+  */  
 	/**
 	 * Initialize the contents of the frame.
 	 * setupReceptionPane();
@@ -61,10 +80,11 @@ public class MenuPage {
         setupVaccinationPane();
         setupResevationPane();
 	 */
-	public void initialize() {
+	public static void initialize() {
 		frame = new JFrame("AH 소아과 관리 프로그램");
 		frame.setBounds(100, 100, 440, 456);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLocationRelativeTo(null);
 		
 		JPanel menuPanel = new JPanel();
 		menuPanel.setBackground(Color.WHITE);
@@ -81,8 +101,9 @@ public class MenuPage {
 		rcepButton.addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        main.setupReceptionPane();
-		       // setVisible(false); // 창 안보이게 하기 
+		    	ReceptionPane rp = new ReceptionPane();
+		    	rp.setVisible(true); 
+		    	frame.dispose();// 창 안보이게 하기 
 		    }
 		});
 		
@@ -90,6 +111,13 @@ public class MenuPage {
 		rsvButton.setFont(new Font("수성돋움체", Font.PLAIN, 15));
 		rsvButton.setBounds(237, 144, 97, 60);
 		rsvButton.setBackground(new Color(147, 251, 206));
+		rsvButton.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		     //   main.setupReceptionPane();
+		       // setVisible(false); // 창 안보이게 하기 
+		    }
+		});
 		menuPanel.add(rsvButton);
 		
 		JButton patiButton = new JButton("환자");
@@ -106,6 +134,10 @@ public class MenuPage {
 		docButton.setFont(new Font("수성돋움체", Font.PLAIN, 15));
 		docButton.setBounds(87, 268, 97, 60);
 		docButton.setBackground(new Color(147, 251, 206));
+		docButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		menuPanel.add(docButton);
 		
 		JLabel titelPanel = new JLabel("AH 소아과 관리 프로그램");
@@ -138,4 +170,6 @@ public class MenuPage {
 		
 		
 	}
+
+	
 }
