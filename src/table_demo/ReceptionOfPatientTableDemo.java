@@ -6,12 +6,6 @@ import hospital.PatientMgr;
 import hospital.ReceptionMgr;
 import hospital.ReceptionOfPatientMgr;
 
-/*
- * 진료 테이블는 환자 데이터를 클릭이 변경될 때마다 달라져야함
- * TableSelectionDemo 클래스에서 상속하여
- * 진료 기록을 다시 불러오는 부분을 loadData로 기능 추가함
- * 선택된 주문을
- */
 @SuppressWarnings("serial")
 public class ReceptionOfPatientTableDemo extends TableSelectionDemo {
     ReceptionOfPatientMgr rpMgr = ReceptionOfPatientMgr.getInstance();

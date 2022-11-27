@@ -16,10 +16,7 @@ public class ReceptionMgr extends Manager implements DataEngineInterface {
             recepMgr = new ReceptionMgr();
         return recepMgr;
     }
-    List<Reception> rList;
-    public void setPatient(Patient pati) {
-        rList = pati.receptionList;
-    }
+
     public void addReception(Reception r) {
         receptions.add(r);
     }

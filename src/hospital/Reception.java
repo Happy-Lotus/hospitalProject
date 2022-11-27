@@ -37,6 +37,7 @@ public class Reception implements Manageable, UIData {
             }
             symptom+=temp+" ";
         }
+        symptom = symptom.strip();
 
         doctorName = scan.next();
         doctor = (Doctor)Main.doctorMgr.find(doctorName);
@@ -54,6 +55,7 @@ public class Reception implements Manageable, UIData {
         if(patient.matches(patientCode)) {//신규환자일 경우 의사가 담당하는 patientList에 저장함. 아닐 경우 pass.
             patient.addReception(this);
         }
+
     }
 
     Reception(){	}
@@ -76,12 +78,7 @@ public class Reception implements Manageable, UIData {
         texts[0] = date;
         texts[1] = patientCode;
         texts[2] = name;
-        if(symptom.contains("백신")){
-            texts[3] = "백신";
-        }
-        else{
-            texts[3] = symptom;
-        }
+        texts[3] = symptom;
         texts[4] = doctor.name;
         return texts;
     }
@@ -112,8 +109,6 @@ public class Reception implements Manageable, UIData {
         if (kwd.equals(doctor.getName()))
             return true;
         if (symptom.contains(kwd))
-            return true;
-        if(date.equals(kwd))
             return true;
         return false;
     }

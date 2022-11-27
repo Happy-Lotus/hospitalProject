@@ -47,6 +47,9 @@ public class Patient implements Manageable, UIData {
 	String address="";
 	ArrayList<ReceptionOfPatient> rpList = new ArrayList<ReceptionOfPatient>();
 	ArrayList<Reception> receptionList = new ArrayList<>();
+
+	ArrayList<ReservationOfPatient> rsList = new ArrayList<>();
+	ArrayList<Reservation> reservationList = new ArrayList<>();
 	LinkedHashMap<String,String> vaccinationList = new LinkedHashMap<String,String>();
 
 	@Override
@@ -77,6 +80,11 @@ public class Patient implements Manageable, UIData {
 	{
 		receptionList.add(r);
 		rpList.add(new ReceptionOfPatient(this, r));
+	}
+	void addRervation(Reservation r)
+	{
+		reservationList.add(r);
+		rsList.add(new ReservationOfPatient(this, r));
 	}
 
 	protected String getBirth() {
@@ -123,6 +131,11 @@ public class Patient implements Manageable, UIData {
 		System.out.print("[진료기록] ");
 		for(ReceptionOfPatient rp : rpList) {
 			rp.print();
+		}
+		System.out.println();
+		System.out.print("[예방접종기록] ");
+		for(ReservationOfPatient rs : rsList) {
+			rs.print();
 		}
 		System.out.println();
 	}

@@ -1,6 +1,7 @@
 package table_demo;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +18,7 @@ public class PatientDownPanel extends JPanel {
     JTextField patientEdits[] = new JTextField[6];
     void setupDownPane(TableSelectionDemo tableDemo) {
         JPanel downPane = new JPanel();
+        downPane.setBackground(Color.WHITE);
         downPane.setLayout(new FlowLayout());
         for (int i = 0; i < 6; i++) {
             patientEdits[i] = new JTextField("", 10);

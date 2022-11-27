@@ -9,6 +9,7 @@ public class VaccinationTopPanel extends JPanel{
     JTextField kwdTextField = new JTextField("", 20);
     void setupTopPane(TableSelectionDemo tableDemo) {
         JPanel topPane = new JPanel();
+        topPane.setBackground(Color.WHITE);
         JButton detail = new JButton("예방접종현황");
         topPane.add(detail, BorderLayout.LINE_START);
         topPane.add(kwdTextField, BorderLayout.CENTER);
