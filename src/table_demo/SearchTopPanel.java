@@ -15,7 +15,7 @@ public class SearchTopPanel extends JPanel {
     JTextField kwdTextField = new JTextField("", 20);
     void setupTopPane(TableSelectionDemo tableDemo) {
         JPanel topPane = new JPanel();
-        topPane.setBackground(Color.WHITE);
+        topPane.setBackground(new Color(147, 251, 206));
         topPane.add(kwdTextField, BorderLayout.CENTER);
         JButton search = new JButton("검색");
         topPane.add(search, BorderLayout.LINE_END);
