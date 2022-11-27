@@ -17,7 +17,7 @@ public class ReservationMgr implements DataEngineInterface {
     public void addReservation(Reservation reser) {
         reservations.add(reser);
     }
-    private String[] headers = {"날짜", "이름", "나이", "증상", "의사"};
+    private String[] headers = {"예방접종날짜", "환자코드", "이름", "백신", "의사"};
     @Override
     public String[] getColumnNames() {
         return headers;

@@ -1,6 +1,7 @@
 package table_demo;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,7 +15,7 @@ public class SearchTopPanel extends JPanel {
     JTextField kwdTextField = new JTextField("", 20);
     void setupTopPane(TableSelectionDemo tableDemo) {
         JPanel topPane = new JPanel();
-
+        topPane.setBackground(Color.WHITE);
         topPane.add(kwdTextField, BorderLayout.CENTER);
         JButton search = new JButton("검색");
         topPane.add(search, BorderLayout.LINE_END);

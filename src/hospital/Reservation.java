@@ -7,25 +7,14 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Reservation extends Reception implements Manageable, UIData {
+public class Reservation implements Manageable, UIData {
     String date;
     String patientCode;
     Patient patient;
     String name;
     String symptom="";
-
     Doctor doctor = null;
-
-    Reservation() {
-    }
-
-    public Reservation(Object[] row) {
-        date = (String) row[0];
-        patientCode = (String) row[1];
-        name = (String) row[1];
-        symptom = (String) row[3];
-        doctor.name = (String) row[4];
-    }
+    String doctorName;
 
     @Override
     public void read(Scanner scan) {
@@ -48,7 +37,8 @@ public class Reservation extends Reception implements Manageable, UIData {
             symptom+=temp+" ";
         }
 
-        doctor = (Doctor) Main.doctorMgr.find(scan.next());
+        doctorName = scan.next();
+        doctor = (Doctor)Main.doctorMgr.find(doctorName);
 
         if (doctor == null) {
             Random random = new Random();
@@ -58,37 +48,50 @@ public class Reservation extends Reception implements Manageable, UIData {
         }
 
         String[] words = symptom.split(" ");
-            String vName = words[0];
-            int vNum = Integer.parseInt(words[1].substring(0, 1));
-            System.out.println(vName + vNum);
-            if (Main.VaccinationMgr.find(vName) != null) {
-                patient.getVaccinationList().put(vName + " " + vNum + "차", date);
-            } else {
-                System.out.println(vName + " 백신은 없습니다.");
-            }
+        String vName = words[0];
+        int vNum = Integer.parseInt(words[1].substring(0, 1));
+        System.out.println(vName + vNum);
+        if (Main.VaccinationMgr.find(vName) != null) {
+            patient.getVaccinationList().put(vName + " " + vNum + "차", date);
+        }
+        else {
+            System.out.println(vName + " 백신은 없습니다.");
         }
 
+        if(patient.matches(patientCode)) {//신규환자일 경우 의사가 담당하는 patientList에 저장함. 아닐 경우 pass.
+            patient.addRervation(this);
+        }
+    }
 
+    Reservation() {
+    }
+
+    public Reservation(Object[] row) {
+        date = (String) row[0];
+        patientCode = (String) row[1];
+        name = (String) row[2];
+        symptom = (String) row[3];
+        doctorName = (String) row[4];
+    }
     @Override
     public void set(Object[] uitexts) {
 
     }
     @Override
     public String[] getUiTexts() {
-
         String[] texts = new String[5];
-
-            texts[0] = date;
-            texts[1] = patientCode;
-            texts[2] = name;
-            texts[3] = symptom;
-            texts[4] = doctor.getName();
-            return texts;
+        texts[0] = date;
+        texts[1] = patientCode;
+        texts[2] = name;
+        texts[3] = symptom;
+        texts[4] = doctor.name;
+        return texts;
     }
 
     @Override
     public void print() {
-    	
+        System.out.format("[%s] %s(%s, 만 %d세(%d개월)) : %s 담당의사 %s\n",
+                date, name, patient.gender, patient.age, patient.month, symptom, doctor.name);
     }
     @Override
     public boolean matches(String kwd) {
@@ -98,7 +101,7 @@ public class Reservation extends Reception implements Manageable, UIData {
             return true;
         if (kwd.equals(""+patient.getAge()))
             return true;
-        if (kwd.equals(gender) && kwd.length() == 1)
+        if (kwd.equals(patient.gender) && kwd.length() == 1)
             return true;
         if (kwd.equals(doctor.getName()))
             return true;

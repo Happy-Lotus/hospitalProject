@@ -3,15 +3,16 @@ package table_demo;
 import facade.DataEngineInterface;
 import hospital.Patient;
 import hospital.PatientMgr;
-import hospital.ReceptionMgr;
+
+import hospital.ReservationOfPatientMgr;
 
 @SuppressWarnings("serial")
-public class VaccinationOfPatientTableDemo extends TableSelectionDemo{
-    ReceptionMgr receptionMgr = ReceptionMgr.getInstance();
+public class ReservationOfPatientTableDemo extends TableSelectionDemo{
+    ReservationOfPatientMgr rsMgr = ReservationOfPatientMgr.getInstance();
     PatientMgr patientMgr = PatientMgr.getInstance();
 
     void init(DataEngineInterface mgr) {
-        ((ReceptionMgr)mgr).setPatient(patientMgr.getPatient(0));
+        ((ReservationOfPatientMgr)mgr).setPatient(patientMgr.getPatient(0));
         super.init(mgr);
     }
     // 부모 클래스의 테이블 데이터 로드하는 부분을 오버라이드하여
@@ -20,9 +21,9 @@ public class VaccinationOfPatientTableDemo extends TableSelectionDemo{
     void loadData(String kwd) {
         if(!kwd.equals("")) {
             Patient p = patientMgr.getPatient(Integer.parseInt(kwd));
-            receptionMgr.setPatient(p);
+            rsMgr.setPatient(p);
         }
         super.loadData("");
+
     }
 }
-
