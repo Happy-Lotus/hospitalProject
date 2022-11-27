@@ -4,10 +4,12 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import hospital.Main;
+
 import java.awt.BorderLayout;
 
 import table_demo.Login;
-import table_demo.GUIMain;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -32,6 +34,8 @@ public class StartPage {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					 Main hospitalMain = Main.getInstance();
+					 hospitalMain.run();
 					StartPage window = new StartPage();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -104,11 +108,13 @@ public class StartPage {
 
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 MenuPage mp = null;
-				
-				 Login login = new Login(); // 로그인창 보이기
-				 login.setMain(mp); // 로그인창에게 메인 클래스보내기
-				// login.setVisible(false);
+				//MenuPage mp = null;
+				Login login = new Login(); // 로그인창 보이기
+				//new Login();
+				login.setVisible(true);
+				//login.setMain(mp); // 로그인창에게 메인 클래스보내기
+			   	// login.setVisible(false);
+				frame.dispose();
 			}
 		});
 
