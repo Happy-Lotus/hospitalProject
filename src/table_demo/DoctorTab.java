@@ -39,56 +39,59 @@ public class DoctorTab {
 		frame.setBounds(100, 100, 665, 536);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setLocationRelativeTo(null);
+		DoctorDetail dd = new DoctorDetail();
+		dd.run();
 		
-		JButton btnNewButton_1 = new JButton("New button");
+		JButton btnNewButton_1 = new JButton("이소윤");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DoctorDetail dd = new DoctorDetail();
-				dd.doctor4();
+				dd.doctor4(btnNewButton_1.getText());
 			}
 		});
 		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\현지현\\Documents\\image\\doctor4.jpg"));
 		btnNewButton_1.setBounds(106, 280, 195, 135);
 		frame.getContentPane().add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("New button");
+		JButton btnNewButton_2 = new JButton("현지현");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DoctorDetail dd = new DoctorDetail();
-				dd.doctor5();
+				dd.doctor5(btnNewButton_2.getText());
 			}
 		});
 		btnNewButton_2.setIcon(new ImageIcon("C:\\Users\\현지현\\Documents\\image\\doctor5.jpg"));
 		btnNewButton_2.setBounds(354, 280, 201, 135);
 		frame.getContentPane().add(btnNewButton_2);
 		
-		JButton btnNewButton_3 = new JButton("New button");
+		JButton btnNewButton_3 = new JButton("김가을");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DoctorDetail dd = new DoctorDetail();
-				dd.doctor1();
+				dd.doctor1(btnNewButton_3.getText());
 			}
 		});
 		btnNewButton_3.setIcon(new ImageIcon("C:\\Users\\현지현\\Documents\\image\\doctor1.jpg"));
 		btnNewButton_3.setBounds(12, 73, 195, 135);
 		frame.getContentPane().add(btnNewButton_3);
 		
-		JButton btnNewButton_4 = new JButton("New button");
+		JButton btnNewButton_4 = new JButton("김해연");
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DoctorDetail dd = new DoctorDetail();
-				dd.doctor2();
+				dd.doctor2(btnNewButton_4.getText());
 			}
 		});
 		btnNewButton_4.setIcon(new ImageIcon("C:\\Users\\현지현\\Documents\\image\\doctor2.jpg"));
 		btnNewButton_4.setBounds(230, 73, 195, 135);
 		frame.getContentPane().add(btnNewButton_4);
 		
-		JButton btnNewButton_5 = new JButton("New button");
+		JButton btnNewButton_5 = new JButton("김희연");
 		btnNewButton_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DoctorDetail dd = new DoctorDetail();
-				dd.doctor3();
+				dd.doctor3(btnNewButton_5.getText());
 			}
 		});
 		btnNewButton_5.setIcon(new ImageIcon("C:\\Users\\현지현\\Documents\\image\\doctor3.jpg"));
