@@ -1,12 +1,8 @@
 package table_demo;
 
-import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import hospital.Main;
-import table_demo.GUIMain;
-import table_demo.Login;
-//import table_demo.ReceptionPane;
+
 import java.awt.BorderLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -19,7 +15,7 @@ import java.awt.Color;
 
 public class MenuPage {
 
-    static Login login;
+   // static Login login;
     private static JFrame frame;
     static GUIMain main = GUIMain.getInstance();
 
@@ -86,7 +82,7 @@ public class MenuPage {
         frame.getContentPane().add(menuPanel, BorderLayout.CENTER);
         menuPanel.setLayout(null);
 
-        JButton rcepButton = new JButton("접수");
+        JButton rcepButton = new JButton(new ImageIcon("src\\image\\reception.png"));
         rcepButton.setBackground(Color.LIGHT_GRAY);
         rcepButton.setFont(new Font("수성돋움체", Font.PLAIN, 15));
         rcepButton.setBounds(87, 144, 97, 60);
@@ -96,8 +92,9 @@ public class MenuPage {
         rcepButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               main.receptionPane.setVisible(true);
-               frame.dispose();// 창 안보이게 하기
+                frame.dispose();
+                ReceptionTab.getInstance().receptionFrame.setVisible(true);
+
             }
         });
 
@@ -108,8 +105,9 @@ public class MenuPage {
         rsvButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //   main.setupReceptionPane();
-                // setVisible(false); // 창 안보이게 하기
+                frame.dispose();
+
+                ReservationTab.getInstance().reservationFrame.setVisible(true);
             }
         });
         menuPanel.add(rsvButton);
@@ -118,6 +116,8 @@ public class MenuPage {
         patiButton.setFont(new Font("수성돋움체", Font.PLAIN, 15));
         patiButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                PatientTab.getInstance().patientFrame.setVisible(true);
             }
         });
         patiButton.setBounds(237, 268, 97, 60);
@@ -130,6 +130,9 @@ public class MenuPage {
         docButton.setBackground(new Color(147, 251, 206));
         docButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                DoctorTab.getInstance().doctorFrame.setVisible(true);
+
             }
         });
         menuPanel.add(docButton);
@@ -146,7 +149,7 @@ public class MenuPage {
 
 
 
-        ImageIcon home = new ImageIcon("src/image/home.png");
+        ImageIcon home = new ImageIcon("C:\\Users\\annie\\IdeaProjects\\hospitalProject\\image\\home.png");
         Image img = home.getImage();
         Image changeImg = img.getScaledInstance(48, 49,Image.SCALE_SMOOTH);
         ImageIcon changelogo = new ImageIcon(changeImg);

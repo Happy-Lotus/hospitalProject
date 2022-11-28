@@ -118,8 +118,8 @@ public class Login extends JFrame {
 
             // 로그인 성공이라면 메뉴창 뛰우기
             if(isLogin()){
-               mp = new MenuPage();
-               dispose();
+                mp = new MenuPage();
+                dispose();
             }
         }else{
             JOptionPane.showMessageDialog(null, "Faild");

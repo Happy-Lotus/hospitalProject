@@ -9,14 +9,14 @@ import hospital.Main;
 import hospital.ReceptionMgr;
 public class ReceptionTab{
     private static ReceptionTab receptionTab = null;
-    private ReceptionTab() {}
+    ReceptionTab() {}
     public static ReceptionTab getInstance() {
         if (receptionTab == null)
             receptionTab = new ReceptionTab();
         return receptionTab;
     }
 
-    public static void main(String args[]) {
+    public static void startGUI() {
         Main hospitalmain = Main.getInstance();
         hospitalmain.run();
 
@@ -32,7 +32,7 @@ public class ReceptionTab{
         receptionFrame.setBackground(Color.WHITE);
         receptionFrame.setTitle("진료현황");
         receptionFrame.getContentPane().add(receptionPane);
-        receptionFrame.setVisible(true);
+        //receptionFrame.setVisible(true);
     }
 
     private JPanel receptionPane;

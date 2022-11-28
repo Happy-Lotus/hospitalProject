@@ -13,14 +13,14 @@ import hospital.ReservationMgr;
 
 public class ReservationTab {
     private static ReservationTab reservationTab = null;
-    private ReservationTab() {}
+    ReservationTab() {}
     public static ReservationTab getInstance() {
         if (reservationTab == null)
             reservationTab = new ReservationTab();
         return reservationTab;
     }
 
-    public static void main(String args[]) {
+    public static void startGUI() {
         Main hospitalmain = Main.getInstance();
         hospitalmain.run();
 
@@ -34,7 +34,7 @@ public class ReservationTab {
         reservationFrame.setBackground(Color.WHITE);
         reservationFrame.add(reservationPane);
         reservationFrame.pack();
-        reservationFrame.setVisible(true);
+        //reservationFrame.setVisible(true);
     }
     //예방접종 예약 탭
     private JPanel reservationPane;

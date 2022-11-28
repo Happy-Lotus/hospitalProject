@@ -15,14 +15,14 @@ import hospital.ReservationOfPatientMgr;
 
 public class PatientTab {
     private static PatientTab patientTab = null;
-    private PatientTab() {}
+    PatientTab() {}
     public static PatientTab getInstance() {
         if (patientTab == null)
             patientTab = new PatientTab();
         return patientTab;
     }
-    static Main hospitalmain = Main.getInstance();
-    public static void main(String args[]) {
+    public static void startGUI(){
+        Main hospitalmain = Main.getInstance();
         hospitalmain.run();
 
         //PatientTab main = new PatientTab();
@@ -43,7 +43,7 @@ public class PatientTab {
         patientFrame.setBackground(Color.WHITE);
         patientFrame.add(patientJtab);
         patientFrame.pack();
-        patientFrame.setVisible(true);
+        //patientFrame.setVisible(true);
     }
 
     // 환자을 보여주는 패널 부분 - 위에는 검색과 JTable, 아래는 환자 등록
