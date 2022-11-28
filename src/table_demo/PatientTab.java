@@ -23,7 +23,7 @@ public class PatientTab {
     }
     public static void startGUI(){
         Main hospitalmain = Main.getInstance();
-        hospitalmain.run();
+        //hospitalmain.run();
 
         //PatientTab main = new PatientTab();
         PatientTab.getInstance().createAndShowPatient();

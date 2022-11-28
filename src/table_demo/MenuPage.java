@@ -15,7 +15,7 @@ import java.awt.Color;
 
 public class MenuPage {
 
-   // static Login login;
+    // static Login login;
     private static JFrame frame;
     static GUIMain main = GUIMain.getInstance();
 
@@ -57,11 +57,9 @@ public class MenuPage {
     }
 /*
 	public void showMenu(){
-
         login.dispose(); // 로그인창닫기
         frame.setVisible(true);
         initialize();
-
     }
   */
     /**
@@ -82,64 +80,97 @@ public class MenuPage {
         frame.getContentPane().add(menuPanel, BorderLayout.CENTER);
         menuPanel.setLayout(null);
 
-        JButton rcepButton = new JButton(new ImageIcon("src\\image\\reception.png"));
-        rcepButton.setBackground(Color.LIGHT_GRAY);
-        rcepButton.setFont(new Font("수성돋움체", Font.PLAIN, 15));
+        //JButton rcepButton = new JButton("접수");
+        ImageIcon rb = new ImageIcon("src/image/접수.png");
+        Image rb_img = rb.getImage();
+        Image rb_changeImg = rb_img.getScaledInstance(48, 49,Image.SCALE_SMOOTH);
+        ImageIcon rb_changelogo = new ImageIcon(rb_changeImg);
+        JButton rcepButton = new JButton(rb_changelogo);
+
+        //homeButton.setOpaque(false);
         rcepButton.setBounds(87, 144, 97, 60);
         rcepButton.setBackground(new Color(147, 251, 206));
+
         menuPanel.add(rcepButton);
+        frame.setVisible(true);
 
         rcepButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 ReceptionTab.getInstance().receptionFrame.setVisible(true);
-
             }
         });
 
-        JButton rsvButton = new JButton("예약");
-        rsvButton.setFont(new Font("수성돋움체", Font.PLAIN, 15));
+
+        //JButton rcepButton = new JButton("예약");
+        ImageIcon rv = new ImageIcon("src/image/예약.png");
+        Image rv_img = rv.getImage();
+        Image rv_changeImg = rv_img.getScaledInstance(48, 49,Image.SCALE_SMOOTH);
+        ImageIcon rv_changelogo = new ImageIcon(rv_changeImg);
+        JButton rsvButton = new JButton(rv_changelogo);
+
+        //homeButton.setOpaque(false);
         rsvButton.setBounds(237, 144, 97, 60);
         rsvButton.setBackground(new Color(147, 251, 206));
+
+        menuPanel.add(rsvButton);
+        frame.setVisible(true);
+
         rsvButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-
                 ReservationTab.getInstance().reservationFrame.setVisible(true);
             }
         });
-        menuPanel.add(rsvButton);
 
-        JButton patiButton = new JButton("환자");
-        patiButton.setFont(new Font("수성돋움체", Font.PLAIN, 15));
+
+        ImageIcon pt = new ImageIcon("src/image/환자.png");
+        Image pt_img = pt.getImage();
+        Image pt_changeImg = pt_img.getScaledInstance(48, 49,Image.SCALE_SMOOTH);
+        ImageIcon pt_changelogo = new ImageIcon(pt_changeImg);
+        JButton patiButton = new JButton(pt_changelogo);
+
+        //homeButton.setOpaque(false);
+        patiButton.setBounds(237, 268, 97, 60);
+        patiButton.setBackground(new Color(147, 251, 206));
+
+        menuPanel.add(patiButton);
+        frame.setVisible(true);
+
         patiButton.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 PatientTab.getInstance().patientFrame.setVisible(true);
             }
         });
-        patiButton.setBounds(237, 268, 97, 60);
-        patiButton.setBackground(new Color(147, 251, 206));
-        menuPanel.add(patiButton);
 
-        JButton docButton = new JButton("의사");
-        docButton.setFont(new Font("수성돋움체", Font.PLAIN, 15));
+        ImageIcon dt = new ImageIcon("src/image/의사.png");
+        Image dt_img = dt.getImage();
+        Image dt_changeImg = dt_img.getScaledInstance(48, 49,Image.SCALE_SMOOTH);
+        ImageIcon dt_changelogo = new ImageIcon(dt_changeImg);
+        JButton docButton = new JButton(dt_changelogo);
+
+        //homeButton.setOpaque(false);
         docButton.setBounds(87, 268, 97, 60);
         docButton.setBackground(new Color(147, 251, 206));
+
+        menuPanel.add(docButton);
+        frame.setVisible(true);
+
         docButton.addActionListener(new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 DoctorTab.getInstance().doctorFrame.setVisible(true);
-
             }
         });
-        menuPanel.add(docButton);
 
         JLabel titelPanel = new JLabel("AH 소아과 관리 프로그램");
-        titelPanel.setFont(new Font("수성돋움체", Font.BOLD, 16));
-        titelPanel.setBounds(117, 48, 188, 65);
+        titelPanel.setFont(new Font("수성돋움체", Font.BOLD, 18));
+        titelPanel.setBounds(101, 46, 220, 65);
         menuPanel.add(titelPanel);
 
 		/*
@@ -147,9 +178,7 @@ public class MenuPage {
 		homeButton.setText("Home");
 		*/
 
-
-
-        ImageIcon home = new ImageIcon("C:\\Users\\annie\\IdeaProjects\\hospitalProject\\image\\home.png");
+        ImageIcon home = new ImageIcon("src/image/home.png");
         Image img = home.getImage();
         Image changeImg = img.getScaledInstance(48, 49,Image.SCALE_SMOOTH);
         ImageIcon changelogo = new ImageIcon(changeImg);
@@ -157,6 +186,30 @@ public class MenuPage {
 
         //homeButton.setOpaque(false);
         homeButton.setBounds(12, 10, 48, 49);
+        homeButton.setBackground(Color.WHITE);
+
+        menuPanel.add(homeButton);
+
+        JLabel lblNewLabel = new JLabel("접수");
+        lblNewLabel.setFont(new Font("수성돋움체", Font.PLAIN, 15));
+        lblNewLabel.setBounds(115, 208, 35, 34);
+        menuPanel.add(lblNewLabel);
+
+        JLabel lblNewLabel_1 = new JLabel("예약");
+        lblNewLabel_1.setFont(new Font("수성돋움체", Font.PLAIN, 15));
+        lblNewLabel_1.setBounds(269, 207, 35, 34);
+        menuPanel.add(lblNewLabel_1);
+
+        JLabel lblNewLabel_1_1 = new JLabel("의사");
+        lblNewLabel_1_1.setFont(new Font("수성돋움체", Font.PLAIN, 15));
+        lblNewLabel_1_1.setBounds(116, 333, 35, 34);
+        menuPanel.add(lblNewLabel_1_1);
+
+        JLabel lblNewLabel_1_1_1 = new JLabel("환자");
+        lblNewLabel_1_1_1.setFont(new Font("수성돋움체", Font.PLAIN, 15));
+        lblNewLabel_1_1_1.setBounds(269, 333, 35, 34);
+        menuPanel.add(lblNewLabel_1_1_1);
+        frame.setVisible(true);
 
         homeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

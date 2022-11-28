@@ -1,5 +1,7 @@
 package table_demo;
 
+import hospital.Main;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -22,9 +24,15 @@ public class DoctorTab {
 	}
 
 	public static void startGUI() {
-		GUIMain.hospitalMain.run();
-		getInstance();
-		doctorTab.createAndShowPatient();
+		Main hospitalmain = Main.getInstance();
+		//hospitalmain.run();
+
+		//PatientTab main = new PatientTab();
+		//PatientTab.getInstance().createAndShowPatient();
+		//GUIMain.hospitalMain.run();
+		//getInstance();
+		//doctorTab.createAndShowPatient();
+		DoctorTab.getInstance().createAndShowPatient();
 	}
 	public JFrame doctorFrame = new JFrame("의사 정보");
 

@@ -18,7 +18,7 @@ public class ReceptionTab{
 
     public static void startGUI() {
         Main hospitalmain = Main.getInstance();
-        hospitalmain.run();
+        //hospitalmain.run();
 
         ReceptionTab.getInstance().createAndShowReception();
 
