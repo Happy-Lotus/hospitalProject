@@ -53,10 +53,12 @@ public class GUIMain {
      * GUI를 생성하여 보여준다. 스레드 안전을 위하여
      * 이 메소드는 이벤트 처리 스레드에서 불려져야 한다.
      */
+
     static JFrame mainFrame = new JFrame("병원 환자 관리 프로그램");
     private void createAndShowGUI() {
         //mainFrame.setLocationRelativeTo(null);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
         // 탭을 생성하고 두개 패널을 추가한다.
         JTabbedPane jtab = new JTabbedPane();
         jtab.setBackground(Color.WHITE);
@@ -76,7 +78,6 @@ public class GUIMain {
         mainFrame.setVisible(true);
     }
 
-    // 접수을 보여주는 패널 부분 - 탑과 JTable 포함
     private JPanel receptionPane;
     TableSelectionDemo receptionTable = new TableSelectionDemo();
     SearchTopPanel receptionTop = new SearchTopPanel();  // 검색과 상세보기 버튼을 가진 패널
@@ -96,9 +97,11 @@ public class GUIMain {
 
         receptionDown.setupDownPane(receptionTable);
         receptionPane.add(receptionDown, BorderLayout.SOUTH);
-    }
 
+    }
+    
     // 환자을 보여주는 패널 부분 - 위에는 검색과 JTable, 아래는 환자 등록
+
     private JPanel patientPane;
     TableSelectionDemo patientTable = new TableSelectionDemo();
     ReceptionOfPatientTableDemo rpListTable = new ReceptionOfPatientTableDemo();
@@ -127,24 +130,26 @@ public class GUIMain {
         patientDown.setupDownPane(patientTable);
         patientPane.add(patientDown, BorderLayout.SOUTH);
 
-        //가운데 환자 리스트와 진료 기록 테이블 추가
-        //JPanel center = new JPanel();
-        //center.setBackground(Color.WHITE);
-        //center.add(patientTable, BorderLayout.CENTER);
-        center.add(patientTable);
+
+
+        JPanel center = new JPanel();
+        center.add(patientTable, BorderLayout.CENTER);
         rpListTable.tableTitle = "ReceptionOfPatientList";
         rpListTable.addComponentsToPane(ReceptionOfPatientMgr.getInstance());
-        rpListTable.setBounds(0, 300, 720, 205);
-        center.add(rpListTable);
-        //center.add(rpListTable, BorderLayout.SOUTH);
-        //patientPane.add(center, BorderLayout.CENTER);
+        center.add(rpListTable, BorderLayout.SOUTH);
+        patientPane.add(center, BorderLayout.CENTER);
+
     }
+
     //예방접종 현황 탭
+    //TableSelectionDemo VaccinStatusTable = new TableSelectionDemo();
     private JPanel vaccinationPane;
     //TableSelectionDemo VaccinStatusTable = new TableSelectionDemo();
     TableSelectionDemo v_patientTable = new TableSelectionDemo();
-    ReservationOfPatientTableDemo v_rListTable = new ReservationOfPatientTableDemo();
-    VaccinationTopPanel v_patientTop = new VaccinationTopPanel();
+
+    VaccinationOfPatientTableDemo v_rListTable = new VaccinationOfPatientTableDemo();
+    SearchTopPanel v_patientTop = new SearchTopPanel();
+
     private void setupVaccinationPane() {
         //검색
         vaccinationPane = new JPanel(new BorderLayout());
@@ -165,21 +170,19 @@ public class GUIMain {
     //예방접종 예약 탭
     private JPanel reservationPane;
     TableSelectionDemo reservationTable = new TableSelectionDemo();
-    SearchTopPanel reservationTop = new SearchTopPanel();  // 검색과 상세보기 버튼을 가진 패널
-    ReservationDownPanel reservationDown = new ReservationDownPanel();
-    private void setupResevationPane() {
-        reservationPane = new JPanel(new BorderLayout());
+    ReservationTopPanel reservationTop = new ReservationTopPanel();  // 검색과 상세보기 버튼을 가진 패널
 
-        reservationTop.setBackground(new Color(147, 251, 206));
-        reservationDown.setBackground(Color.WHITE);
+    ReservationDownPanel reservationDown = new ReservationDownPanel();
+
+    private void setupResevationPane() {
+
+       reservationPane = new JPanel(new BorderLayout());
+
         //Create and set up the content pane.
         reservationTable.tableTitle = "reservation";
         reservationTable.addComponentsToPane(ReservationMgr.getInstance());  // 싱글톤
         reservationTop.setupTopPane(reservationTable);
         reservationPane.add(reservationTop, BorderLayout.NORTH);
         reservationPane.add(reservationTable, BorderLayout.CENTER);
-
-        reservationDown.setupDownPane(reservationTable);
-        reservationPane.add(reservationDown, BorderLayout.SOUTH);
     }
 }
