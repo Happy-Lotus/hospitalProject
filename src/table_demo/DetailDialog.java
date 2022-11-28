@@ -38,7 +38,8 @@ public class DetailDialog extends javax.swing.JDialog {
 	int selectedIndex = -1;
 	JTable table;
 	JScrollPane scroll;
-    ReservationMgr rMgr = new ReservationMgr();
+
+	ReservationMgr rMgr = new ReservationMgr();
 
 	String title[] = { "백신종류", "1차", "2차", "3차", "추4차", "추5차", "추6차" };
 	String data[][] = { { "BCG" }, { "HepB" }, { "DTaP" }, { "Tdap" }, { "IPV" }, { "Hib" }, { "PCV" }, { "MMR" },
@@ -66,7 +67,7 @@ public class DetailDialog extends javax.swing.JDialog {
 				table.setValueAt(data[i][j], i, j); // data값을 i번 행, j번 열에 넣어라
 			}
 		}
-		
+
 		tableModel = new DefaultTableModel(rMgr.getColumnNames(), 0) {
 			public boolean isCellEditable(int row, int column) {
 				return false;
@@ -77,362 +78,365 @@ public class DetailDialog extends javax.swing.JDialog {
 		for (Object r : reservationList) {
 			tableModel.addRow(((UIData) r).getUiTexts());
 		}
+    
 		JTable jtable = new JTable();
 		jtable = new JTable(tableModel);
 		for(int k=0; k<reservationList.size(); k++) {
 			String symtom = (String) jtable.getValueAt(k, 3);
+
+			if (symtom.contains("BCG")) {
+				if (itemDetails[2].contains("6차"))
+					for (int i = 1; i <= 5; i++) {
+						table.setValueAt("O", 0, i);
+					}
+				if (symtom.contains("5차"))
+					for (int i = 1; i <= 5; i++) {
+						table.setValueAt("O", 0, i);
+					}
+				if (symtom.contains("4차"))
+					for (int i = 1; i <= 4; i++) {
+						table.setValueAt("O", 0, i);
+					}
+				if (symtom.contains("3차"))
+					for (int i = 1; i <= 3; i++) {
+						table.setValueAt("O", 0, i);
+					}
+				if (symtom.contains("2차"))
+					for (int i = 1; i <= 2; i++) {
+						table.setValueAt("O", 0, i);
+					}
+				if (symtom.contains("1차"))
+					table.setValueAt("O", 0, 1);
+			}
+
+			if (symtom.contains("HepB")) {
+				if (symtom.contains("6차"))
+					for (int i = 1; i <= 6; i++) {
+						table.setValueAt("O", 1, i);
+					}
+				if (symtom.contains("5차"))
+					for (int i = 1; i <= 5; i++) {
+						table.setValueAt("O", 1, i);
+					}
+				if (symtom.contains("4차"))
+					for (int i = 1; i <= 4; i++) {
+						table.setValueAt("O", 1, i);
+					}
+				if (symtom.contains("3차"))
+					for (int i = 1; i <= 3; i++) {
+						table.setValueAt("O", 1, i);
+					}
+				if (symtom.contains("2차"))
+					for (int i = 1; i <= 2; i++) {
+						table.setValueAt("O", 1, i);
+					}
+				if (symtom.contains("1차"))
+					table.setValueAt("O", 1, 1);
+			}
+
+			if (symtom.contains("DTaP")) {
+				if (symtom.contains("6차"))
+					for (int i = 1; i <= 6; i++) {
+						table.setValueAt("O", 2, i);
+					}
+				if (symtom.contains("5차"))
+					for (int i = 1; i <= 5; i++) {
+						table.setValueAt("O", 2, i);
+					}
+				if (symtom.contains("4차"))
+					for (int i = 1; i <= 4; i++) {
+						table.setValueAt("O", 2, i);
+					}
+				if (symtom.contains("3차"))
+					for (int i = 1; i <= 3; i++) {
+						table.setValueAt("O", 2, i);
+					}
+				if (symtom.contains("2차"))
+					for (int i = 1; i <= 2; i++) {
+						table.setValueAt("O", 2, i);
+					}
+				if (symtom.contains("1차"))
+					table.setValueAt("O", 2, 1);
+			}
+
+			if (symtom.contains("Tdap")) {
+				if (symtom.contains("6차"))
+					for (int i = 1; i <= 6; i++) {
+						table.setValueAt("O", 3, i);
+					}
+				if (symtom.contains("5차"))
+					for (int i = 1; i <= 5; i++) {
+						table.setValueAt("O", 3, i);
+					}
+				if (symtom.contains("4차"))
+					for (int i = 1; i <= 4; i++) {
+						table.setValueAt("O", 3, i);
+					}
+				if (symtom.contains("3차"))
+					for (int i = 1; i <= 3; i++) {
+						table.setValueAt("O", 3, i);
+					}
+				if (symtom.contains("2차"))
+					for (int i = 1; i <= 2; i++) {
+						table.setValueAt("O", 3, i);
+					}
+				if (symtom.contains("1차"))
+					table.setValueAt("O", 3, 1);
+			}
+
+			if (symtom.contains("IPV")) {
+				if (symtom.contains("6차"))
+					for (int i = 1; i <= 6; i++) {
+						table.setValueAt("O", 4, i);
+					}
+				if (symtom.contains("5차"))
+					for (int i = 1; i <= 5; i++) {
+						table.setValueAt("O", 4, i);
+					}
+				if (symtom.contains("4차"))
+					for (int i = 1; i <= 4; i++) {
+						table.setValueAt("O", 4, i);
+					}
+				if (symtom.contains("3차"))
+					for (int i = 1; i <= 3; i++) {
+						table.setValueAt("O", 4, i);
+					}
+				if (symtom.contains("2차"))
+					for (int i = 1; i <= 2; i++) {
+						table.setValueAt("O", 4, i);
+					}
+				if (symtom.contains("1차"))
+					table.setValueAt("O", 4, 1);
+			}
+
+			if (symtom.contains("Hib")) {
+				if (symtom.contains("6차"))
+					for (int i = 1; i <= 6; i++) {
+						table.setValueAt("O", 5, i);
+					}
+				if (symtom.contains("5차"))
+					for (int i = 1; i <= 5; i++) {
+						table.setValueAt("O", 5, i);
+					}
+				if (symtom.contains("4차"))
+					for (int i = 1; i <= 4; i++) {
+						table.setValueAt("O", 5, i);
+					}
+				if (symtom.contains("3차"))
+					for (int i = 1; i <= 3; i++) {
+						table.setValueAt("O", 5, i);
+					}
+				if (symtom.contains("2차"))
+					for (int i = 1; i <= 2; i++) {
+						table.setValueAt("O", 5, i);
+					}
+				if (symtom.contains("1차"))
+					table.setValueAt("O", 5, 1);
+			}
+
+			if (symtom.contains("PCV")) {
+				if (itemDetails[2].contains("6차"))
+					for (int i = 1; i <= 6; i++) {
+						table.setValueAt("O", 6, i);
+					}
+				if (symtom.contains("5차"))
+					for (int i = 1; i <= 5; i++) {
+						table.setValueAt("O", 6, i);
+					}
+				if (symtom.contains("4차"))
+					for (int i = 1; i <= 4; i++) {
+						table.setValueAt("O", 6, i);
+					}
+				if (symtom.contains("3차"))
+					for (int i = 1; i <= 3; i++) {
+						table.setValueAt("O", 6, i);
+					}
+				if (symtom.contains("2차"))
+					for (int i = 1; i <= 2; i++) {
+						table.setValueAt("O", 6, i);
+					}
+				if (symtom.contains("1차"))
+					table.setValueAt("O", 6, 1);
+			}
+
+			if (symtom.contains("MMR")) {
+				if (symtom.contains("6차"))
+					for (int i = 1; i <= 6; i++) {
+						table.setValueAt("O", 7, i);
+					}
+				if (symtom.contains("5차"))
+					for (int i = 1; i <= 5; i++) {
+						table.setValueAt("O", 7, i);
+					}
+				if (symtom.contains("4차"))
+					for (int i = 1; i <= 4; i++) {
+						table.setValueAt("O", 7, i);
+					}
+				if (symtom.contains("3차"))
+					for (int i = 1; i <= 3; i++) {
+						table.setValueAt("O", 7, i);
+					}
+				if (symtom.contains("2차"))
+					for (int i = 1; i <= 2; i++) {
+						table.setValueAt("O", 7,  i);
+					}
+				if (symtom.contains("1차"))
+					table.setValueAt("O", 7, 1);
+			}
+
+			if (symtom.contains("VAR")) {
+				if (symtom.contains("6차"))
+					for (int i = 1; i <= 6; i++) {
+						table.setValueAt("O", 8, i);
+					}
+				if (symtom.contains("5차"))
+					for (int i = 1; i <= 5; i++) {
+						table.setValueAt("O", 8, i);
+					}
+				if (symtom.contains("4차"))
+					for (int i = 1; i <= 4; i++) {
+						table.setValueAt("O", 8, i);
+					}
+				if (symtom.contains("3차"))
+					for (int i = 1; i <= 3; i++) {
+						table.setValueAt("O", 8, i);
+					}
+				if (symtom.contains("2차"))
+					for (int i = 1; i <= 2; i++) {
+						table.setValueAt("O", 8, i);
+					}
+				if (symtom.contains("1차"))
+					table.setValueAt("O", 8, 1);
+			}
+
+			if (symtom.contains("HepA")) {
+				if (itemDetails[2].contains("6차"))
+					for (int i = 1; i <= 6; i++) {
+						table.setValueAt("O", 9, i);
+					}
+				if (symtom.contains("5차"))
+					for (int i = 1; i <= 5; i++) {
+						table.setValueAt("O", 9, i);
+					}
+				if (symtom.contains("4차"))
+					for (int i = 1; i <= 4; i++) {
+						table.setValueAt("O", 9, i);
+					}
+				if (symtom.contains("3차"))
+					for (int i = 1; i <= 3; i++) {
+						table.setValueAt("O", 9, i);
+					}
+				if (symtom.contains("2차"))
+					for (int i = 1; i <= 2; i++) {
+						table.setValueAt("O", 9, i);
+					}
+				if (symtom.contains("1차"))
+					table.setValueAt("O", 9, 1);
+			}
+
+			if (symtom.contains("IJEV")) {
+				if (itemDetails[2].contains("6차"))
+					for (int i = 1; i <= 6; i++) {
+						table.setValueAt("O", 10, i);
+					}
+				if (symtom.contains("5차"))
+					for (int i = 1; i <= 5; i++) {
+						table.setValueAt("O", 10, i);
+					}
+				if (symtom.contains("4차"))
+					for (int i = 1; i <= 4; i++) {
+						table.setValueAt("O", 10, i);
+					}
+				if (symtom.contains("3차"))
+					for (int i = 1; i <= 3; i++) {
+						table.setValueAt("O", 10, i);
+					}
+				if (symtom.contains("2차"))
+					for (int i = 1; i <= 2; i++) {
+						table.setValueAt("O", 10, i);
+					}
+				if (symtom.contains("1차"))
+					table.setValueAt("O", 10, 1);
+			}
+
+			if (symtom.contains("LJEV")) {
+				if (symtom.contains("6차"))
+					for (int i = 1; i <= 6; i++) {
+						table.setValueAt("O", 11, i);
+					}
+				if (symtom.contains("5차"))
+					for (int i = 1; i <= 5; i++) {
+						table.setValueAt("O", 11, i);
+					}
+				if (symtom.contains("4차"))
+					for (int i = 1; i <= 4; i++) {
+						table.setValueAt("O", 11, i);
+					}
+				if (symtom.contains("3차"))
+					for (int i = 1; i <= 3; i++) {
+						table.setValueAt("O", 11, i);
+					}
+				if (symtom.contains("2차"))
+					for (int i = 1; i <= 2; i++) {
+						table.setValueAt("O", 11, i);
+					}
+				if (symtom.contains("1차"))
+					table.setValueAt("O", 11, 1);
+			}
+
+			if (symtom.contains("RV1")) {
+				if (symtom.contains("6차"))
+					for (int i = 1; i <= 6; i++) {
+						table.setValueAt("O", 12, i);
+					}
+				if (symtom.contains("5차"))
+					for (int i = 1; i <= 5; i++) {
+						table.setValueAt("O", 12, i);
+					}
+				if (symtom.contains("4차"))
+					for (int i = 1; i <= 4; i++) {
+						table.setValueAt("O", 12, i);
+					}
+				if (symtom.contains("3차"))
+					for (int i = 1; i <= 3; i++) {
+						table.setValueAt("O", 12, i);
+					}
+				if (symtom.contains("2차"))
+					for (int i = 1; i <= 2; i++) {
+						table.setValueAt("O", 12, i);
+					}
+				if (symtom.contains("1차"))
+					table.setValueAt("O", 12, 1);
+			}
+
+			if (symtom.contains("RV5")) {
+				if (symtom.contains("6차"))
+					for (int i = 1; i <= 6; i++) {
+						table.setValueAt("O", 13, i);
+					}
+				if (symtom.contains("5차"))
+					for (int i = 1; i <= 5; i++) {
+						table.setValueAt("O", 13, i);
+					}
+				if (symtom.contains("4차"))
+					for (int i = 1; i <= 4; i++) {
+						table.setValueAt("O", 13, i);
+					}
+				if (symtom.contains("3차"))
+					for (int i = 1; i <= 3; i++) {
+						table.setValueAt("O", 13, i);
+					}
+				if (symtom.contains("2차"))
+					for (int i = 1; i <= 2; i++) {
+						table.setValueAt("O", 13, i);
+					}
+				if (symtom.contains("1차"))
+					table.setValueAt("O", 13, 1);
+			}
 		
-		if (symtom.contains("BCG")) {
-			if (itemDetails[2].contains("6차"))
-				for (int i = 1; i <= 5; i++) {
-					table.setValueAt("O", 0, i);
-				}
-			if (symtom.contains("5차"))
-				for (int i = 1; i <= 5; i++) {
-					table.setValueAt("O", 0, i);
-				}
-			if (symtom.contains("4차"))
-				for (int i = 1; i <= 4; i++) {
-					table.setValueAt("O", 0, i);
-				}
-			if (symtom.contains("3차"))
-				for (int i = 1; i <= 3; i++) {
-					table.setValueAt("O", 0, i);
-				}
-			if (symtom.contains("2차"))
-				for (int i = 1; i <= 2; i++) {
-					table.setValueAt("O", 0, i);
-				}
-			if (symtom.contains("1차"))
-				table.setValueAt("O", 0, 1);
-		}
-
-		if (symtom.contains("HepB")) {
-			if (symtom.contains("6차"))
-				for (int i = 1; i <= 6; i++) {
-					table.setValueAt("O", 1, i);
-				}
-			if (symtom.contains("5차"))
-				for (int i = 1; i <= 5; i++) {
-					table.setValueAt("O", 1, i);
-				}
-			if (symtom.contains("4차"))
-				for (int i = 1; i <= 4; i++) {
-					table.setValueAt("O", 1, i);
-				}
-			if (symtom.contains("3차"))
-				for (int i = 1; i <= 3; i++) {
-					table.setValueAt("O", 1, i);
-				}
-			if (symtom.contains("2차"))
-				for (int i = 1; i <= 2; i++) {
-					table.setValueAt("O", 1, i);
-				}
-			if (symtom.contains("1차"))
-				table.setValueAt("O", 1, 1);
-		}
-
-		if (symtom.contains("DTaP")) {
-			if (symtom.contains("6차"))
-				for (int i = 1; i <= 6; i++) {
-					table.setValueAt("O", 2, i);
-				}
-			if (symtom.contains("5차"))
-				for (int i = 1; i <= 5; i++) {
-					table.setValueAt("O", 2, i);
-				}
-			if (symtom.contains("4차"))
-				for (int i = 1; i <= 4; i++) {
-					table.setValueAt("O", 2, i);
-				}
-			if (symtom.contains("3차"))
-				for (int i = 1; i <= 3; i++) {
-					table.setValueAt("O", 2, i);
-				}
-			if (symtom.contains("2차"))
-				for (int i = 1; i <= 2; i++) {
-					table.setValueAt("O", 2, i);
-				}
-			if (symtom.contains("1차"))
-				table.setValueAt("O", 2, 1);
-		}
-
-		if (symtom.contains("Tdap")) {
-			if (symtom.contains("6차"))
-				for (int i = 1; i <= 6; i++) {
-					table.setValueAt("O", 3, i);
-				}
-			if (symtom.contains("5차"))
-				for (int i = 1; i <= 5; i++) {
-					table.setValueAt("O", 3, i);
-				}
-			if (symtom.contains("4차"))
-				for (int i = 1; i <= 4; i++) {
-					table.setValueAt("O", 3, i);
-				}
-			if (symtom.contains("3차"))
-				for (int i = 1; i <= 3; i++) {
-					table.setValueAt("O", 3, i);
-				}
-			if (symtom.contains("2차"))
-				for (int i = 1; i <= 2; i++) {
-					table.setValueAt("O", 3, i);
-				}
-			if (symtom.contains("1차"))
-				table.setValueAt("O", 3, 1);
-		}
-
-		if (symtom.contains("IPV")) {
-			if (symtom.contains("6차"))
-				for (int i = 1; i <= 6; i++) {
-					table.setValueAt("O", 4, i);
-				}
-			if (symtom.contains("5차"))
-				for (int i = 1; i <= 5; i++) {
-					table.setValueAt("O", 4, i);
-				}
-			if (symtom.contains("4차"))
-				for (int i = 1; i <= 4; i++) {
-					table.setValueAt("O", 4, i);
-				}
-			if (symtom.contains("3차"))
-				for (int i = 1; i <= 3; i++) {
-					table.setValueAt("O", 4, i);
-				}
-			if (symtom.contains("2차"))
-				for (int i = 1; i <= 2; i++) {
-					table.setValueAt("O", 4, i);
-				}
-			if (symtom.contains("1차"))
-				table.setValueAt("O", 4, 1);
-		}
-
-		if (symtom.contains("Hib")) {
-			if (symtom.contains("6차"))
-				for (int i = 1; i <= 6; i++) {
-					table.setValueAt("O", 5, i);
-				}
-			if (symtom.contains("5차"))
-				for (int i = 1; i <= 5; i++) {
-					table.setValueAt("O", 5, i);
-				}
-			if (symtom.contains("4차"))
-				for (int i = 1; i <= 4; i++) {
-					table.setValueAt("O", 5, i);
-				}
-			if (symtom.contains("3차"))
-				for (int i = 1; i <= 3; i++) {
-					table.setValueAt("O", 5, i);
-				}
-			if (symtom.contains("2차"))
-				for (int i = 1; i <= 2; i++) {
-					table.setValueAt("O", 5, i);
-				}
-			if (symtom.contains("1차"))
-				table.setValueAt("O", 5, 1);
-		}
-
-		if (symtom.contains("PCV")) {
-			if (itemDetails[2].contains("6차"))
-				for (int i = 1; i <= 6; i++) {
-					table.setValueAt("O", 6, i);
-				}
-			if (symtom.contains("5차"))
-				for (int i = 1; i <= 5; i++) {
-					table.setValueAt("O", 6, i);
-				}
-			if (symtom.contains("4차"))
-				for (int i = 1; i <= 4; i++) {
-					table.setValueAt("O", 6, i);
-				}
-			if (symtom.contains("3차"))
-				for (int i = 1; i <= 3; i++) {
-					table.setValueAt("O", 6, i);
-				}
-			if (symtom.contains("2차"))
-				for (int i = 1; i <= 2; i++) {
-					table.setValueAt("O", 6, i);
-				}
-			if (symtom.contains("1차"))
-				table.setValueAt("O", 6, 1);
-		}
-
-		if (symtom.contains("MMR")) {
-			if (symtom.contains("6차"))
-				for (int i = 1; i <= 6; i++) {
-					table.setValueAt("O", 7, i);
-				}
-			if (symtom.contains("5차"))
-				for (int i = 1; i <= 5; i++) {
-					table.setValueAt("O", 7, i);
-				}
-			if (symtom.contains("4차"))
-				for (int i = 1; i <= 4; i++) {
-					table.setValueAt("O", 7, i);
-				}
-			if (symtom.contains("3차"))
-				for (int i = 1; i <= 3; i++) {
-					table.setValueAt("O", 7, i);
-				}
-			if (symtom.contains("2차"))
-				for (int i = 1; i <= 2; i++) {
-					table.setValueAt("O", 7,  i);
-				}
-			if (symtom.contains("1차"))
-				table.setValueAt("O", 7, 1);
-		}
-
-		if (symtom.contains("VAR")) {
-			if (symtom.contains("6차"))
-				for (int i = 1; i <= 6; i++) {
-					table.setValueAt("O", 8, i);
-				}
-			if (symtom.contains("5차"))
-				for (int i = 1; i <= 5; i++) {
-					table.setValueAt("O", 8, i);
-				}
-			if (symtom.contains("4차"))
-				for (int i = 1; i <= 4; i++) {
-					table.setValueAt("O", 8, i);
-				}
-			if (symtom.contains("3차"))
-				for (int i = 1; i <= 3; i++) {
-					table.setValueAt("O", 8, i);
-				}
-			if (symtom.contains("2차"))
-				for (int i = 1; i <= 2; i++) {
-					table.setValueAt("O", 8, i);
-				}
-			if (symtom.contains("1차"))
-				table.setValueAt("O", 8, 1);
-		}
-
-		if (symtom.contains("HepA")) {
-			if (itemDetails[2].contains("6차"))
-				for (int i = 1; i <= 6; i++) {
-					table.setValueAt("O", 9, i);
-				}
-			if (symtom.contains("5차"))
-				for (int i = 1; i <= 5; i++) {
-					table.setValueAt("O", 9, i);
-				}
-			if (symtom.contains("4차"))
-				for (int i = 1; i <= 4; i++) {
-					table.setValueAt("O", 9, i);
-				}
-			if (symtom.contains("3차"))
-				for (int i = 1; i <= 3; i++) {
-					table.setValueAt("O", 9, i);
-				}
-			if (symtom.contains("2차"))
-				for (int i = 1; i <= 2; i++) {
-					table.setValueAt("O", 9, i);
-				}
-			if (symtom.contains("1차"))
-				table.setValueAt("O", 9, 1);
-		}
-
-		if (symtom.contains("IJEV")) {
-			if (itemDetails[2].contains("6차"))
-				for (int i = 1; i <= 6; i++) {
-					table.setValueAt("O", 10, i);
-				}
-			if (symtom.contains("5차"))
-				for (int i = 1; i <= 5; i++) {
-					table.setValueAt("O", 10, i);
-				}
-			if (symtom.contains("4차"))
-				for (int i = 1; i <= 4; i++) {
-					table.setValueAt("O", 10, i);
-				}
-			if (symtom.contains("3차"))
-				for (int i = 1; i <= 3; i++) {
-					table.setValueAt("O", 10, i);
-				}
-			if (symtom.contains("2차"))
-				for (int i = 1; i <= 2; i++) {
-					table.setValueAt("O", 10, i);
-				}
-			if (symtom.contains("1차"))
-				table.setValueAt("O", 10, 1);
-		}
-
-		if (symtom.contains("LJEV")) {
-			if (symtom.contains("6차"))
-				for (int i = 1; i <= 6; i++) {
-					table.setValueAt("O", 11, i);
-				}
-			if (symtom.contains("5차"))
-				for (int i = 1; i <= 5; i++) {
-					table.setValueAt("O", 11, i);
-				}
-			if (symtom.contains("4차"))
-				for (int i = 1; i <= 4; i++) {
-					table.setValueAt("O", 11, i);
-				}
-			if (symtom.contains("3차"))
-				for (int i = 1; i <= 3; i++) {
-					table.setValueAt("O", 11, i);
-				}
-			if (symtom.contains("2차"))
-				for (int i = 1; i <= 2; i++) {
-					table.setValueAt("O", 11, i);
-				}
-			if (symtom.contains("1차"))
-				table.setValueAt("O", 11, 1);
-		}
-
-		if (symtom.contains("RV1")) {
-			if (symtom.contains("6차"))
-				for (int i = 1; i <= 6; i++) {
-					table.setValueAt("O", 12, i);
-				}
-			if (symtom.contains("5차"))
-				for (int i = 1; i <= 5; i++) {
-					table.setValueAt("O", 12, i);
-				}
-			if (symtom.contains("4차"))
-				for (int i = 1; i <= 4; i++) {
-					table.setValueAt("O", 12, i);
-				}
-			if (symtom.contains("3차"))
-				for (int i = 1; i <= 3; i++) {
-					table.setValueAt("O", 12, i);
-				}
-			if (symtom.contains("2차"))
-				for (int i = 1; i <= 2; i++) {
-					table.setValueAt("O", 12, i);
-				}
-			if (symtom.contains("1차"))
-				table.setValueAt("O", 12, 1);
-		}
-
-		if (symtom.contains("RV5")) {
-			if (symtom.contains("6차"))
-				for (int i = 1; i <= 6; i++) {
-					table.setValueAt("O", 13, i);
-				}
-			if (symtom.contains("5차"))
-				for (int i = 1; i <= 5; i++) {
-					table.setValueAt("O", 13, i);
-				}
-			if (symtom.contains("4차"))
-				for (int i = 1; i <= 4; i++) {
-					table.setValueAt("O", 13, i);
-				}
-			if (symtom.contains("3차"))
-				for (int i = 1; i <= 3; i++) {
-					table.setValueAt("O", 13, i);
-				}
-			if (symtom.contains("2차"))
-				for (int i = 1; i <= 2; i++) {
-					table.setValueAt("O", 13, i);
-				}
-			if (symtom.contains("1차"))
-				table.setValueAt("O", 13, 1);
-		}
 		}
 		pack();
 		setVisible(true);
 	}
-	}
+}
+

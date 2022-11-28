@@ -1,17 +1,9 @@
 package table_demo;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
+
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
 import hospital.Main;
-import hospital.PatientMgr;
-import hospital.ReceptionMgr;
-import hospital.ReceptionOfPatientMgr;
-import hospital.ReservationMgr;
-import hospital.ReservationOfPatientMgr;
+
 
 
 public class GUIMain {
@@ -25,12 +17,12 @@ public class GUIMain {
         return main;
     }
     // 엔진의 인스턴스를 편리를 위해 변수에 저장한다
-    static Main hospitalMain = Main.getInstance();
-
+    public static Main hospitalMain = Main.getInstance();
     public static void main(String args[]) {
-        GUIMain main = new GUIMain();
+        main = getInstance();
+        hospitalMain.run();
         startGUI();
-        main.showFrameTest();
+
         main.start = new startPage();
         // main.login = new Login();  로그인창 보이기
         //main.showFrameTest();
@@ -38,16 +30,16 @@ public class GUIMain {
 
 
     }
-    public void showFrameTest(){
-        hospitalMain.run();
-        //메뉴창 띄우기
-    }
+    /* public void showFrameTest(){
+         hospitalMain.run();
+         //메뉴창 띄우기
+     }*/
     public static void startGUI() {
         // 이벤트 처리 스레드를 만들고
         // 거기서 GUI를 생성하고 보여준다.
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                GUIMain.getInstance().createAndShowGUI();
+                main.createAndShowGUI();
             }
         });
     }
@@ -59,131 +51,9 @@ public class GUIMain {
     private void createAndShowGUI() {
         //mainFrame.setLocationRelativeTo(null);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // 탭을 생성하고 두개 패널을 추가한다.
-        JTabbedPane jtab = new JTabbedPane();
-        jtab.setBackground(Color.WHITE);
-
-        setupReceptionPane();
-        setupPatientPane();
-        setupVaccinationPane();
-        setupResevationPane();
-
-        jtab.add("접수", receptionPane);
-        jtab.add("환자", patientPane);
-        jtab.add("예방접종현황", vaccinationPane);
-        jtab.add("예방접종예약", reservationPane);
-        mainFrame.getContentPane().add(jtab);
-        mainFrame.getContentPane().setBackground(Color.WHITE);
-        //Display the window.
-        mainFrame.pack();
-        //mainFrame.setVisible(true);
-    }
-
-
-    // 접수을 보여주는 패널 부분 - 탑과 JTable 포함
-    public JPanel receptionPane;
-    TableSelectionDemo receptionTable = new TableSelectionDemo();
-    SearchTopPanel receptionTop = new SearchTopPanel();  // 검색과 상세보기 버튼을 가진 패널
-    ReceptionDownPanel receptionDown = new ReceptionDownPanel();
-    private void setupReceptionPane() {
-        receptionPane = new JPanel(new BorderLayout());
-        receptionPane.setBackground(Color.WHITE);
-
-        receptionTop.setBackground(new Color(147, 251, 206));
-        receptionDown.setBackground(Color.WHITE);
-        //Create and set up the content pane.
-        receptionTable.tableTitle = "reception";
-        receptionTable.addComponentsToPane(ReceptionMgr.getInstance());  // 싱글톤
-        receptionTop.setupTopPane(receptionTable);
-        receptionPane.add(receptionTop, BorderLayout.NORTH);
-        receptionPane.add(receptionTable, BorderLayout.CENTER);
-
-        receptionDown.setupDownPane(receptionTable);
-        receptionPane.add(receptionDown, BorderLayout.SOUTH);
-    }
-
-    // 환자을 보여주는 패널 부분 - 위에는 검색과 JTable, 아래는 환자 등록
-    public JPanel patientPane;
-    TableSelectionDemo patientTable = new TableSelectionDemo();
-    ReceptionOfPatientTableDemo rpListTable = new ReceptionOfPatientTableDemo();
-    SearchTopPanel patientTop = new SearchTopPanel();
-    PatientDownPanel patientDown = new PatientDownPanel();
-    private void setupPatientPane() {
-        patientPane = new JPanel(new BorderLayout());
-        patientPane.setPreferredSize(new Dimension(720,600));
-
-        patientTop.setBackground(new Color(147, 251, 206));
-        patientDown.setBackground(Color.WHITE);
-
-        patientTable.tableTitle = "ReceptionOfPatient";
-        patientTable.addComponentsToPane(PatientMgr.getInstance());
-        patientTable.setBounds(0,0,720,299);
-
-        //맨 위에는 검색 창
-        patientTop.setupTopPane(patientTable);
-        patientPane.add(patientTop, BorderLayout.NORTH);
-        //가운데 환자 리스트와 진료 기록 테이블 추가
-        JPanel center = new JPanel();
-        center.setBackground(Color.WHITE);
-        patientPane.add(center, BorderLayout.CENTER);
-        center.setLayout(null);
-        //맨 아래는 환자 등록 창
-        patientDown.setupDownPane(patientTable);
-        patientPane.add(patientDown, BorderLayout.SOUTH);
-
-        //가운데 환자 리스트와 진료 기록 테이블 추가
-        //JPanel center = new JPanel();
-        //center.setBackground(Color.WHITE);
-        //center.add(patientTable, BorderLayout.CENTER);
-        center.add(patientTable);
-        rpListTable.tableTitle = "ReceptionOfPatientList";
-        rpListTable.addComponentsToPane(ReceptionOfPatientMgr.getInstance());
-        rpListTable.setBounds(0, 300, 720, 205);
-        center.add(rpListTable);
-        //center.add(rpListTable, BorderLayout.SOUTH);
-        //patientPane.add(center, BorderLayout.CENTER);
-    }
-    //예방접종 현황 탭
-    public JPanel vaccinationPane;
-    //TableSelectionDemo VaccinStatusTable = new TableSelectionDemo();
-    TableSelectionDemo v_patientTable = new TableSelectionDemo();
-    ReservationOfPatientTableDemo v_rListTable = new ReservationOfPatientTableDemo();
-    VaccinationTopPanel v_patientTop = new VaccinationTopPanel();
-    private void setupVaccinationPane() {
-        //검색
-        vaccinationPane = new JPanel(new BorderLayout());
-        v_patientTop.setBackground(new Color(147, 251, 206));
-
-        v_patientTop.setupTopPane(v_patientTable);
-        vaccinationPane.add(v_patientTop, BorderLayout.NORTH);
-
-        v_patientTable.tableTitle = "ReservationOfPatient";
-        v_patientTable.addComponentsToPane(PatientMgr.getInstance());
-        vaccinationPane.add(v_patientTable, BorderLayout.CENTER);
-
-        v_rListTable.tableTitle = "ReservationOfPatientList";
-        v_rListTable.addComponentsToPane(ReservationOfPatientMgr.getInstance());
-
-        vaccinationPane.add(v_rListTable, BorderLayout.SOUTH);
-    }
-    //예방접종 예약 탭
-    public JPanel reservationPane;
-    TableSelectionDemo reservationTable = new TableSelectionDemo();
-    SearchTopPanel reservationTop = new SearchTopPanel();  // 검색과 상세보기 버튼을 가진 패널
-    ReservationDownPanel reservationDown = new ReservationDownPanel();
-    private void setupResevationPane() {
-        reservationPane = new JPanel(new BorderLayout());
-
-        reservationTop.setBackground(new Color(147, 251, 206));
-        reservationDown.setBackground(Color.WHITE);
-        //Create and set up the content pane.
-        reservationTable.tableTitle = "reservation";
-        reservationTable.addComponentsToPane(ReservationMgr.getInstance());  // 싱글톤
-        reservationTop.setupTopPane(reservationTable);
-        reservationPane.add(reservationTop, BorderLayout.NORTH);
-        reservationPane.add(reservationTable, BorderLayout.CENTER);
-
-        reservationDown.setupDownPane(reservationTable);
-        reservationPane.add(reservationDown, BorderLayout.SOUTH);
+        PatientTab.startGUI();
+        ReceptionTab.startGUI();
+        ReservationTab.startGUI();
+        DoctorTab.startGUI();
     }
 }

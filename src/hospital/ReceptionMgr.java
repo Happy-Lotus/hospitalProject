@@ -10,7 +10,7 @@ import java.util.List;
 public class ReceptionMgr extends Manager implements DataEngineInterface {
     public static ReceptionMgr recepMgr = null;
     static ArrayList<Reception> receptions = new ArrayList<>();
-    private ReceptionMgr() {}
+    public ReceptionMgr() {}
     public static ReceptionMgr getInstance() {
         if(recepMgr == null)
             recepMgr = new ReceptionMgr();

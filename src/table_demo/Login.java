@@ -51,7 +51,7 @@ public class Login extends JFrame {
         setLocationRelativeTo(null);
         setContentPane(contentPane);
 
-        ImageIcon logo = new ImageIcon("src/image/logo.png");
+        ImageIcon logo = new ImageIcon("src\\image\\logo.png");
         Image logo1 = logo.getImage();  //ImageIcon을 Image로 변환.
         Image logo2 = logo1.getScaledInstance(360, 360, java.awt.Image.SCALE_SMOOTH);
         ImageIcon logobttnIcon = new ImageIcon(logo2); //Image로 ImageIcon 생성
@@ -118,8 +118,8 @@ public class Login extends JFrame {
 
             // 로그인 성공이라면 메뉴창 뛰우기
             if(isLogin()){
-               mp = new MenuPage();
-               dispose();
+                mp = new MenuPage();
+                dispose();
             }
         }else{
             JOptionPane.showMessageDialog(null, "Faild");
