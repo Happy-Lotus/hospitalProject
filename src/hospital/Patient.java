@@ -13,8 +13,8 @@ public class Patient implements Manageable, UIData {
 	@Override
 	public void set(Object[] uitexts) {
 		// TODO Auto-generated method stub
-
 	}
+	Patient() { }
 	//public Patient(){}
 	public Patient(Object[] row) {
 		patientCode = (String)row[0];
@@ -36,9 +36,6 @@ public class Patient implements Manageable, UIData {
 		return texts;
 	}
 
-	Patient() {
-	}
-
 	// 환자코드 / 이름/ 성별/ 생년월일/ 전화번호/ 주소(동만)
 	String patientCode;
 	String name;
@@ -48,7 +45,11 @@ public class Patient implements Manageable, UIData {
 	String gender;
 	String phone;
 	String address="";
-	ArrayList<Reception> receptionList = new ArrayList<Reception>();
+	ArrayList<ReceptionOfPatient> rpList = new ArrayList<ReceptionOfPatient>();
+	ArrayList<Reception> receptionList = new ArrayList<>();
+
+	ArrayList<ReservationOfPatient> rsList = new ArrayList<>();
+	ArrayList<Reservation> reservationList = new ArrayList<>();
 	LinkedHashMap<String,String> vaccinationList = new LinkedHashMap<String,String>();
 
 	@Override
@@ -78,6 +79,12 @@ public class Patient implements Manageable, UIData {
 	void addReception(Reception r)
 	{
 		receptionList.add(r);
+		rpList.add(new ReceptionOfPatient(this, r));
+	}
+	void addRervation(Reservation r)
+	{
+		reservationList.add(r);
+		rsList.add(new ReservationOfPatient(this, r));
 	}
 
 	protected String getBirth() {
@@ -122,8 +129,13 @@ public class Patient implements Manageable, UIData {
 		}
 
 		System.out.print("[진료기록] ");
-		for(Reception r : receptionList) {
-			r.printR();
+		for(ReceptionOfPatient rp : rpList) {
+			rp.print();
+		}
+		System.out.println();
+		System.out.print("[예방접종기록] ");
+		for(ReservationOfPatient rs : rsList) {
+			rs.print();
 		}
 		System.out.println();
 	}
@@ -146,7 +158,10 @@ public class Patient implements Manageable, UIData {
 			return true;
 		if(address.contains(kwd))
 			return true;
-
+		/*for(ReceptionOfPatient rp : rpList) {
+			if(rp.rece.patientCode.matches(kwd))
+				return true;
+		}*/
 		return false;
 	}
 }

@@ -22,7 +22,7 @@ public class VaccinationMgr implements DataEngineInterface {
 	@Override
 	public int getColumnCount() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 4;
 	}
 
 	@Override

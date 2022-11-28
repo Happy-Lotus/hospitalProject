@@ -1,20 +1,16 @@
 package table_demo;
 
-import java.awt.BorderLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
-@SuppressWarnings("serial")
-public class ReservationTopPanel extends JPanel {
-    //검색 탭의 상단 패널 구성하기
+public class VaccinationTopPanel extends JPanel{
     JTextField kwdTextField = new JTextField("", 20);
     void setupTopPane(TableSelectionDemo tableDemo) {
         JPanel topPane = new JPanel();
-        JButton detail = new JButton("상세보기");
+        topPane.setBackground(new Color(147, 251, 206));
+        JButton detail = new JButton("예방접종현황");
         topPane.add(detail, BorderLayout.LINE_START);
         topPane.add(kwdTextField, BorderLayout.CENTER);
         JButton search = new JButton("검색");
@@ -22,11 +18,11 @@ public class ReservationTopPanel extends JPanel {
         add(topPane, BorderLayout.PAGE_START);
 
         detail.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		if (e.getActionCommand().equals("상세보기")) {
-        			tableDemo.showDetail();
-            	}
-           }
+            public void actionPerformed(ActionEvent e) {
+                if (e.getActionCommand().equals("예방접종현황")) {
+                    tableDemo.showDetail();
+                }
+            }
         });
         search.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

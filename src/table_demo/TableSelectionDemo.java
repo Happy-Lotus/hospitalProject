@@ -87,9 +87,19 @@ public class TableSelectionDemo extends JPanel implements ListSelectionListener 
             // 주문 테이블의 클릭은 장바구니의 값을 바꾼다
             if (tableTitle.equals("reception")) {
                 GUIMain.getInstance().receptionTop.kwdTextField.setText(name);
-            } else if (tableTitle.equals("patient")) {
-                GUIMain.getInstance().rListTable.loadData(""+selectedIndex);
             }
+            else if(tableTitle.equals("ReceptionOfPatient")) {
+                GUIMain.getInstance().patientTop.kwdTextField.setText(name);
+                GUIMain.getInstance().rpListTable.loadData(""+selectedIndex);
+            }
+            else if(tableTitle.equals("ReservationOfPatient")) {
+                GUIMain.getInstance().v_patientTop.kwdTextField.setText(name);
+                GUIMain.getInstance().v_rListTable.loadData(""+selectedIndex);
+            }
+            else if(tableTitle.equals("reservation")) {
+                GUIMain.getInstance().reservationTop.kwdTextField.setText(name);
+            }
+
         }
     }
 }
