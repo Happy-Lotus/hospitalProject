@@ -38,6 +38,7 @@ public class DetailDialog extends javax.swing.JDialog {
 	int selectedIndex = -1;
 	JTable table;
 	JScrollPane scroll;
+
 	ReservationMgr rMgr = new ReservationMgr();
 
 	String title[] = { "백신종류", "1차", "2차", "3차", "추4차", "추5차", "추6차" };
@@ -77,6 +78,7 @@ public class DetailDialog extends javax.swing.JDialog {
 		for (Object r : reservationList) {
 			tableModel.addRow(((UIData) r).getUiTexts());
 		}
+    
 		JTable jtable = new JTable();
 		jtable = new JTable(tableModel);
 		for(int k=0; k<reservationList.size(); k++) {
@@ -431,8 +433,10 @@ public class DetailDialog extends javax.swing.JDialog {
 				if (symtom.contains("1차"))
 					table.setValueAt("O", 13, 1);
 			}
+		
 		}
 		pack();
 		setVisible(true);
 	}
 }
+
