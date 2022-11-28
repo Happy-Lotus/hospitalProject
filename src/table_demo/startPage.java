@@ -62,11 +62,11 @@ public class startPage {
         titlePanel.setLayout(null);
 
         JLabel titleLable = new JLabel("AH 소아과 관리 프로그램");
-        titleLable.setBounds(278, 74, 339, 40);
+        titleLable.setBounds(266, 74, 359, 40);
         titleLable.setFont(new Font("수성돋움체", Font.BOLD, 30));
         titlePanel.add(titleLable);
 
-        ImageIcon logo = new ImageIcon("src/image/logo.png");
+        ImageIcon logo = new ImageIcon("src\\image\\logo.png");
         Image img = logo.getImage();
         Image changeImg = img.getScaledInstance(359, 286, Image.SCALE_SMOOTH);
         ImageIcon changelogo = new ImageIcon(changeImg);

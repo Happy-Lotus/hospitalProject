@@ -50,7 +50,7 @@ public class DoctorTab {
 				dd.doctor4(btnNewButton_1.getText());
 			}
 		});
-		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\현지현\\Documents\\image\\doctor4.jpg"));
+		btnNewButton_1.setIcon(new ImageIcon("src\\image\\doctor4.jpg"));
 		btnNewButton_1.setBounds(106, 280, 195, 135);
 		frame.getContentPane().add(btnNewButton_1);
 		
@@ -61,7 +61,7 @@ public class DoctorTab {
 				dd.doctor5(btnNewButton_2.getText());
 			}
 		});
-		btnNewButton_2.setIcon(new ImageIcon("C:\\Users\\현지현\\Documents\\image\\doctor5.jpg"));
+		btnNewButton_2.setIcon(new ImageIcon("src\\image\\doctor5.jpg"));
 		btnNewButton_2.setBounds(354, 280, 201, 135);
 		frame.getContentPane().add(btnNewButton_2);
 		
@@ -72,7 +72,7 @@ public class DoctorTab {
 				dd.doctor1(btnNewButton_3.getText());
 			}
 		});
-		btnNewButton_3.setIcon(new ImageIcon("C:\\Users\\현지현\\Documents\\image\\doctor1.jpg"));
+		btnNewButton_3.setIcon(new ImageIcon("src\\image\\doctor1.jpg"));
 		btnNewButton_3.setBounds(12, 73, 195, 135);
 		frame.getContentPane().add(btnNewButton_3);
 		
@@ -83,7 +83,7 @@ public class DoctorTab {
 				dd.doctor2(btnNewButton_4.getText());
 			}
 		});
-		btnNewButton_4.setIcon(new ImageIcon("C:\\Users\\현지현\\Documents\\image\\doctor2.jpg"));
+		btnNewButton_4.setIcon(new ImageIcon("src\\image\\doctor2.jpg"));
 		btnNewButton_4.setBounds(230, 73, 195, 135);
 		frame.getContentPane().add(btnNewButton_4);
 		
@@ -94,7 +94,7 @@ public class DoctorTab {
 				dd.doctor3(btnNewButton_5.getText());
 			}
 		});
-		btnNewButton_5.setIcon(new ImageIcon("C:\\Users\\현지현\\Documents\\image\\doctor3.jpg"));
+		btnNewButton_5.setIcon(new ImageIcon("src\\image\\doctor3.jpg"));
 		btnNewButton_5.setBounds(446, 73, 195, 135);
 		frame.getContentPane().add(btnNewButton_5);
 		
