@@ -40,6 +40,8 @@ public class Login extends JFrame {
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setLocationRelativeTo(null);
         setContentPane(contentPane);
+        setSize(600,600);
+        setResizable(false);
 
         ImageIcon logo = new ImageIcon("src/image/logo.png");
         Image logo1 = logo.getImage();  //ImageIcon을 Image로 변환.

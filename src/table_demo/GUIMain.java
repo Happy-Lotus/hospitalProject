@@ -23,6 +23,7 @@ public class GUIMain {
 
     }
 
+
     public static void startGUI() {
         // 이벤트 처리 스레드를 만들고
         // 거기서 GUI를 생성하고 보여준다.
@@ -40,6 +41,9 @@ public class GUIMain {
     private void createAndShowGUI() {
         //mainFrame.setLocationRelativeTo(null);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+
         PatientTab.startGUI();
         ReceptionTab.startGUI();
         ReservationTab.startGUI();

@@ -30,6 +30,8 @@ public class MenuPage {
         frame.setBounds(100, 100, 440, 456);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
+        frame.setSize(440,456);
+        frame.setResizable(false);
 
         JPanel menuPanel = new JPanel();
         menuPanel.setBackground(Color.WHITE);
