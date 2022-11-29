@@ -40,11 +40,14 @@ public class PatientTab {
         patientJtab.add("환자", patientPane);
         patientJtab.add("예방접종현황", vaccinationPane);
 
-        patientFrame.setBounds(100, 100, 720, 600);
+        patientFrame.setBounds(100,100,720, 600);
         patientFrame.setBackground(Color.WHITE);
         patientFrame.add(patientJtab);
         patientFrame.pack();
         patientFrame.setLocationRelativeTo(null); // 창이 가운데 생성되도록
+        patientFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        patientFrame.setSize(720,600);
+        patientFrame.setResizable(false);
         //patientFrame.setVisible(true);
 
         patientTop.backButton.addActionListener(new ActionListener() {

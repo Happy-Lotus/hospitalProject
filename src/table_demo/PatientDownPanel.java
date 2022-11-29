@@ -73,4 +73,4 @@ public class PatientDownPanel extends JPanel {
 
 }
 
-}
+
