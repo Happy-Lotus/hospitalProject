@@ -36,6 +36,9 @@ public class ReservationTab {
         reservationFrame.add(reservationPane);
         reservationFrame.pack();
         reservationFrame.setLocationRelativeTo(null); // 창이 가운데 생성되도록
+        reservationFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        reservationFrame.setSize(720,600);
+        reservationFrame.setResizable(false);
 
         reservationTop.backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

@@ -47,15 +47,23 @@ public class ReservationDownPanel extends JPanel {
                     // 환자 코드랑 백신 몇 차인지
                     if (Main.reservationMgr.find(texts[1]) != null && Main.reservationMgr.find(texts[3]) != null) {
                         resultStr = JOptionPane.showInputDialog("예약 내역이 이미 존재합니다. 다시 입력해주세요.");
-                        texts[0] = resultStr;
+
+                        while(Main.patientMgr.find(resultStr)!=null){
+                            resultStr = JOptionPane.showInputDialog("접종 내역이 이미 존재합니다. 다시 입력해주세요.");
+                        }
+                        texts[3] = resultStr;
                         resultStr = null;
                     }
 
                     Reservation s = new Reservation(texts);
+
+                    if(Main.receptionMgr.find(texts[4])== null){
+                        texts[4] = s.getDoctorName();
+                    }
                     data.addRow(texts); // 테이블에 행을 추가
                     Main.reservationMgr.getMlist().add(s);
 
-                    for (int i = 0; i < 6; i++) {
+                    for (int i = 0; i < 5; i++) {
 
                         reservationEdits[i].setText("");
                     }
