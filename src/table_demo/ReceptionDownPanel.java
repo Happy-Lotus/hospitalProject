@@ -39,21 +39,22 @@ public class ReceptionDownPanel extends JPanel {
                     }
 
                     String resultStr = null;
-                    if(Main.receptionMgr.find(texts[1])!=null){
-                        resultStr = JOptionPane.showInputDialog("환자코드가 이미 존재합니다. 다시 입력해주세요.");
+                    if((Main.receptionMgr.find(texts[0])!=null) && (Main.receptionMgr.find(texts[1])!=null)){
+                        resultStr = JOptionPane.showInputDialog("해당 날짜에 진료를 접수한 환자입니다. 다시 입력하세요.\n날짜 ");
                         texts[0] = resultStr;
-                        resultStr = null;
+                        resultStr = JOptionPane.showInputDialog("환자 코드");
+                        texts[1] = resultStr;
                     }
-                    if(Main.receptionMgr.find(texts[2])!=null){
+                  /*  if(Main.receptionMgr.find(texts[2])!=null){
                         resultStr = JOptionPane.showInputDialog("이름이 이미 존재합니다. 다시 입력해주세요.");
                         texts[1] = resultStr;
                         resultStr = null;
-                    }
+                    }*/
 
                     data.addRow(texts); //테이블에 행을 추가
                     Reception r = new Reception(texts);
                     Main.receptionMgr.getMlist().add(r);
-                    for(int i=0; i<6; i++)
+                    for(int i=0; i<5; i++)
                     {
                         receptionEdits[i].setText("");
                     }
@@ -62,5 +63,4 @@ public class ReceptionDownPanel extends JPanel {
             }
         });
     }
-
 }
