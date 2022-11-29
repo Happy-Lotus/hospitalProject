@@ -23,7 +23,17 @@ public class Patient implements Manageable, UIData {
 		birth = (String)row[3];
 		phone = (String)row[4];
 		address = (String)row[5];
+		if(vaccinationList.isEmpty()){
+			for(int i = 0;i<Main.VaccinationMgr.mList.size();i++) {
+				Vaccination vac = (Vaccination)Main.VaccinationMgr.getMlist().get(i);
+				for(int j = 1;j<=vac.getNumber();j++)
+				{
+					vaccinationList.put(vac.getVaccine()+" "+j+"차","X");
+				}
+			}
+		}
 	}
+
 	@Override
 	public String[] getUiTexts() {
 		String[] texts = new String[6];
@@ -158,7 +168,11 @@ public class Patient implements Manageable, UIData {
 			return true;
 		if(address.contains(kwd))
 			return true;
-
+		if(vaccinationList.containsKey(kwd)) {
+			if (vaccinationList.get(kwd.substring(0, 1)) != "X") {
+				return true;
+			}
+		}
 		return false;
 	}
 }
