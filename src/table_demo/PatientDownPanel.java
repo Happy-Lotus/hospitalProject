@@ -6,13 +6,11 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+import hospital.Main;
 import hospital.Patient;
-import hospital.PatientMgr;
 
 public class PatientDownPanel extends JPanel {
     JTextField patientEdits[] = new JTextField[6];
@@ -40,12 +38,39 @@ public class PatientDownPanel extends JPanel {
                     {
                         texts[i] = patientEdits[i].getText();
                     }
-                    data.addRow(texts); //테이블에 행을 추가
+                    String resultStr;
+
+                    if(Main.patientMgr.find(texts[0])!=null){
+                        resultStr = JOptionPane.showInputDialog("환자코드가 이미 존재합니다. 다시 입력해주세요.");
+                        texts[0] = resultStr;
+                        resultStr = null;
+                    }
+
+                    if(Main.patientMgr.find(texts[0])!=null && Main.patientMgr.find(texts[1])!=null){
+
+                        resultStr = JOptionPane.showInputDialog("이름이 이미 존재합니다. 다시 입력해주세요.");
+                        texts[1] = resultStr;
+                        resultStr = null;
+                    }
+                    if(Main.patientMgr.find(texts[4])!=null){
+                        resultStr = JOptionPane.showInputDialog("해당 휴대폰 번호를 가진 환자가 이미 존재합니다. 다시 입력해주세요.");
+                        texts[4] = resultStr;
+                        resultStr = null;
+                    }
                     Patient s = new Patient(texts);
-                    PatientMgr.pMgr.addPatient(s);
+                    data.addRow(texts); //테이블에 행을 추가
+                    Main.patientMgr.getMlist().add(s);
+
+                    for(int i=0; i<6; i++)
+                    {
+                        patientEdits[i].setText("");
+                    }
+
                 }
             }
         });
     }
 
 }
+
+

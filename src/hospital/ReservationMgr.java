@@ -8,7 +8,7 @@ import mgr.Manageable;
 public class ReservationMgr implements DataEngineInterface {
     public static ReservationMgr reserMgr = null;
     static ArrayList<Reservation> reservations = new ArrayList<>();
-    private ReservationMgr() {}
+    public ReservationMgr() {}
     public static ReservationMgr getInstance() {
         if (reserMgr == null)
             reserMgr = new ReservationMgr();

@@ -9,7 +9,7 @@ import mgr.Manager;
 
 public class DoctorMgr extends Manager implements DataEngineInterface {
 	private static DoctorMgr dMgr = null;
-	static ArrayList<Doctor> doctors = new ArrayList<>();
+	static List<Manageable> doctors = Main.doctorMgr.getMlist();
 	private DoctorMgr() {}
 	public static DoctorMgr getInstance() {
 		if(dMgr == null)
