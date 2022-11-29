@@ -22,7 +22,7 @@ public class ReservationTab {
 
     public static void startGUI() {
         Main hospitalmain = Main.getInstance();
-        hospitalmain.run();
+        //hospitalmain.run();
 
         ReservationTab.getInstance().createAndShowReservation();
     }
