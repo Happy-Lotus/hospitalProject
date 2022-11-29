@@ -43,6 +43,7 @@ public class ReceptionDownPanel extends JPanel {
                     //220521 P1434 박서윤 코막힘 가래 있음 0 김해연
                     if(Main.receptionMgr.find(texts[0])!=null && Main.receptionMgr.find(texts[1])!=null){
                         resultStr = JOptionPane.showInputDialog("이미 해당 날짜에 접수가 되어있습니다. 환자 코드를 다시 입력해주세요.");
+
                         texts[1] = resultStr;
                         resultStr = null;
                     }
@@ -59,6 +60,10 @@ public class ReceptionDownPanel extends JPanel {
                     {
                         receptionEdits[i].setText("");
                     }
+
+
+
+
 
                 }
             }
