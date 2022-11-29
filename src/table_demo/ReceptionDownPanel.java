@@ -6,15 +6,10 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-import hospital.Patient;
-import hospital.PatientMgr;
-import hospital.Reception;
-import hospital.ReceptionMgr;
+import hospital.*;
 
 public class ReceptionDownPanel extends JPanel {
     JTextField receptionEdits[] = new JTextField[5];
@@ -42,9 +37,27 @@ public class ReceptionDownPanel extends JPanel {
                     {
                         texts[i] = receptionEdits[i].getText();
                     }
+
+                    String resultStr = null;
+                    if(Main.receptionMgr.find(texts[1])!=null){
+                        resultStr = JOptionPane.showInputDialog("환자코드가 이미 존재합니다. 다시 입력해주세요.");
+                        texts[0] = resultStr;
+                        resultStr = null;
+                    }
+                    if(Main.receptionMgr.find(texts[2])!=null){
+                        resultStr = JOptionPane.showInputDialog("이름이 이미 존재합니다. 다시 입력해주세요.");
+                        texts[1] = resultStr;
+                        resultStr = null;
+                    }
+
                     data.addRow(texts); //테이블에 행을 추가
                     Reception r = new Reception(texts);
-                    ReceptionMgr.recepMgr.addReception(r);
+                    Main.receptionMgr.getMlist().add(r);
+                    for(int i=0; i<6; i++)
+                    {
+                        receptionEdits[i].setText("");
+                    }
+
                 }
             }
         });
