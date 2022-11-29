@@ -109,6 +109,7 @@ public class startPage {
                 // login.setVisible(false);
             }
         });
+        frame.setLocationRelativeTo(null); // 창이 가운데 생성되도록
         frame.setVisible(true);
     }
 }

@@ -72,6 +72,7 @@ public class Reservation implements Manageable, UIData {
         name = (String) row[2];
         symptom = (String) row[3];
         doctorName = (String) row[4];
+        //Main.reservationMgr.getMlist().add(this);
     }
     @Override
     public void set(Object[] uitexts) {
@@ -84,7 +85,7 @@ public class Reservation implements Manageable, UIData {
         texts[1] = patientCode;
         texts[2] = name;
         texts[3] = symptom;
-        texts[4] = doctor.name;
+        texts[4] =doctorName;
         return texts;
     }
 

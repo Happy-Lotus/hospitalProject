@@ -61,11 +61,12 @@ public class Reception implements Manageable, UIData {
     Reception(){	}
 
     public Reception(Object[] row) {
-        date = (String)row[0];
-        patientCode = (String)row[1];
-        name = (String)row[2];
-        symptom = (String)row[3];
-        doctorName = (String)row[4];
+        this.date = (String)row[0];
+        this.patientCode = (String)row[1];
+        this.name = (String)row[2];
+        this.symptom = (String)row[3];
+        this.doctorName = (String)row[4];
+
     }
 
     @Override
@@ -79,7 +80,7 @@ public class Reception implements Manageable, UIData {
         texts[1] = patientCode;
         texts[2] = name;
         texts[3] = symptom;
-        texts[4] = doctor.name;
+        texts[4] = doctorName;
         return texts;
     }
 
@@ -98,6 +99,8 @@ public class Reception implements Manageable, UIData {
 
     @Override
     public boolean matches(String kwd) {
+        if(kwd.equals(date))
+            return true;
         if (kwd.equals(name))
             return true;
         if (kwd.equals(patientCode))

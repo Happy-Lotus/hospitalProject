@@ -1,6 +1,5 @@
 package table_demo;
 
-import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -51,7 +50,7 @@ public class Login extends JFrame {
         setLocationRelativeTo(null);
         setContentPane(contentPane);
 
-        ImageIcon logo = new ImageIcon("src\\image\\logo.png");
+        ImageIcon logo = new ImageIcon("src/image/logo.png");
         Image logo1 = logo.getImage();  //ImageIcon을 Image로 변환.
         Image logo2 = logo1.getScaledInstance(360, 360, java.awt.Image.SCALE_SMOOTH);
         ImageIcon logobttnIcon = new ImageIcon(logo2); //Image로 ImageIcon 생성
@@ -82,10 +81,22 @@ public class Login extends JFrame {
         idField.setBounds(91, 20, 160, 25);
         loginpanel.add(idField);
         idField.setColumns(10);
+        idField.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                isLoginCheck();
+            }
+        });
 
         passwordField = new JPasswordField();
         passwordField.setBounds(91, 55, 160, 25);
         loginpanel.add(passwordField);
+        passwordField.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                isLoginCheck();
+            }
+        });
 
         JButton resetButton = new JButton("Reset");
         resetButton.setFont(new Font("나눔고딕 ExtraBold", Font.BOLD, 12));

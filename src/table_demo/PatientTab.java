@@ -3,7 +3,12 @@ package table_demo;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -43,7 +48,22 @@ public class PatientTab {
         patientFrame.setBackground(Color.WHITE);
         patientFrame.add(patientJtab);
         patientFrame.pack();
+        patientFrame.setLocationRelativeTo(null); // 창이 가운데 생성되도록
         //patientFrame.setVisible(true);
+
+        patientTop.backButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                MenuPage start = new MenuPage();
+                patientFrame.dispose();
+            }
+        });
+
+        v_patientTop.backButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                MenuPage start = new MenuPage();
+                patientFrame.dispose();
+            }
+        });
     }
 
     // 환자을 보여주는 패널 부분 - 위에는 검색과 JTable, 아래는 환자 등록

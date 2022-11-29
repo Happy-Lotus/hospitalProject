@@ -1,10 +1,6 @@
 package table_demo;
-
-
 import javax.swing.JFrame;
 import hospital.Main;
-
-
 
 public class GUIMain {
     // 싱글톤 패턴 적용 부분

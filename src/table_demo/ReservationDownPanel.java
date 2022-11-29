@@ -7,17 +7,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import hospital.Patient;
-import hospital.PatientMgr;
-import hospital.Reservation;
-import hospital.ReservationMgr;
+import hospital.*;
 
-public class ReservationDownPanel extends JPanel{
+public class ReservationDownPanel extends JPanel {
     JTextField reservationEdits[] = new JTextField[5];
+
     void setupDownPane(TableSelectionDemo tableDemo) {
         JPanel downPane = new JPanel();
         downPane.setBackground(Color.WHITE);
@@ -36,15 +35,26 @@ public class ReservationDownPanel extends JPanel{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(e.getActionCommand().equals("예약")) {
-                    String[] texts = new String[6]; //편집창의 입력값 배열
-                    for(int i=0; i<5; i++)
-                    {
+                if (e.getActionCommand().equals("예약")) {
+                    String[] texts = new String[5]; // 편집창의 입력값 배열
+                    for (int i = 0; i < 5; i++) {
                         texts[i] = reservationEdits[i].getText();
                     }
-                    data.addRow(texts); //테이블에 행을 추가
+                    String resultStr;
+                    // 221216 P5556 라이언 HepB 3차 이소윤
+                    // 환자 코드랑 백신 몇 차인지
+                    if (Main.reservationMgr.find(texts[1]) != null && Main.reservationMgr.find(texts[3]) != null) {
+                        resultStr = JOptionPane.showInputDialog("예약 내역이 이미 존재합니다. 다시 입력해주세요.");
+                        texts[0] = resultStr;
+                        resultStr = null;
+                    }
                     Reservation s = new Reservation(texts);
-                    ReservationMgr.reserMgr.addReservation(s);
+                    data.addRow(texts); // 테이블에 행을 추가
+                    Main.reservationMgr.getMlist().add(s);
+
+                    for (int i = 0; i < 6; i++) {
+                        reservationEdits[i].setText("");
+                    }
                 }
             }
         });

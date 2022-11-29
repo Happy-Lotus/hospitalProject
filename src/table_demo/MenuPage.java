@@ -173,19 +173,14 @@ public class MenuPage {
         titelPanel.setBounds(101, 46, 220, 65);
         menuPanel.add(titelPanel);
 
-		/*
-		JButton homeButton = new JButton(new ImageIcon("src/image/home.png"));
-		homeButton.setText("Home");
-		*/
-
         ImageIcon home = new ImageIcon("src/image/home.png");
         Image img = home.getImage();
-        Image changeImg = img.getScaledInstance(48, 49,Image.SCALE_SMOOTH);
+        Image changeImg = img.getScaledInstance(30, 30,Image.SCALE_SMOOTH);
         ImageIcon changelogo = new ImageIcon(changeImg);
         JButton homeButton = new JButton(changelogo);
 
         //homeButton.setOpaque(false);
-        homeButton.setBounds(12, 10, 48, 49);
+        homeButton.setBounds(12, 10, 30, 30);
         homeButton.setBackground(Color.WHITE);
 
         menuPanel.add(homeButton);
