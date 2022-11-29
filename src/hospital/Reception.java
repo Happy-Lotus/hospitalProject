@@ -99,6 +99,8 @@ public class Reception implements Manageable, UIData {
 
     @Override
     public boolean matches(String kwd) {
+        if(kwd.equals(date))
+            return true;
         if (kwd.equals(name))
             return true;
         if (kwd.equals(patientCode))

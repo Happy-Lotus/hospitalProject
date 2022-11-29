@@ -2,10 +2,8 @@ package hospital;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import facade.UIData;
 import mgr.Manageable;
-import mgr.Manager;
 
 public class Doctor implements Manageable, UIData
 {
@@ -61,8 +59,8 @@ public class Doctor implements Manageable, UIData
 			p.printD();
 		System.out.println();
 	}
-	//진료 클래스에서 등록할 때 이름 입력 받아서 patient find하여 저장하고,
-	//객체를 전송하여 addPatient (10주차 개인과제 Order 클래스 참고)
+
+	//의사가 진료한 환자 리스트 저장
 	void addPatient(Patient pati)
 	{
 		patientList.add(pati);
@@ -73,11 +71,7 @@ public class Doctor implements Manageable, UIData
 			return true;
 		if(name.equals(kwd))
 			return true;
-		/*for(Patient p : patientList)
-		{
-			if(p.matches(kwd))
-				return true;
-		}*/
+
 		return false;
 	}
 }

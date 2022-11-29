@@ -5,30 +5,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
-import facade.DataEngineInterface;
 import facade.UIData;
-import hospital.Main;
-import hospital.Patient;
-import hospital.PatientMgr;
-import hospital.ReceptionMgr;
-import hospital.Reservation;
 import hospital.ReservationMgr;
-import hospital.ReservationOfPatientMgr;
-import hospital.Vaccination;
-import mgr.Manageable;
-
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.event.MouseEvent;
 import java.util.List;
-
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
 
 public class DetailDialog extends javax.swing.JDialog {
 	DefaultTableModel tableModel;
