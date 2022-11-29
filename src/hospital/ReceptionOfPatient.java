@@ -1,41 +1,31 @@
 package hospital;
 
-import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 import facade.UIData;
 import mgr.Manageable;
 
-public class ReservationOfPatient implements Manageable, UIData{
+public class ReceptionOfPatient implements Manageable, UIData{
     Patient pati;
-    Reservation reser;
-    String date;
-    String patientCode;
-    Patient patient;
-    String name;
-    String symptom="";
-    Doctor doctor = null;
-    String doctorName;
+    Reception rece;
 
-    ReservationOfPatient(Patient pati, Reservation reser) {
+    ReceptionOfPatient(Patient pati, Reception rece) {
         this.pati = pati;
-        this.reser = reser;
+        this.rece = rece;
     }
-    
     @Override
     public void set(Object[] uitexts) {
         // TODO Auto-generated method stub
 
     }
-    //예방접종날짜, 환자코드, 백신, 담당의사
+    //"진료날짜", "환자코드", "증상","담당의사"
     @Override
     public String[] getUiTexts() {
-        String[] texts = new String[4];
-        texts[0] = reser.date;
+        String[] texts = new String[5];
+        texts[0] = rece.date;
         texts[1] = pati.patientCode;
-        texts[2] = reser.symptom;
-        texts[3] = reser.doctorName;
+        texts[2] = rece.symptom;
+        texts[3] = rece.doctor.name;
         return texts;
     }
 
@@ -47,8 +37,7 @@ public class ReservationOfPatient implements Manageable, UIData{
 
     @Override
     public void print() {
-        System.out.printf("(%s) %s : 담당의사 %s\n\t", reser.date, reser.symptom, reser.doctor.name);
-
+        System.out.printf("(%s) %s : 담당의사 %s\n\t", rece.date, rece.symptom, rece.doctor.name);
     }
 
     @Override
