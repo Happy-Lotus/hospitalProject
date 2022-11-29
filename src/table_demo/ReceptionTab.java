@@ -2,6 +2,9 @@ package table_demo;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -18,10 +21,7 @@ public class ReceptionTab{
 
     public static void startGUI() {
         Main hospitalmain = Main.getInstance();
-        //hospitalmain.run();
-
         ReceptionTab.getInstance().createAndShowReception();
-
     }
     public JFrame receptionFrame = new JFrame("");
     private void createAndShowReception()
@@ -32,7 +32,14 @@ public class ReceptionTab{
         receptionFrame.setBackground(Color.WHITE);
         receptionFrame.setTitle("진료현황");
         receptionFrame.getContentPane().add(receptionPane);
-        //receptionFrame.setVisible(true);
+        receptionFrame.setLocationRelativeTo(null); // 창이 가운데 생성되도록
+
+        receptionTop.backButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                MenuPage start = new MenuPage();
+                receptionFrame.dispose();
+            }
+        });
     }
 
     private JPanel receptionPane;

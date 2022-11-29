@@ -158,10 +158,7 @@ public class Patient implements Manageable, UIData {
 			return true;
 		if(address.contains(kwd))
 			return true;
-		/*for(ReceptionOfPatient rp : rpList) {
-			if(rp.rece.patientCode.matches(kwd))
-				return true;
-		}*/
+
 		return false;
 	}
 }

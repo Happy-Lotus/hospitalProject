@@ -3,6 +3,8 @@ package table_demo;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -22,7 +24,6 @@ public class ReservationTab {
 
     public static void startGUI() {
         Main hospitalmain = Main.getInstance();
-        //hospitalmain.run();
 
         ReservationTab.getInstance().createAndShowReservation();
     }
@@ -34,7 +35,14 @@ public class ReservationTab {
         reservationFrame.setBackground(Color.WHITE);
         reservationFrame.add(reservationPane);
         reservationFrame.pack();
-        //reservationFrame.setVisible(true);
+        reservationFrame.setLocationRelativeTo(null); // 창이 가운데 생성되도록
+
+        reservationTop.backButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                MenuPage start = new MenuPage();
+                reservationFrame.dispose();
+            }
+        });
     }
     //예방접종 예약 탭
     private JPanel reservationPane;

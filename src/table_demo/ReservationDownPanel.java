@@ -6,13 +6,16 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 import javax.swing.*;
+
 import javax.swing.table.DefaultTableModel;
 
 import hospital.*;
 
-public class ReservationDownPanel extends JPanel{
+public class ReservationDownPanel extends JPanel {
     JTextField reservationEdits[] = new JTextField[5];
+
     void setupDownPane(TableSelectionDemo tableDemo) {
         JPanel downPane = new JPanel();
         downPane.setBackground(Color.WHITE);
@@ -31,6 +34,7 @@ public class ReservationDownPanel extends JPanel{
 
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 if(e.getActionCommand().equals("예약")) {
                     String[] texts = new String[5]; //편집창의 입력값 배열
                     for(int i=0; i<5; i++)
@@ -47,14 +51,12 @@ public class ReservationDownPanel extends JPanel{
                         resultStr = null;
                     }
 
-
-
-                    data.addRow(texts); //테이블에 행을 추가
                     Reservation s = new Reservation(texts);
+                    data.addRow(texts); // 테이블에 행을 추가
                     Main.reservationMgr.getMlist().add(s);
 
-                    for(int i=0; i<6; i++)
-                    {
+                    for (int i = 0; i < 6; i++) {
+
                         reservationEdits[i].setText("");
                     }
                 }

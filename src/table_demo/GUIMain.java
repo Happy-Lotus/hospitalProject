@@ -1,10 +1,6 @@
 package table_demo;
-
-
 import javax.swing.JFrame;
 import hospital.Main;
-
-
 
 public class GUIMain {
     // 싱글톤 패턴 적용 부분
@@ -24,16 +20,9 @@ public class GUIMain {
         startGUI();
 
         main.start = new startPage();
-        // main.login = new Login();  로그인창 보이기
-        //main.showFrameTest();
-        //main.login.setMain(main);
-
 
     }
-    /* public void showFrameTest(){
-         hospitalMain.run();
-         //메뉴창 띄우기
-     }*/
+
     public static void startGUI() {
         // 이벤트 처리 스레드를 만들고
         // 거기서 GUI를 생성하고 보여준다.

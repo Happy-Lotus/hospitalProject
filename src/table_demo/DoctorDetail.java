@@ -3,23 +3,15 @@ package table_demo;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
-import facade.DataEngineInterface;
 import facade.UIData;
 import hospital.Main;
-import hospital.Patient;
-import hospital.PatientMgr;
-import hospital.Reception;
 import hospital.ReceptionMgr;
-import hospital.ReceptionOfPatientMgr;
-import mgr.Manageable;
 
 public class DoctorDetail extends TableSelectionDemo {
 	DefaultTableModel tableModel;

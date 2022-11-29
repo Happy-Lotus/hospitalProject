@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -25,13 +26,7 @@ public class DoctorTab {
 
 	public static void startGUI() {
 		Main hospitalmain = Main.getInstance();
-		//hospitalmain.run();
 
-		//PatientTab main = new PatientTab();
-		//PatientTab.getInstance().createAndShowPatient();
-		//GUIMain.hospitalMain.run();
-		//getInstance();
-		//doctorTab.createAndShowPatient();
 		DoctorTab.getInstance().createAndShowPatient();
 	}
 	public JFrame doctorFrame = new JFrame("의사 정보");
@@ -43,6 +38,7 @@ public class DoctorTab {
 		doctorFrame.setBounds(100, 100, 665, 536);
 		doctorFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		doctorFrame.getContentPane().setLayout(null);
+		doctorFrame.setLocationRelativeTo(null); // 창이 가운데 생성되도록
 
 		JButton btnNewButton_1 = new JButton("New button");
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -138,5 +134,27 @@ public class DoctorTab {
 		lblNewLabel_4.setBackground(new Color(255, 255, 240));
 		lblNewLabel_4.setBounds(429, 425, 61, 15);
 		doctorFrame.getContentPane().add(lblNewLabel_4);
+
+		ImageIcon back = new ImageIcon("src/image/back.png");
+		Image img = back.getImage();
+		Image changeImg = img.getScaledInstance(30, 31,Image.SCALE_SMOOTH);
+		ImageIcon changelogo = new ImageIcon(changeImg);
+		JButton backButton = new JButton(changelogo);
+
+		//backButton.setOpaque(false);
+		backButton.setBounds(12, 10, 30, 31);
+		backButton.setBackground(Color.WHITE);
+
+		doctorFrame.getContentPane().add(backButton);
+
+		backButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MenuPage start = new MenuPage();
+				doctorFrame.dispose();
+			}
+		});
+		doctorFrame.getContentPane().add(backButton);
+		//doctorFrame.setVisible(true);
 	}
+
 }

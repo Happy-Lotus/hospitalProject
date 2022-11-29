@@ -2,8 +2,6 @@ package hospital;
 
 import facade.UIData;
 import mgr.Manageable;
-
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
