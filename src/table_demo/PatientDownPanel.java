@@ -45,7 +45,9 @@ public class PatientDownPanel extends JPanel {
                         texts[0] = resultStr;
                         resultStr = null;
                     }
+
                     if(Main.patientMgr.find(texts[0])!=null && Main.patientMgr.find(texts[1])!=null){
+
                         resultStr = JOptionPane.showInputDialog("이름이 이미 존재합니다. 다시 입력해주세요.");
                         texts[1] = resultStr;
                         resultStr = null;
@@ -63,9 +65,12 @@ public class PatientDownPanel extends JPanel {
                     {
                         patientEdits[i].setText("");
                     }
+
                 }
             }
         });
     }
+
+}
 
 }

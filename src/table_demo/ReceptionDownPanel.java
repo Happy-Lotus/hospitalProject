@@ -6,14 +6,12 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-import hospital.Main;
-import hospital.Reception;
+import hospital.*;
+
 
 public class ReceptionDownPanel extends JPanel {
     JTextField receptionEdits[] = new JTextField[5];
@@ -40,6 +38,7 @@ public class ReceptionDownPanel extends JPanel {
                     {
                         texts[i] = receptionEdits[i].getText();
                     }
+
                     String resultStr;
                     //220521 P1434 박서윤 코막힘 가래 있음 0 김해연
                     if(Main.receptionMgr.find(texts[0])!=null && Main.receptionMgr.find(texts[1])!=null){
@@ -56,9 +55,10 @@ public class ReceptionDownPanel extends JPanel {
                     {
                         receptionEdits[i].setText("");
                     }
+
                 }
             }
         });
     }
-
 }
+

@@ -124,7 +124,10 @@ public class Login extends JFrame {
                 dispose();
             }
         }else{
+            idField.setText("");
+            passwordField.setText("");
             JOptionPane.showMessageDialog(null, "Faild");
+
         }
     }
 
