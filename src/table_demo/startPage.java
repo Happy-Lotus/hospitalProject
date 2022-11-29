@@ -19,34 +19,11 @@ import javax.swing.JButton;
 public class startPage {
 
     private JFrame frame;
-/*
-    /*
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    Main hospitalMain = Main.getInstance();
-                    hospitalMain.run();
-                    startPage window = new startPage();/
-                    window.frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-*/
-    /**
-     * Create the application.
-     */
     public startPage() {
 
         initialize();
     }
 
-    /**
-     * Initialize the contents of the frame.
-     */
     private void initialize() {
 
         frame = new JFrame("AH 소아과 관리 프로그램");
@@ -100,13 +77,9 @@ public class startPage {
 
         loginButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                //MenuPage mp = null;
                 frame.dispose();
                 Login login = new Login(); // 로그인창 보이기
-                //new Login();
                 login.setVisible(true);
-                //login.setMain(mp); // 로그인창에게 메인 클래스보내기
-                // login.setVisible(false);
             }
         });
         frame.setLocationRelativeTo(null); // 창이 가운데 생성되도록

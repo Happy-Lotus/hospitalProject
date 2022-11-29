@@ -15,60 +15,16 @@ import java.awt.Color;
 
 public class MenuPage {
 
-    // static Login login;
     private static JFrame frame;
     static GUIMain main = GUIMain.getInstance();
 
-    /**
-     * Launch the application.
-     */
-    public static void main(String[] args) {
-		/*EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MenuPage.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});*/
 
-        //showMenu();
-    }
-
-   /* public static void startGUI() {
-        // 이벤트 처리 스레드를 만들고
-        // 거기서 GUI를 생성하고 보여준다.
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                frame.setVisible(true);
-                initialize();
-            }
-        });
-    }*/
-
-    /**
-     * Create the application.
-     */
     public MenuPage() {
         //	startGUI();
 
         initialize();
     }
-/*
-	public void showMenu(){
-        login.dispose(); // 로그인창닫기
-        frame.setVisible(true);
-        initialize();
-    }
-  */
-    /**
-     * Initialize the contents of the frame.
-     * setupReceptionPane();
-     setupPatientPane();
-     setupVaccinationPane();
-     setupResevationPane();
-     */
+
     public static void initialize() {
         frame = new JFrame("AH 소아과 관리 프로그램");
         frame.setBounds(100, 100, 440, 456);
@@ -80,14 +36,12 @@ public class MenuPage {
         frame.getContentPane().add(menuPanel, BorderLayout.CENTER);
         menuPanel.setLayout(null);
 
-        //JButton rcepButton = new JButton("접수");
         ImageIcon rb = new ImageIcon("src/image/접수.png");
         Image rb_img = rb.getImage();
         Image rb_changeImg = rb_img.getScaledInstance(48, 49,Image.SCALE_SMOOTH);
         ImageIcon rb_changelogo = new ImageIcon(rb_changeImg);
         JButton rcepButton = new JButton(rb_changelogo);
 
-        //homeButton.setOpaque(false);
         rcepButton.setBounds(87, 144, 97, 60);
         rcepButton.setBackground(new Color(147, 251, 206));
 
@@ -102,15 +56,12 @@ public class MenuPage {
             }
         });
 
-
-        //JButton rcepButton = new JButton("예약");
         ImageIcon rv = new ImageIcon("src/image/예약.png");
         Image rv_img = rv.getImage();
         Image rv_changeImg = rv_img.getScaledInstance(48, 49,Image.SCALE_SMOOTH);
         ImageIcon rv_changelogo = new ImageIcon(rv_changeImg);
         JButton rsvButton = new JButton(rv_changelogo);
 
-        //homeButton.setOpaque(false);
         rsvButton.setBounds(237, 144, 97, 60);
         rsvButton.setBackground(new Color(147, 251, 206));
 
@@ -132,7 +83,6 @@ public class MenuPage {
         ImageIcon pt_changelogo = new ImageIcon(pt_changeImg);
         JButton patiButton = new JButton(pt_changelogo);
 
-        //homeButton.setOpaque(false);
         patiButton.setBounds(237, 268, 97, 60);
         patiButton.setBackground(new Color(147, 251, 206));
 
@@ -179,7 +129,6 @@ public class MenuPage {
         ImageIcon changelogo = new ImageIcon(changeImg);
         JButton homeButton = new JButton(changelogo);
 
-        //homeButton.setOpaque(false);
         homeButton.setBounds(12, 10, 30, 30);
         homeButton.setBackground(Color.WHITE);
 

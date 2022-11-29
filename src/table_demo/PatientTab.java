@@ -3,12 +3,10 @@ package table_demo;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Image;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -28,9 +26,7 @@ public class PatientTab {
     }
     public static void startGUI(){
         Main hospitalmain = Main.getInstance();
-        //hospitalmain.run();
 
-        //PatientTab main = new PatientTab();
         PatientTab.getInstance().createAndShowPatient();
     }
     public JFrame patientFrame = new JFrame("환자 정보");

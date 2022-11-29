@@ -21,9 +21,6 @@ import java.util.Arrays;
 
 
 public class Login extends JFrame {
-    /**
-     *
-     */
 
     private static final long serialVersionUID = 1L;
 
@@ -33,13 +30,7 @@ public class Login extends JFrame {
     private JTextField idField;
     private JPasswordField passwordField;
     private boolean bLoginCheck;
-    /**
-     * Launch the application.
-     */
 
-    /**
-     * Create the frame.
-     */
     public Login() {
         setTitle("Login");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

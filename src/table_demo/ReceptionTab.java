@@ -33,7 +33,6 @@ public class ReceptionTab{
         receptionFrame.setTitle("진료현황");
         receptionFrame.getContentPane().add(receptionPane);
         receptionFrame.setLocationRelativeTo(null); // 창이 가운데 생성되도록
-        //receptionFrame.setVisible(true);
 
         receptionTop.backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

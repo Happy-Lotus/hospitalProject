@@ -11,7 +11,6 @@ import javax.swing.table.DefaultTableModel;
 
 import hospital.Main;
 import hospital.Patient;
-import hospital.PatientMgr;
 
 public class PatientDownPanel extends JPanel {
     JTextField patientEdits[] = new JTextField[6];
@@ -64,8 +63,6 @@ public class PatientDownPanel extends JPanel {
                     {
                         patientEdits[i].setText("");
                     }
-
-
                 }
             }
         });

@@ -25,7 +25,6 @@ public class SearchTopPanel extends JPanel {
         JPanel topPane = new JPanel();
         topPane.setBackground(new Color(147, 251, 206));
 
-        // backButton.setOpaque(false);
         backButton.setBounds(12, 6, 23, 23);
         backButton.setBackground(Color.WHITE);
         topPane.add("West", backButton);

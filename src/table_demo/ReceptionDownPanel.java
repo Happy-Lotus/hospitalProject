@@ -13,10 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import hospital.Main;
-import hospital.Patient;
-import hospital.PatientMgr;
 import hospital.Reception;
-import hospital.ReceptionMgr;
 
 public class ReceptionDownPanel extends JPanel {
     JTextField receptionEdits[] = new JTextField[5];
@@ -50,11 +47,7 @@ public class ReceptionDownPanel extends JPanel {
                         texts[1] = resultStr;
                         resultStr = null;
                     }
-                    /*if(Main.receptionMgr.find(texts[2])!=null){
-                        resultStr = JOptionPane.showInputDialog("이름이 이미 존재합니다. 다시 입력해주세요.");
-                        texts[1] = resultStr;
-                        resultStr = null;
-                    }*/
+
                     Reception r = new Reception(texts);
                     data.addRow(texts); //테이블에 행을 추가
                     Main.receptionMgr.getMlist().add(r);
