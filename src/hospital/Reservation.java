@@ -2,6 +2,9 @@ package hospital;
 
 import facade.UIData;
 import mgr.Manageable;
+
+import java.util.List;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -13,6 +16,7 @@ public class Reservation implements Manageable, UIData {
     String symptom="";
     Doctor doctor = null;
     String doctorName;
+	public List<ReservationOfPatient> rsList;
 
     @Override
     public void read(Scanner scan) {
@@ -34,7 +38,6 @@ public class Reservation implements Manageable, UIData {
             }
             symptom+=temp+" ";
         }
-
         doctorName = scan.next();
         doctor = (Doctor)Main.doctorMgr.find(doctorName);
 
@@ -60,7 +63,7 @@ public class Reservation implements Manageable, UIData {
         }
     }
 
-    Reservation() {
+    public Reservation() {
     }
 
     public Reservation(Object[] row) {
@@ -84,10 +87,12 @@ public class Reservation implements Manageable, UIData {
             System.out.println("일치하는 의사가 없습니다. 의사를 자동 배정합니다.");
             int index = random.nextInt(Main.doctorMgr.mList.size());
             doctor = (Doctor)Main.doctorMgr.getMlist().get(index);
+            this.doctorName = doctor.name;
+        
+        }else {
+        doctorName = (String) row[4];
         }
-        this.doctorName = doctor.name;
-        //Main.reservationMgr.getMlist().add(this);
-
+       
         if(patient.matches(patientCode)) {//신규환자일 경우 의사가 담당하는 patientList에 저장함. 아닐 경우 pass.
             patient.addRervation(this);
         }
@@ -107,7 +112,8 @@ public class Reservation implements Manageable, UIData {
         texts[1] = patientCode;
         texts[2] = name;
         texts[3] = symptom;
-        texts[4] =doctorName;
+        texts[4] = doctorName;
+
         return texts;
     }
 

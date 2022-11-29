@@ -12,9 +12,9 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import hospital.*;
-
 public class ReservationDownPanel extends JPanel {
-    JTextField reservationEdits[] = new JTextField[5];
+	JTextField reservationEdits[] = new JTextField[5];
+    JTextField reservationEdits2[] = new JTextField[5];
 
     void setupDownPane(TableSelectionDemo tableDemo) {
         JPanel downPane = new JPanel();
@@ -48,20 +48,24 @@ public class ReservationDownPanel extends JPanel {
                     if (Main.reservationMgr.find(texts[1]) != null && Main.reservationMgr.find(texts[3]) != null) {
                         resultStr = JOptionPane.showInputDialog("예약 내역이 이미 존재합니다. 다시 입력해주세요.");
 
-                        while(Main.patientMgr.find(resultStr)!=null){
-                            resultStr = JOptionPane.showInputDialog("접종 내역이 이미 존재합니다. 다시 입력해주세요.");
-                        }
-                        texts[3] = resultStr;
+                        texts[0] = resultStr;
+
                         resultStr = null;
                     }
 
                     Reservation s = new Reservation(texts);
 
-                    if(Main.receptionMgr.find(texts[4])== null){
+
+                    if(Main.reservationMgr.find(texts[4])== null){
+
                         texts[4] = s.getDoctorName();
                     }
                     data.addRow(texts); // 테이블에 행을 추가
                     Main.reservationMgr.getMlist().add(s);
+
+                    String name = texts[2];
+                    Patient p = new Patient();
+                	  p.addRervation(s);
 
                     for (int i = 0; i < 5; i++) {
 
