@@ -1,5 +1,7 @@
 package hospital;
 
+import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 import facade.UIData;
@@ -8,11 +10,19 @@ import mgr.Manageable;
 public class ReservationOfPatient implements Manageable, UIData{
     Patient pati;
     Reservation reser;
+    String date;
+    String patientCode;
+    Patient patient;
+    String name;
+    String symptom="";
+    Doctor doctor = null;
+    String doctorName;
 
     ReservationOfPatient(Patient pati, Reservation reser) {
         this.pati = pati;
         this.reser = reser;
     }
+    
     @Override
     public void set(Object[] uitexts) {
         // TODO Auto-generated method stub
@@ -25,7 +35,7 @@ public class ReservationOfPatient implements Manageable, UIData{
         texts[0] = reser.date;
         texts[1] = pati.patientCode;
         texts[2] = reser.symptom;
-        texts[3] = reser.doctor.name;
+        texts[3] = reser.doctorName;
         return texts;
     }
 
