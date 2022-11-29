@@ -31,6 +31,8 @@ public class startPage {
         frame.setBounds(100, 100, 900, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
+        frame.setSize(900,600);
+        frame.setResizable(false);
 
         JPanel titlePanel = new JPanel();
         titlePanel.setBackground(Color.WHITE);
