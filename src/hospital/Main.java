@@ -15,9 +15,9 @@ public class Main {
 	}
 	Scanner scan = new Scanner(System.in);
 	static Manager doctorMgr = new Manager();
-	static Manager patientMgr = new Manager();
-	static Manager receptionMgr = new Manager();
-	static Manager reservationMgr = new Manager();
+	public static Manager patientMgr = new Manager();
+	public static Manager receptionMgr = new Manager();
+	public static Manager reservationMgr = new Manager();
 	static Manager VaccinationMgr = new Manager();
 	public void run()
 	{
