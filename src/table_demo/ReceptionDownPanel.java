@@ -6,10 +6,12 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import hospital.*;
+
 
 public class ReceptionDownPanel extends JPanel {
     JTextField receptionEdits[] = new JTextField[5];
@@ -29,7 +31,6 @@ public class ReceptionDownPanel extends JPanel {
         DefaultTableModel data = (DefaultTableModel) (TableSelectionDemo.table.getModel());
         addReception.addActionListener(new ActionListener() {
 
-            @Override
             public void actionPerformed(ActionEvent e) {
                 if(e.getActionCommand().equals("접수")) {
                     String[] texts = new String[5]; //편집창의 입력값 배열
@@ -38,22 +39,22 @@ public class ReceptionDownPanel extends JPanel {
                         texts[i] = receptionEdits[i].getText();
                     }
 
-                    String resultStr = null;
-                    if((Main.receptionMgr.find(texts[0])!=null) && (Main.receptionMgr.find(texts[1])!=null)){
-                        resultStr = JOptionPane.showInputDialog("해당 날짜에 진료를 접수한 환자입니다. 다시 입력하세요.\n날짜 ");
-                        texts[0] = resultStr;
-                        resultStr = JOptionPane.showInputDialog("환자 코드");
-                        texts[1] = resultStr;
-                    }
-                  /*  if(Main.receptionMgr.find(texts[2])!=null){
-                        resultStr = JOptionPane.showInputDialog("이름이 이미 존재합니다. 다시 입력해주세요.");
+                    String resultStr;
+                    //220521 P1434 박서윤 코막힘 가래 있음 0 김해연
+                    if(Main.receptionMgr.find(texts[0])!=null && Main.receptionMgr.find(texts[1])!=null){
+                        resultStr = JOptionPane.showInputDialog("이미 해당 날짜에 접수가 되어있습니다. 환자 코드를 다시 입력해주세요.");
                         texts[1] = resultStr;
                         resultStr = null;
-                    }*/
+                    }
 
-                    data.addRow(texts); //테이블에 행을 추가
+
                     Reception r = new Reception(texts);
+                    if(Main.receptionMgr.find(texts[4])== null){
+                        texts[4] = r.getDoctorName();
+                    }
+                    data.addRow(texts); //테이블에 행을 추가
                     Main.receptionMgr.getMlist().add(r);
+
                     for(int i=0; i<5; i++)
                     {
                         receptionEdits[i].setText("");
@@ -64,3 +65,4 @@ public class ReceptionDownPanel extends JPanel {
         });
     }
 }
+
