@@ -20,7 +20,7 @@ public class Reservation implements Manageable, UIData {
     public String symptom="";
     public Doctor doctor = null;
     public String doctorName;
-	public List<ReservationOfPatient> rsList;
+    public List<ReservationOfPatient> rsList;
 
     @Override
     public void read(Scanner scan) {
@@ -51,6 +51,7 @@ public class Reservation implements Manageable, UIData {
             int index = random.nextInt(Main.doctorMgr.mList.size());
             doctor = (Doctor) Main.doctorMgr.getMlist().get(index);
         }
+
 
         String[] words = symptom.split(" ");
         String vName = words[0];
@@ -88,13 +89,20 @@ public class Reservation implements Manageable, UIData {
             int index = random.nextInt(Main.doctorMgr.mList.size());
             doctor = (Doctor)Main.doctorMgr.getMlist().get(index);
             this.doctorName = doctor.name;
-        
+
         }else {
-        doctorName = (String) row[4];
+            doctorName = (String) row[4];
         }
-       
-        if(patient.matches(patientCode)) {//환자의 예방접종 기록에 저장
+
+        if(patient.matches(patientCode)) {//신규환자일 경우 의사가 담당하는 patientList에 저장함. 아닐 경우 pass.
             patient.addRervation(this);
+        }
+
+        String [] wordss = symptom.split(" ");
+        String vName = wordss[0];
+        int vNum = Integer.parseInt(wordss[1].substring(0, 1));
+        if (Main.VaccinationMgr.find(vName) != null) {
+            patient.getVaccinationList().put(vName + " " + vNum + "차", date);
         }
     }
 
