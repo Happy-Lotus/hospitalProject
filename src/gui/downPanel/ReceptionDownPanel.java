@@ -59,18 +59,7 @@ public class ReceptionDownPanel extends JPanel {
                             Reception recept = (Reception) Main.receptionMgr.find(resultStr);
                             texts[2] = recept.getName();
 
-                            if(Main.receptionMgr.find(texts[0])!=null && Main.receptionMgr.find(texts[1])!=null){
-
-                                if(!(((Reception)(Main.receptionMgr.find(texts[1]))).getDate().equals(texts[0])))
-                                {
-                                    resultStr = JOptionPane.showInputDialog("이미 해당 날짜에 접수가 되어있습니다. 환자 코드를 다시 입력해주세요.");
-
-                                    texts[1] = resultStr;
-                                    recept = (Reception)Main.patientMgr.find(resultStr);
-                                    texts[2] = recept.getName();
-                                    resultStr = null;
-                                }
-                            }
+                        
 
                             Reception r = new Reception(texts);
                             if(Main.receptionMgr.find(texts[4]) == null){
