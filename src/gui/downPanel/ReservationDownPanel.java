@@ -49,9 +49,9 @@ public class ReservationDownPanel extends JPanel {
                     // 221216 P5556 라이언 HepB 3차 이소윤
                     // 환자 코드랑 백신 몇 차인지
                     if (Main.reservationMgr.find(texts[1]) != null && Main.reservationMgr.find(texts[3]) != null) {
-                        resultStr = JOptionPane.showInputDialog("예약 내역이 이미 존재합니다. 다시 입력해주세요.");
+                        resultStr = JOptionPane.showInputDialog("예약 내역이 이미 존재합니다. 백신을 다시 입력해주세요.");
 
-                        texts[0] = resultStr;
+                        texts[3] = resultStr;
 
                         resultStr = null;
                     }
