@@ -91,12 +91,13 @@ public class Patient implements Manageable, UIData {
 			}
 		}
 	}
-
+	//환자의 진료기록 저장
 	public void addReception(Reception r)
 	{
 		receptionList.add(r);
 		rpList.add(new ReceptionOfPatient(this, r));
 	}
+	//환자의 예방접종 기록 저장
 	public void addRervation(Reservation r)
 	{
 		reservationList.add(r);
