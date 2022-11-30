@@ -103,7 +103,7 @@ public class PatientTab {
         center.add(patientTable);
         rpListTable.tableTitle = "ReceptionOfPatientList";
         rpListTable.addComponentsToPane(ReceptionOfPatientMgr.getInstance());
-        rpListTable.setBounds(0, 300, 720, 205);
+        rpListTable.setBounds(0, 300, 720, 200);
         center.add(rpListTable);
     }
     //예방접종 현황 탭
