@@ -1,231 +1,190 @@
 package gui.table_demo;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import facade.UIData;
-import gui.main.GUIMain;
 import hospital.Main;
-import hospital.patient.Patient;
-import hospital.reservation.ReservationMgr;
+import hospital.reception.ReceptionMgr;
 
-import java.awt.BorderLayout;
-import java.util.List;
 
-public class DetailDialog extends javax.swing.JDialog {
+public class DoctorDetail extends TableSelectionDemo {
 	DefaultTableModel tableModel;
-	String[] itemDetails;
-	String[] patientDetails;
-	DefaultTableModel model;
-	int selectedIndex = -1;
-	JTable table;
-	JScrollPane scroll;
+	JFrame jframe = new JFrame();
+	JPanel jpanel = new JPanel();
+	private JPanel receptionPane;
+	static Main hospitalMain = Main.getInstance();
 
-	ReservationMgr rMgr = new ReservationMgr();
-
-	String title[] = { "백신종류", "1차", "2차", "3차", "추4차", "추5차", "추6차" };
-	String data[][] = { { "BCG" }, { "HepB" }, { "DTaP" }, { "Tdap" }, { "IPV" }, { "Hib" }, { "PCV" }, { "MMR" },
-			{ "VAR" }, { "HepA" }, { "IJEV" }, { "LJEV" }, { "RV1" }, { "RV5" } };
-
-	JLabel details[] = new JLabel[5];
-
-	DetailDialog(String[] texts) {
-		super(GUIMain.mainFrame);
-		itemDetails = texts;
+	public void run() {
+		hospitalMain.run();
 	}
 
-	void setup() {
-		setTitle("예방접종현황");
+	ReceptionMgr rMgr = new ReceptionMgr();
+	TableSelectionDemo receptionTable = new TableSelectionDemo();
 
-		JPanel pane = new JPanel(new BorderLayout());
-		model = new DefaultTableModel(title, 14);
-		table = new JTable(model);
+	public void doctor1(String name) {
+		jframe.setTitle("<김가을 의사> 정보");
+		JLabel jlabel = new JLabel("[D1111] 김가을(여) 35세 전화번호 : 010-1111-1234");
+		jlabel.setFont(new Font("수성돋움체", Font.PLAIN, 11));
+		jpanel.setBackground(new Color(147, 251, 206));
 
-		scroll = new JScrollPane(table);
-		add(scroll);
+		receptionPane = new JPanel(new BorderLayout());
+		receptionPane.setBackground(Color.WHITE);
 
-		for (int i = 0; i < data.length; i++) {
-			for (int j = 0; j < data[0].length; j++) {
-				table.setValueAt(data[i][j], i, j); // data값을 i번 행, j번 열에 넣어라
-			}
-		}
-
+		receptionTable.tableTitle = "ReceptionOfDoctor";
 		tableModel = new DefaultTableModel(rMgr.getColumnNames(), 0) {
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			}
 		};
-		List<?> reservationList = rMgr.search(itemDetails[0]);
-		Patient patient = (Patient)Main.patientMgr.find(itemDetails[0]);
-
+		List<?> patientList = rMgr.search(name);
 		tableModel.setRowCount(0);
-		for (Object r : reservationList) {
+		for (Object r : patientList) {
 			tableModel.addRow(((UIData) r).getUiTexts());
 		}
-
 		JTable jtable = new JTable();
 		jtable = new JTable(tableModel);
-		for(int k=0; k<reservationList.size(); k++) {
-			String symtom = (String) jtable.getValueAt(k, 3);
+		receptionPane.add(jtable, BorderLayout.CENTER);
 
-			if (symtom.contains("BCG")) {
+		jpanel.add(jlabel);
+		jframe.add(jpanel, BorderLayout.NORTH);
+		jframe.add(receptionPane, BorderLayout.CENTER);
+		jframe.pack();
+		jframe.setLocation(580, 60);
+		jframe.setVisible(true);
+	}
 
-				if (symtom.contains("1차"))
-					table.setValueAt(patient.getVaccinationList().get("BCG 1차"), 0, 1);
+	public void doctor2(String name) {
+		jframe.setTitle("<김해연 의사> 정보");
+		JLabel jlabel = new JLabel("[D2222] 김해연(여) 35세 전화번호 : 010-2222-1234");
+		jlabel.setFont(new Font("수성돋움체", Font.PLAIN, 11));
+		jpanel.setBackground(new Color(147, 251, 206));
+
+		receptionPane = new JPanel(new BorderLayout());
+		receptionPane.setBackground(Color.WHITE);
+
+		receptionTable.tableTitle = "ReceptionOfDoctor";
+		tableModel = new DefaultTableModel(rMgr.getColumnNames(), 0) {
+			public boolean isCellEditable(int row, int column) {
+				return false;
 			}
-
-			if (symtom.contains("HepB")) {
-
-				if (symtom.contains("3차"))
-					table.setValueAt(patient.getVaccinationList().get("HepB 3차"), 1, 3);
-				
-				if (symtom.contains("2차"))
-					table.setValueAt(patient.getVaccinationList().get("HepB 2차"), 1, 2);
-
-				if (symtom.contains("1차"))
-					table.setValueAt(patient.getVaccinationList().get("HepB 1차"), 1, 1);
-			}
-
-			if (symtom.contains("DTaP")) {
-
-				if (symtom.contains("5차"))
-					table.setValueAt(patient.getVaccinationList().get("DTaP 5차"), 2, 5);
-
-				if (symtom.contains("4차"))
-					table.setValueAt(patient.getVaccinationList().get("DTaP 4차"), 2, 4);
-
-				if (symtom.contains("3차"))
-					table.setValueAt(patient.getVaccinationList().get("DTaP 3차"), 2, 3);
-
-				if (symtom.contains("2차"))
-					table.setValueAt(patient.getVaccinationList().get("DTaP 2차"), 2, 2);
-
-				if (symtom.contains("1차"))
-					table.setValueAt(patient.getVaccinationList().get("DTaP 1차"), 2, 1);
-			}
-
-			if (symtom.contains("Tdap")) {
-
-				if (symtom.contains("1차"))
-					table.setValueAt(patient.getVaccinationList().get("Tdap/Td 1차"), 3, 1);
-			}
-
-			if (symtom.contains("IPV")) {
-
-				if (symtom.contains("4차"))
-					table.setValueAt(patient.getVaccinationList().get("IPV 4차"), 4, 4);
-
-				if (symtom.contains("3차"))
-					table.setValueAt(patient.getVaccinationList().get("IPV 3차"), 4, 3);
-
-				if (symtom.contains("2차"))
-					table.setValueAt(patient.getVaccinationList().get("IPV 2차"), 4, 2);
-				if (symtom.contains("1차"))
-					table.setValueAt(patient.getVaccinationList().get("IPV 1차"), 4, 1);
-			}
-
-			if (symtom.contains("Hib")) {
-
-				if (symtom.contains("4차"))
-					table.setValueAt(patient.getVaccinationList().get("Hib 4차"), 5, 4);
-
-				if (symtom.contains("3차"))
-					table.setValueAt(patient.getVaccinationList().get("Hib 3차"), 5, 3);
-
-				if (symtom.contains("2차"))
-					table.setValueAt(patient.getVaccinationList().get("Hib 2차"), 5, 2);
-
-				if (symtom.contains("1차"))
-					table.setValueAt(patient.getVaccinationList().get("Hib 1차"), 5, 1);
-			}
-
-			if (symtom.contains("PCV")) {
-				if (symtom.contains("4차"))
-					table.setValueAt(patient.getVaccinationList().get("PCV 4차"), 6, 4);
-
-				if (symtom.contains("3차"))
-					table.setValueAt(patient.getVaccinationList().get("PCV 3차"), 6, 3);
-
-				if (symtom.contains("2차"))
-					table.setValueAt(patient.getVaccinationList().get("PCV 2차"), 6, 2);
-
-				if (symtom.contains("1차"))
-					table.setValueAt(patient.getVaccinationList().get("PCV 1차"), 6, 1);
-			}
-
-			if (symtom.contains("MMR")) {
-				if (symtom.contains("2차"))
-					table.setValueAt(patient.getVaccinationList().get("MMR 2차"), 7,  2);
-
-				if (symtom.contains("1차"))
-					table.setValueAt(patient.getVaccinationList().get("MMR 1차"), 7, 1);
-			}
-
-			if (symtom.contains("VAR")) {
-				if (symtom.contains("1차"))
-					table.setValueAt(patient.getVaccinationList().get("VAR 1차"), 8, 1);
-			}
-
-			if (symtom.contains("HepA")) {
-				if (symtom.contains("2차"))
-					table.setValueAt(patient.getVaccinationList().get("HepA 2차"), 9, 2);
-
-				if (symtom.contains("1차"))
-					table.setValueAt(patient.getVaccinationList().get("HepA 1차"), 9, 1);
-			}
-
-			if (symtom.contains("IJEV")) {
-				if (symtom.contains("5차"))
-					table.setValueAt(patient.getVaccinationList().get("IJEV 5차"), 10, 56);
-
-				if (symtom.contains("4차"))
-					table.setValueAt(patient.getVaccinationList().get("IJEV 4차"), 10, 4);
-
-				if (symtom.contains("3차"))
-					table.setValueAt(patient.getVaccinationList().get("IJEV 3차"), 10, 3);
-
-				if (symtom.contains("2차"))
-					table.setValueAt(patient.getVaccinationList().get("IJEV 2차"), 10, 2);
-
-				if (symtom.contains("1차"))
-					table.setValueAt(patient.getVaccinationList().get("IJEV 1차"), 10, 1);
-			}
-
-			if (symtom.contains("LJEV")) {
-
-				if (symtom.contains("2차"))
-					table.setValueAt(patient.getVaccinationList().get("LJEV 2차"), 11, 2);
-
-				if (symtom.contains("1차"))
-					table.setValueAt(patient.getVaccinationList().get("LJEV 1차"), 11, 1);
-			}
-
-			if (symtom.contains("RV1")) {
-
-				if (symtom.contains("2차"))
-					table.setValueAt(patient.getVaccinationList().get("RV1 2차"), 12, 2);
-
-				if (symtom.contains("1차"))
-					table.setValueAt(patient.getVaccinationList().get("RV1 2차"), 12, 1);
-			}
-
-			if (symtom.contains("RV5")) {
-
-				if (symtom.contains("3차"))
-					table.setValueAt(patient.getVaccinationList().get("RV5 3차"), 13, 3);
-
-				if (symtom.contains("2차"))
-					table.setValueAt(patient.getVaccinationList().get("RV5 2차"), 13, 2);
-
-				if (symtom.contains("1차"))
-					table.setValueAt(patient.getVaccinationList().get("RV5 1차"), 13, 1);
-			}
-
+		};
+		List<?> patientList = rMgr.search(name);
+		tableModel.setRowCount(0);
+		for (Object r : patientList) {
+			tableModel.addRow(((UIData) r).getUiTexts());
 		}
-		pack();
-		setVisible(true);
+		JTable jtable = new JTable();
+		jtable = new JTable(tableModel);
+		receptionPane.add(jtable, BorderLayout.CENTER);
+
+		jpanel.add(jlabel);
+		jframe.add(jpanel, BorderLayout.NORTH);
+		jframe.add(receptionPane, BorderLayout.CENTER);
+		jframe.pack();
+		jframe.setLocation(580, 60);
+		jframe.setVisible(true);
+	}
+
+	public void doctor3(String name) {
+		jframe.setTitle("<김희연 의사> 정보");
+		JLabel jlabel = new JLabel("[D3333] 김희연(여) 35세 전화번호 : 010-3333-1234");
+		jlabel.setFont(new Font("수성돋움체", Font.PLAIN, 11));
+		jpanel.setBackground(new Color(147, 251, 206));
+
+		receptionPane = new JPanel(new BorderLayout());
+		receptionPane.setBackground(Color.WHITE);
+
+		receptionTable.tableTitle = "ReceptionOfDoctor";
+		tableModel = new DefaultTableModel(rMgr.getColumnNames(), 0) {
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		List<?> patientList = rMgr.search(name);
+		tableModel.setRowCount(0);
+		for (Object r : patientList) {
+			tableModel.addRow(((UIData) r).getUiTexts());
+		}
+		JTable jtable = new JTable();
+		jtable = new JTable(tableModel);
+		receptionPane.add(jtable, BorderLayout.CENTER);
+
+		jpanel.add(jlabel);
+		jframe.add(jpanel, BorderLayout.NORTH);
+		jframe.add(receptionPane, BorderLayout.CENTER);
+		jframe.pack();
+		jframe.setLocation(580, 60);
+		jframe.setVisible(true);
+	}
+
+	public void doctor4(String name) {
+		jframe.setTitle("<이소윤 의사> 정보");
+		JLabel jlabel = new JLabel("[D4444] 이소윤(여) 35세 전화번호 : 010-4444-1234");
+		jlabel.setFont(new Font("수성돋움체", Font.PLAIN, 11));
+		jpanel.setBackground(new Color(147, 251, 206));
+
+		receptionPane = new JPanel(new BorderLayout());
+		receptionPane.setBackground(Color.WHITE);
+
+		receptionTable.tableTitle = "ReceptionOfDoctor";
+		tableModel = new DefaultTableModel(rMgr.getColumnNames(), 0) {
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		List<?> patientList = rMgr.search(name);
+		tableModel.setRowCount(0);
+		for (Object r : patientList) {
+			tableModel.addRow(((UIData) r).getUiTexts());
+		}
+		JTable jtable = new JTable();
+		jtable = new JTable(tableModel);
+		receptionPane.add(jtable, BorderLayout.CENTER);
+
+		jpanel.add(jlabel);
+		jframe.add(jpanel, BorderLayout.NORTH);
+		jframe.add(receptionPane, BorderLayout.CENTER);
+		jframe.pack();
+		jframe.setLocation(580, 60);
+		jframe.setVisible(true);
+	}
+
+	public void doctor5(String name) {
+		jframe.setTitle("<현지현 의사> 정보");
+		JLabel jlabel = new JLabel("[D5555] 현지현(여) 35세 전화번호 : 010-5555-1234");
+		jlabel.setFont(new Font("수성돋움체", Font.PLAIN, 11));
+		jpanel.setBackground(new Color(147, 251, 206));
+
+		receptionPane = new JPanel(new BorderLayout());
+		receptionPane.setBackground(Color.WHITE);
+
+		receptionTable.tableTitle = "ReceptionOfDoctor";
+		tableModel = new DefaultTableModel(rMgr.getColumnNames(), 0) {
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		List<?> patientList = rMgr.search(name);
+		tableModel.setRowCount(0);
+		for (Object r : patientList) {
+			tableModel.addRow(((UIData) r).getUiTexts());
+		}
+		JTable jtable = new JTable();
+		jtable = new JTable(tableModel);
+		receptionPane.add(jtable, BorderLayout.CENTER);
+
+		jpanel.add(jlabel);
+		jframe.add(jpanel, BorderLayout.NORTH);
+		jframe.add(receptionPane, BorderLayout.CENTER);
+		jframe.pack();
+		jframe.setLocation(580, 60);
+		jframe.setVisible(true);
 	}
 }
-

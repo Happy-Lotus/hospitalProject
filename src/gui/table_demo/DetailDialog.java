@@ -79,13 +79,11 @@ public class DetailDialog extends javax.swing.JDialog {
 			if (symtom.contains("HepB")) {
 
 				if (symtom.contains("3차"))
-					//for (int i = 1; i <= 3; i++) {
 					table.setValueAt(patient.getVaccinationList().get("HepB 3차"), 1, 3);
-				//}
+
 				if (symtom.contains("2차"))
-					//for (int i = 1; i <= 2; i++) {
 					table.setValueAt(patient.getVaccinationList().get("HepB 2차"), 1, 2);
-				//}
+
 				if (symtom.contains("1차"))
 					table.setValueAt(patient.getVaccinationList().get("HepB 1차"), 1, 1);
 			}
@@ -93,21 +91,17 @@ public class DetailDialog extends javax.swing.JDialog {
 			if (symtom.contains("DTaP")) {
 
 				if (symtom.contains("5차"))
-					//for (int i = 1; i <= 5; i++) {
 					table.setValueAt(patient.getVaccinationList().get("DTaP 5차"), 2, 5);
-				//}
+
 				if (symtom.contains("4차"))
-					//for (int i = 1; i <= 4; i++) {
 					table.setValueAt(patient.getVaccinationList().get("DTaP 4차"), 2, 4);
-				//}
+
 				if (symtom.contains("3차"))
-					//for (int i = 1; i <= 3; i++) {
 					table.setValueAt(patient.getVaccinationList().get("DTaP 3차"), 2, 3);
-				//}
+
 				if (symtom.contains("2차"))
-					//for (int i = 1; i <= 2; i++) {
 					table.setValueAt(patient.getVaccinationList().get("DTaP 2차"), 2, 2);
-				//}
+
 				if (symtom.contains("1차"))
 					table.setValueAt(patient.getVaccinationList().get("DTaP 1차"), 2, 1);
 			}
@@ -121,17 +115,13 @@ public class DetailDialog extends javax.swing.JDialog {
 			if (symtom.contains("IPV")) {
 
 				if (symtom.contains("4차"))
-					//	for (int i = 1; i <= 4; i++) {
 					table.setValueAt(patient.getVaccinationList().get("IPV 4차"), 4, 4);
-				//	}
+
 				if (symtom.contains("3차"))
-					//	for (int i = 1; i <= 3; i++) {
 					table.setValueAt(patient.getVaccinationList().get("IPV 3차"), 4, 3);
-				//	}
+
 				if (symtom.contains("2차"))
-					//	for (int i = 1; i <= 2; i++) {
 					table.setValueAt(patient.getVaccinationList().get("IPV 2차"), 4, 2);
-				//	}
 				if (symtom.contains("1차"))
 					table.setValueAt(patient.getVaccinationList().get("IPV 1차"), 4, 1);
 			}
@@ -139,83 +129,66 @@ public class DetailDialog extends javax.swing.JDialog {
 			if (symtom.contains("Hib")) {
 
 				if (symtom.contains("4차"))
-					//for (int i = 1; i <= 4; i++) {
 					table.setValueAt(patient.getVaccinationList().get("Hib 4차"), 5, 4);
-				//}
+
 				if (symtom.contains("3차"))
-					//for (int i = 1; i <= 3; i++) {
 					table.setValueAt(patient.getVaccinationList().get("Hib 3차"), 5, 3);
-				//}
+
 				if (symtom.contains("2차"))
-					//for (int i = 1; i <= 2; i++) {
 					table.setValueAt(patient.getVaccinationList().get("Hib 2차"), 5, 2);
-				//}
+
 				if (symtom.contains("1차"))
 					table.setValueAt(patient.getVaccinationList().get("Hib 1차"), 5, 1);
 			}
 
 			if (symtom.contains("PCV")) {
-
 				if (symtom.contains("4차"))
-					//	for (int i = 1; i <= 4; i++) {
 					table.setValueAt(patient.getVaccinationList().get("PCV 4차"), 6, 4);
-				//	}
+
 				if (symtom.contains("3차"))
-					//	for (int i = 1; i <= 3; i++) {
 					table.setValueAt(patient.getVaccinationList().get("PCV 3차"), 6, 3);
-				//	}
+
 				if (symtom.contains("2차"))
-					//	for (int i = 1; i <= 2; i++) {
 					table.setValueAt(patient.getVaccinationList().get("PCV 2차"), 6, 2);
-				//	}
+
 				if (symtom.contains("1차"))
 					table.setValueAt(patient.getVaccinationList().get("PCV 1차"), 6, 1);
 			}
 
 			if (symtom.contains("MMR")) {
-
 				if (symtom.contains("2차"))
-					//for (int i = 1; i <= 2; i++) {
 					table.setValueAt(patient.getVaccinationList().get("MMR 2차"), 7,  2);
-				//}
+
 				if (symtom.contains("1차"))
 					table.setValueAt(patient.getVaccinationList().get("MMR 1차"), 7, 1);
 			}
 
 			if (symtom.contains("VAR")) {
-
 				if (symtom.contains("1차"))
 					table.setValueAt(patient.getVaccinationList().get("VAR 1차"), 8, 1);
 			}
 
 			if (symtom.contains("HepA")) {
-
 				if (symtom.contains("2차"))
-					//for (int i = 1; i <= 2; i++) {
 					table.setValueAt(patient.getVaccinationList().get("HepA 2차"), 9, 2);
-				//}
+
 				if (symtom.contains("1차"))
 					table.setValueAt(patient.getVaccinationList().get("HepA 1차"), 9, 1);
 			}
 
 			if (symtom.contains("IJEV")) {
-
 				if (symtom.contains("5차"))
-					//for (int i = 1; i <= 5; i++) {
 					table.setValueAt(patient.getVaccinationList().get("IJEV 5차"), 10, 56);
-				//}
+
 				if (symtom.contains("4차"))
-					//for (int i = 1; i <= 4; i++) {
 					table.setValueAt(patient.getVaccinationList().get("IJEV 4차"), 10, 4);
-				//}
+
 				if (symtom.contains("3차"))
-					//for (int i = 1; i <= 3; i++) {
 					table.setValueAt(patient.getVaccinationList().get("IJEV 3차"), 10, 3);
-				//}
+
 				if (symtom.contains("2차"))
-					//for (int i = 1; i <= 2; i++) {
 					table.setValueAt(patient.getVaccinationList().get("IJEV 2차"), 10, 2);
-				//}
+
 				if (symtom.contains("1차"))
 					table.setValueAt(patient.getVaccinationList().get("IJEV 1차"), 10, 1);
 			}
@@ -223,9 +196,8 @@ public class DetailDialog extends javax.swing.JDialog {
 			if (symtom.contains("LJEV")) {
 
 				if (symtom.contains("2차"))
-					//for (int i = 1; i <= 2; i++) {
 					table.setValueAt(patient.getVaccinationList().get("LJEV 2차"), 11, 2);
-				//}
+
 				if (symtom.contains("1차"))
 					table.setValueAt(patient.getVaccinationList().get("LJEV 1차"), 11, 1);
 			}
@@ -233,9 +205,8 @@ public class DetailDialog extends javax.swing.JDialog {
 			if (symtom.contains("RV1")) {
 
 				if (symtom.contains("2차"))
-					//for (int i = 1; i <= 2; i++) {
 					table.setValueAt(patient.getVaccinationList().get("RV1 2차"), 12, 2);
-				//}
+
 				if (symtom.contains("1차"))
 					table.setValueAt(patient.getVaccinationList().get("RV1 2차"), 12, 1);
 			}
@@ -243,13 +214,11 @@ public class DetailDialog extends javax.swing.JDialog {
 			if (symtom.contains("RV5")) {
 
 				if (symtom.contains("3차"))
-					//for (int i = 1; i <= 3; i++) {
 					table.setValueAt(patient.getVaccinationList().get("RV5 3차"), 13, 3);
-				//}
+
 				if (symtom.contains("2차"))
-					//for (int i = 1; i <= 2; i++) {
 					table.setValueAt(patient.getVaccinationList().get("RV5 2차"), 13, 2);
-				//}
+
 				if (symtom.contains("1차"))
 					table.setValueAt(patient.getVaccinationList().get("RV5 1차"), 13, 1);
 			}
