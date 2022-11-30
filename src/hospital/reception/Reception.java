@@ -55,7 +55,7 @@ public class Reception implements Manageable, UIData {
         if(patient.matches(patientCode)) {//신규환자일 경우 의사가 담당하는 patientList에 저장함. 아닐 경우 pass.
             doctor.addPatient(patient);
         }
-        if(patient.matches(patientCode)) {//신규환자일 경우 의사가 담당하는 patientList에 저장함. 아닐 경우 pass.
+        if(patient.matches(patientCode)) {//등록환자일 경우 환자의 진료기록에 저장.
             patient.addReception(this);
         }
 

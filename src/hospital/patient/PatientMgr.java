@@ -17,9 +17,13 @@ public class PatientMgr extends Manager implements DataEngineInterface {
 			pMgr = new PatientMgr();
 		return pMgr;
 	}
-
-	public Patient getPatient(int index){
+	//초기화
+	public Patient initPatient(int index){
 		return (Patient)Main.patientMgr.mList.get(index);
+	}
+	//테이블에서 리스트를 누르면, 리스트의 환자코드로 검색하여 환자 반환
+	public Patient getPatient(String kwd){
+		return (Patient) Main.patientMgr.find(kwd);
 	}
 
 	public void addPatient(Patient p){

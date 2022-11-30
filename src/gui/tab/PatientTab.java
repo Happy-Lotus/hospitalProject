@@ -54,7 +54,6 @@ public class PatientTab {
         patientFrame.setLocationRelativeTo(null); // 창이 가운데 생성되도록
         patientFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         patientFrame.setResizable(false);
-        //patientFrame.setVisible(true);
 
         patientTop.backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
