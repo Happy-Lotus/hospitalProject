@@ -13,14 +13,6 @@ import mgr.Manageable;
 public class ReservationOfPatient implements Manageable, UIData{
     Patient pati;
     Reservation reser;
-    String date;
-    String patientCode;
-    Patient patient;
-    String name;
-    String symptom="";
-    Doctor doctor = null;
-    String doctorName;
-
     public ReservationOfPatient(Patient pati, Reservation reser) {
         this.pati = pati;
         this.reser = reser;

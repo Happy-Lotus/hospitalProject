@@ -18,8 +18,11 @@ public class PatientMgr extends Manager implements DataEngineInterface {
 		return pMgr;
 	}
 
-	public Patient getPatient(int index){
+	public Patient initPatient(int index){
 		return (Patient)Main.patientMgr.mList.get(index);
+	}
+	public Patient getPatient(String kwd){
+		return (Patient) Main.patientMgr.find(kwd);
 	}
 
 	public void addPatient(Patient p){

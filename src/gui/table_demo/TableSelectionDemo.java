@@ -85,21 +85,19 @@ public class TableSelectionDemo extends JPanel implements ListSelectionListener 
         ListSelectionModel lsm = (ListSelectionModel)e.getSource();
         if (!lsm.isSelectionEmpty()) {
             selectedIndex = lsm.getMinSelectionIndex();
-            String name = (String)tableModel.getValueAt(selectedIndex, 1);
-
+            String patientCode1 = (String)tableModel.getValueAt(selectedIndex, 1);
+            String patientCode2 = (String) tableModel.getValueAt(selectedIndex, 0);
             if (tableTitle.equals("reception")) {
-                ReceptionTab.getInstance().receptionTop.kwdTextField.setText(name);
+                ReceptionTab.getInstance().receptionTop.kwdTextField.setText(patientCode1);
             }
             else if(tableTitle.equals("ReceptionOfPatient")) {
-                PatientTab.getInstance().patientTop.kwdTextField.setText(name);
-                PatientTab.getInstance().rpListTable.loadData(""+selectedIndex);
+                PatientTab.getInstance().rpListTable.loadData(patientCode2);
             }
             else if(tableTitle.equals("ReservationOfPatient")) {
-                PatientTab.getInstance().v_patientTop.kwdTextField.setText(name);
-                PatientTab.getInstance().v_rListTable.loadData(""+selectedIndex);
+                PatientTab.getInstance().v_rListTable.loadData(patientCode2);
             }
             else if(tableTitle.equals("reservation")) {
-                ReservationTab.getInstance().reservationTop.kwdTextField.setText(name);
+                ReservationTab.getInstance().reservationTop.kwdTextField.setText(patientCode1);
             }
         }
     }

@@ -11,7 +11,7 @@ public class ReceptionOfPatientTableDemo extends TableSelectionDemo {
     PatientMgr patientMgr = PatientMgr.getInstance();
     
     void init(DataEngineInterface mgr) {
-        ((ReceptionOfPatientMgr)mgr).setPatient(patientMgr.getPatient(0));
+        ((ReceptionOfPatientMgr)mgr).setPatient(patientMgr.initPatient(0));
         super.init(mgr);
     }
     // 부모 클래스의 테이블 데이터 로드하는 부분을 오버라이드하여
@@ -19,7 +19,7 @@ public class ReceptionOfPatientTableDemo extends TableSelectionDemo {
     // 미리 설정한 후 슈퍼의 loadData를 호출한다.
     public void loadData(String kwd) {
         if(!kwd.equals("")) {
-            Patient p = patientMgr.getPatient(Integer.parseInt(kwd));
+            Patient p = patientMgr.getPatient(kwd);
             rpMgr.setPatient(p);
         }
         super.loadData("");
