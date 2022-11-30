@@ -75,7 +75,11 @@ public class Reservation implements Manageable, UIData {
         date = (String) row[0];
         patientCode = (String) row[1];
         patient = (Patient) Main.patientMgr.find(patientCode);
-
+        if(patient == null){
+           /* System.out.println("해당 환자코드와 일치하는 환자가 없습니다. 등록이 필요합니다.");
+            patient = new Patient();
+            patient.read(scan);*/ //해당환자에 대한 입력 진행.
+        }
         name = (String) row[2];
         symptom = (String) row[3];
         String [] words = symptom.split(" ");
@@ -97,6 +101,7 @@ public class Reservation implements Manageable, UIData {
         if(patient.matches(patientCode)) {//신규환자일 경우 의사가 담당하는 patientList에 저장함. 아닐 경우 pass.
             patient.addRervation(this);
         }
+
 
         String [] wordss = symptom.split(" ");
         String vName = wordss[0];
