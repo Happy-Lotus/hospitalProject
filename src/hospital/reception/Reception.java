@@ -64,7 +64,7 @@ public class Reception implements Manageable, UIData {
     public String getDoctorName(){
         return doctorName;
     }
-
+    public String getName(){return name;}
     public Reception(){	}
 
     public Reception(Object[] row) {
@@ -73,9 +73,9 @@ public class Reception implements Manageable, UIData {
         patient = (Patient)Main.patientMgr.find(patientCode);
         this.name = (String)row[2];
         this.symptom = (String)row[3];
-        doctor = (Doctor) Main.doctorMgr.find((String)row[4]);
+        doctor =(Doctor) Main.doctorMgr.find((String)row[4]);
 
-        if (doctor == null) {
+        if (doctor== null) {
             Random random = new Random();
             System.out.println("일치하는 의사가 없습니다. 의사를 자동 배정합니다.");
             int index = random.nextInt(Main.doctorMgr.mList.size());
@@ -89,6 +89,10 @@ public class Reception implements Manageable, UIData {
         if(patient.matches(patientCode)) {//신규환자일 경우 의사가 담당하는 patientList에 저장함. 아닐 경우 pass.
             patient.addReception(this);
         }
+    }
+
+    public String getDate(){
+        return date;
     }
 
     @Override

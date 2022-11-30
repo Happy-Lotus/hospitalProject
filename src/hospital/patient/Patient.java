@@ -21,6 +21,7 @@ public class Patient implements Manageable, UIData {
 		// TODO Auto-generated method stub
 	}
 	public Patient() { }
+	//public Patient(){}
 	public Patient(Object[] row) {
 		patientCode = (String)row[0];
 		name = (String)row[1];
@@ -101,6 +102,11 @@ public class Patient implements Manageable, UIData {
 		reservationList.add(r);
 		rsList.add(new ReservationOfPatient(this, r));
 	}
+
+	public String getName(){
+		return name;
+	}
+	public String getPatientCode(){return patientCode;}
 
 	protected String getBirth() {
 		return birth;
