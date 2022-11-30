@@ -1,6 +1,12 @@
 package hospital;
 
 import java.util.Scanner;
+
+import hospital.doctor.Doctor;
+import hospital.patient.Patient;
+import hospital.reception.Reception;
+import hospital.reservation.Reservation;
+import hospital.vaccination.Vaccination;
 import mgr.Factory;
 import mgr.Manageable;
 import mgr.Manager;
@@ -14,11 +20,11 @@ public class Main {
 		return hospitalMain;
 	}
 	Scanner scan = new Scanner(System.in);
-	static Manager doctorMgr = new Manager();
+	public static Manager doctorMgr = new Manager();
 	public static Manager patientMgr = new Manager();
 	public static Manager receptionMgr = new Manager();
 	public static Manager reservationMgr = new Manager();
-	static Manager VaccinationMgr = new Manager();
+	public static Manager VaccinationMgr = new Manager();
 	public void run()
 	{
 		doctorMgr.readAll("doctor.txt",new Factory(){
@@ -41,7 +47,7 @@ public class Main {
 				return new Reception();
 			}
 		});
-
+		
 
 		reservationMgr.readAll("reservation.txt",new Factory(){
 			public Manageable create(){
