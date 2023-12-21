@@ -1,5 +1,5 @@
 # AH 소아과 관리 프로그램
-<img src="https://github.com/Happy-Lotus/hospitalProject/blob/master/img/%EC%B4%88%EA%B8%B0%ED%99%94%EB%A9%B4.png" width="90%">
+<img src="https://github.com/Happy-Lotus/hospitalProject/blob/master/img/%EC%B4%88%EA%B8%B0%ED%99%94%EB%A9%B4.png" width="80%">
 2022-2 객체지향프로그래밍 - Java Swing GUI를 활용한 Java Team Project 
 <br><br>
 
@@ -34,5 +34,25 @@
 |:--:|:--:|:--:|:--:|:--:|
 |[**이소윤**](https://github.com/dlthdbs03)|[**김가을**](https://github.com/herbssssst)|[**김해연**](https://github.com/sunkite3-3)|[**김희연**](https://github.com/Happy-Lotus)|[**현지현**](https://github.com/Jihyeoniiiii)|
 |담당|담당|담당|담당|담당
-### 기능 
-#### 로그인
+## 기능 
+#### 로그인 화면 & 메뉴 화면
+
+|로그인|메뉴|
+|:------:|:------:|
+|<img src="https://github.com/Happy-Lotus/hospitalProject/blob/master/img/%EB%A1%9C%EA%B7%B8%EC%9D%B8%ED%99%94%EB%A9%B4.png" width="300px">|<img src="https://github.com/Happy-Lotus/hospitalProject/blob/master/img/%EB%A9%94%EB%89%B4%ED%99%94%EB%A9%B4.png" width="300px">|
+
+<br>
+
+#### 접수 화면 & 예약 화면
+|접수|예약|
+|:------:|:------:|
+|<img src="https://github.com/Happy-Lotus/hospitalProject/blob/master/img/%EB%A1%9C%EA%B7%B8%EC%9D%B8%ED%99%94%EB%A9%B4.png" width="300px">|<img src="https://github.com/Happy-Lotus/hospitalProject/blob/master/img/%EB%A9%94%EB%89%B4%ED%99%94%EB%A9%B4.png" width="300px">|
+
+<br>
+
+#### 의사 정보 확인 화면 & 환자 리스트 확인 화면
+|의사 정보 확인|환자 리스트 확인|접종 접수 및 예약 확인|환자별 접종 현황|
+|:------:|:------:|:------:|:------:|
+|<img src="https://github.com/Happy-Lotus/hospitalProject/blob/master/img/%EB%A1%9C%EA%B7%B8%EC%9D%B8%ED%99%94%EB%A9%B4.png" width="520px" height="300px">|<img src="https://github.com/Happy-Lotus/hospitalProject/blob/master/img/%ED%99%98%EC%9E%90%20%ED%99%94%EB%A9%B4.png" width="520px" height="300px">|<img src="https://github.com/Happy-Lotus/hospitalProject/blob/master/img/%EC%A0%91%EC%A2%85%20%EB%82%B4%EC%97%AD%20%ED%99%94%EB%A9%B4.png" width="520px" height="300px">|<img src="https://github.com/Happy-Lotus/hospitalProject/blob/master/img/%EC%A0%91%EC%A2%85%20%ED%98%84%ED%99%A9%20%ED%99%94%EB%A9%B4.png" width="520px" height="300px">|
+
+<br>
