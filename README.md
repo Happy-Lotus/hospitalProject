@@ -25,8 +25,8 @@ AH 소아과 관리 프로그램은 AH 소아과에서 근무하는 간호사의
 - GitHub
 ## 팀원 구성
 
-|<img src="https://avatars.githubusercontent.com/u/102029361?v=4" width="120px">|<img src="https://avatars.githubusercontent.com/u/98319466?v=4" width="120px">|<img src="https://avatars.githubusercontent.com/u/83447421?v=4" width="120px">|<img src="" width="120px">|<img src="https://avatars.githubusercontent.com/u/105184159?v=4" width="120px">|
-|--|--|--|--|--|
+|<img src="https://avatars.githubusercontent.com/u/102029361?v=4" width="120px">|<img src="https://avatars.githubusercontent.com/u/98319466?v=4" width="120px">|<img src="https://avatars.githubusercontent.com/u/83447421?v=4" width="120px">|<img src="https://avatars.githubusercontent.com/u/62700196?v=4" width="120px">|<img src="https://avatars.githubusercontent.com/u/105184159?v=4" width="120px">|
+|:--:|:--:|:--:|:--:|:--:|
 |[이소윤](https://github.com/dlthdbs03)|[김가을](https://github.com/herbssssst)|[김해연](https://github.com/sunkite3-3)|[김희연](https://github.com/Happy-Lotus)|[현지현](https://github.com/Jihyeoniiiii)|
 
 ### 기능 
