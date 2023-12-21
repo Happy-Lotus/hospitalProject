@@ -53,6 +53,6 @@
 #### 의사 정보 확인 화면 & 환자 리스트 확인 화면
 |의사 정보 확인|환자 리스트 확인|접종 접수 및 예약 확인|환자별 접종 현황|
 |:------:|:------:|:------:|:------:|
-|<img src="https://github.com/Happy-Lotus/hospitalProject/blob/master/img/%EB%A1%9C%EA%B7%B8%EC%9D%B8%ED%99%94%EB%A9%B4.png" width="520px" height="300px">|<img src="https://github.com/Happy-Lotus/hospitalProject/blob/master/img/%ED%99%98%EC%9E%90%20%ED%99%94%EB%A9%B4.png" width="520px" height="300px">|<img src="https://github.com/Happy-Lotus/hospitalProject/blob/master/img/%EC%A0%91%EC%A2%85%20%EB%82%B4%EC%97%AD%20%ED%99%94%EB%A9%B4.png" width="520px" height="300px">|<img src="https://github.com/Happy-Lotus/hospitalProject/blob/master/img/%EC%A0%91%EC%A2%85%20%ED%98%84%ED%99%A9%20%ED%99%94%EB%A9%B4.png" width="520px" height="300px">|
+|<img src="https://github.com/Happy-Lotus/hospitalProject/blob/master/img/%EB%A1%9C%EA%B7%B8%EC%9D%B8%ED%99%94%EB%A9%B4.png" width="300px" height="300px">|<img src="https://github.com/Happy-Lotus/hospitalProject/blob/master/img/%ED%99%98%EC%9E%90%20%ED%99%94%EB%A9%B4.png" width="100%" height="300px">|<img src="https://github.com/Happy-Lotus/hospitalProject/blob/master/img/%EC%A0%91%EC%A2%85%20%EB%82%B4%EC%97%AD%20%ED%99%94%EB%A9%B4.png" width="100%" height="300px">|<img src="https://github.com/Happy-Lotus/hospitalProject/blob/master/img/%EC%A0%91%EC%A2%85%20%ED%98%84%ED%99%A9%20%ED%99%94%EB%A9%B4.png" width="300px" height="300px">|
 
 <br>
